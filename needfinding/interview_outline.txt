@@ -1,0 +1,33 @@
+# INTERVISTA
+     ## DOMANDE ALLA PERSONA
+	1.	[REF/UDC] Quanti anni hai?
+	2.	[REF/UDC] Studi o lavori? Cosa studi/Che lavoro fai?
+	3.	[REF/UDC] Quanta confidenza hai con la tecnologia/informatica?
+	4.	[REF/UDC] Quali altri hobby hai oltre all’arbitraggio?
+	5.	[REF/UDC] Fai tante partite a settimana? Hai mai contato quante partite fai in media per stagione?
+     ## DOMANDE ALL'ARBITRO/UFFICIALE DI CAMPO
+	6.	[REF/UDC] In quale momento della tua giornata solitamente ricevi le designazioni?
+	7.	[REF/UDC] Le accetti subito oppure aspetti un preciso momento opportuno (per esempio la sera)?
+	8.	[REF/UDC] Come si articola la tua procedura di accettazione (per esempio te la annoti, etc.)? Trovi comoda la procedura di accettazione di FipOnline?
+	9.	[REF          ] In quale momento ti occupi dell’inserimento del risultato e invio dei referti?
+	10.	[REF          ] Come si articola la tua procedura di inserimento del risultato e invio dei referti? Trovi comoda la procedura di inserimento dei risultati su FipOnline?
+     ## DOMANDE SU FIPONLINE
+	11.	[REF/UDC] Solitamente che dispositivo usi per accedere a FipOnline?
+	12.	[REF/UDC] Quanto ti trovi bene (o male) con FipOnline?
+	13.	[REF/UDC] Ti trovi a tuo agio con la pianificazione? C’è un aspetto di essa che miglioreresti? 
+	14.	[REF/UDC] C’è un aspetto che “rimpiangi” o che ti piace particolarmente del rimborso cartaceo?
+	15.	[REF/UDC] Quante volte ti è capitato di usare FipOnline per altri motivi che non fossero accettare la designazione, fare la pianificazione o inserire il risultato?
+	16.	[REF/UDC] Che mi dici a proposito del rinnovo del tesseramento?
+	17.	[REF/UDC] So che ad altri è capitato di non riuscire a completare un’azione (non ti dico quale) dovendo provare e riprovare più volte. A te è mai capitato qualcosa del genere? Raccontami
+	18.	[REF/UDC] C’è qualche aspetto che non hai mai capito di FipOnline (per esempio un’azione che hai ancora il dubbio se la compi correttamente o no)?
+     ## EVENTUALI/SUGGERIMENTI
+	19.	[REF/UDC] Attualmente FipOnline è molto “stupido” perché dà la medesima importanza a tutte le funzioni; ritieni che dovrebbe essere data una priorità? Quali funzioni dovrebbero essere messe in primo piano? Daresti un ordinamento per frequenza di accesso, oppure per procedura?
+	20.	[REF/UDC] Potessi cambiare solamente un aspetto di FipOnline, cosa cambieresti?
+	21.	[REF/UDC] Potessi aggiungere una nuova funzione di utilità a FipOnline, quale sarebbe?
+
+# OSSERVAZIONI
+	A.	[REF/UDC] Accetta una partita
+	B.	[REF/UDC] Fai una pianificazione
+	C.	[REF] Inserisci un risultato
+	D.	[REF/UDC] Aggiorna l’anagrafica
+	E.	[REF/UDC] Rinnova il tesseramento
