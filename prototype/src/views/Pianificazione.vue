@@ -1,12 +1,13 @@
 <template>
-  <div id="home">
-    <h1>Home</h1>
+  <div id="pianificazione">
+    <h1>Gara {{ numero }}</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Home"
+  name: "Pianificazione",
+  props: ['numero'],
 }
 </script>
 

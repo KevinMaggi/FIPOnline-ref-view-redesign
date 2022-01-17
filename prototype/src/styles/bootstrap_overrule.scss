@@ -1,0 +1,17 @@
+@import "colors.scss";
+
+.btn-primary {
+  background-color: $primary !important;
+  display: inline-flex !important;
+  margin: 15px !important;
+  border-color: $primary !important;
+}
+
+.btn-primary:hover {
+  background-color: $info !important;
+  border-color: $info !important;
+}
+
+.form-label, .form-control, .btn {
+  font-size: inherit !important;
+}
