@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     isLoginPage: function () {
-      return (this.$route.path === '/login' || this.$route.path === '/recupera-pw')
+      return (this.$route.path.startsWith('/accesso'))
     }
   }
 }

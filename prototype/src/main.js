@@ -7,7 +7,10 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.config.productionTip = false
 
-Vue.prototype.$auth = false // FIXME
+Vue.prototype.$auth = false
+Vue.prototype.$tessera = 'A000000'
+Vue.prototype.$pw = 'password'
+Vue.prototype.$email = 'user@email.com'
 
 new Vue({
   router,

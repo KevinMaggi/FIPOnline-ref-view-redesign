@@ -8,21 +8,30 @@ import Tesseramento from '../views/Tesseramento'
 import Anagrafica from '../views/Anagrafica'
 import CambioPw from '../views/CambioPw'
 import Pianificazione from '../views/Pianificazione.vue'
-import Login from '../views/Login.vue'
-import RecuperaPw from '../views/RecuperaPw.vue'
+import Accesso from '../views/Accesso/Accesso.vue'
+import Login from '../views/Accesso/Login.vue'
+import RecuperaPw from '../views/Accesso/RecuperaPw.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/login',
-    name: 'Login',
-    component: Login
-  },
-  {
-    path: '/recupera-pw',
-    name: 'RecuperaPw',
-    component: RecuperaPw
+    path: '/accesso',
+    name: 'Accesso',
+    component: Accesso,
+    meta: {requiresAuth: false},
+    children: [
+      {
+        path: 'login',
+        name: 'Login',
+        component: Login
+      },
+      {
+        path: 'recupera-pw',
+        name: 'RecuperaPw',
+        component: RecuperaPw,
+      },
+    ]
   },
   {
     path: '/',
@@ -82,11 +91,11 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  alert(router.app.$auth)
-  if (to.meta.requiresAuth && !router.app.$auth) { // FIXME
-    next({
-      path: '/login'
-    })
+  if (to.meta.requiresAuth && !Vue.prototype.$auth) {
+    next({path: '/accesso/login'})
+  } else if (!to.meta.requiresAuth && Vue.prototype.$auth) {
+    // FIXME without persistence and link to login/recupera-pw is impossible to reach them logged
+    next({path: '/'})
   } else {
     next()
   }
