@@ -36,10 +36,6 @@ html, body, #app {
   padding: 0;
 }
 
-body {
-  background-color: $primary;
-}
-
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
