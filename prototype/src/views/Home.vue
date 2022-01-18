@@ -11,5 +11,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+#home {
+  height: calc(100% - 100px);
+  background-color: white;
+}
 </style>

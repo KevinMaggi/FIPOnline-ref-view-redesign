@@ -2,14 +2,14 @@
   <div id="login">
     <form autocomplete="on">
       <label class="row">
-        <span class="col-md form-label">Tessera CIA:</span>
+        <span class="col-md">Tessera CIA:</span>
         <input class="col-md form-control" type="text" placeholder="A000000" id="tessera" name="tessera"
                spellcheck="false" autocomplete="username" autocapitalize="on" autocorrect="off" autofocus
                minlength="7" maxlength="7" pattern="[a,A][0-9]{6}" required
                v-model="tessera">
       </label>
       <label class="row">
-        <span class="col-md form-label">Password:</span>
+        <span class="col-md">Password:</span>
         <input class="col-md form-control" type="password" id="pw" name="password"
                autocomplete="current-password"
                required
@@ -42,6 +42,7 @@ export default {
   methods: {
     login(e) {
       e.preventDefault()
+      document.getElementById('login_btn').blur()
       if (this.tessera === '' || this.password === '') {
         this.error = false
         this.warning = true

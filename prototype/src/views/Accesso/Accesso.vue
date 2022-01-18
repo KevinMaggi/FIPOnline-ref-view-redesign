@@ -34,16 +34,22 @@ export default {
   background-color: $secondary;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 #logo {
-  max-height: 50vh;
-  margin: 25px auto;
+  max-height: 40vh;
+  margin: 30px auto;
+
+  @media screen and (max-width: 768px) {
+    margin: 15px auto;
+  }
 
   picture, img {
     max-width: 90%;
-    max-height: 25vh;
+    max-height: 20vh;
     margin: 0 auto;
   }
 }
@@ -56,7 +62,7 @@ form {
   width: 90%;
   max-width: 500px;
   margin: 0 auto;
-  font-size: 24px;
+  font-size: 20px;
 
   label {
     margin: 10px auto !important;
@@ -66,41 +72,23 @@ form {
 
     span {
       margin: 0 !important;
-      line-height: 54px;
+      line-height: 48px;
     }
 
     input {
-      border: 3px solid $primary !important;
-      text-align: center !important;
       max-width: 200px;
       margin: 0 auto;
     }
-
-    input, input:focus {
-      color: $primary;
-    }
-  }
-
-  input, button {
-    border-radius: 15px !important;
   }
 
   button {
-    border: 3px solid $primary !important;
     font-weight: bold;
-    box-shadow: $shadow;
-    align-items: center;
+    height: 48px;
 
     span {
       margin: 0 5px;
-      line-height: 36px;
+      line-height: 30px;
     }
-  }
-
-  .alert {
-    font-size: 20px;
-    border-radius: 15px;
-    margin: 0;
   }
 }
 
@@ -109,5 +97,9 @@ a {
   font-size: 20px;
   margin: 10px auto;
   width: fit-content;
+
+  :hover {
+    color: $primary;
+  }
 }
 </style>

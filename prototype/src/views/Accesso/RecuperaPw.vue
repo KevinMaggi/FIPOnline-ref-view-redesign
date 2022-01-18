@@ -2,14 +2,14 @@
   <div id="recuperapw">
     <form autocomplete="on">
       <label class="row">
-        <span class="col-md form-label">Tessera CIA:</span>
+        <span class="col-md">Tessera CIA:</span>
         <input class="col-md form-control" type="text" placeholder="A000000" id="tessera" name="tessera"
                spellcheck="false" autocomplete="username" autocapitalize="on" autocorrect="off" autofocus
                minlength="7" maxlength="7" pattern="[a,A][0-9]{6}" required
                v-model="tessera">
       </label>
       <label class="row">
-        <span class="col-md form-label">Mail ufficiale:</span>
+        <span class="col-md">Mail ufficiale:</span>
         <input class="col-md form-control" type="email" id="email" name="email"
                autocomplete="email"
                required
@@ -42,6 +42,7 @@ export default {
   methods: {
     recuperapw(e) {
       e.preventDefault()
+      document.getElementById('recuperapw_btn').blur()
       if (this.tessera === '' || this.email === '') {
         this.error = false
         this.warning = true

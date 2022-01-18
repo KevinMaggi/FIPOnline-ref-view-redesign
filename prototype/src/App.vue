@@ -1,9 +1,7 @@
 <template>
   <div id="app">
     <div id="nav" v-if="!isLoginPage()">
-      <router-link to="/">Home</router-link>
-      |
-      <router-link to="/about">About</router-link>
+      <nav></nav>
     </div>
     <router-view/>
   </div>
@@ -26,21 +24,23 @@ export default {
 </script>
 
 <style lang="scss">
+@import '~bootstrap/scss/bootstrap.scss';
+@import '~bootstrap-vue/dist/bootstrap-vue.css';
+
 @import "styles/bootstrap_overrule.scss";
 
-html, body {
+html, body, #app {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
-#app {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
+body {
+  background-color: $primary;
+}
 
+#app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -48,15 +48,7 @@ html, body {
 }
 
 #nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+  height: 100px;
+  background-color: $primary;
 }
 </style>

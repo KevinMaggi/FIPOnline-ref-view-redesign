@@ -1,17 +1,45 @@
 @import "colors.scss";
 
-.btn-primary {
-  background-color: $primary !important;
+.btn {
   display: inline-flex !important;
   margin: 10px !important;
-  border-color: $primary !important;
+  box-shadow: $shadow !important;
+  align-items: center !important;
+  font-size: inherit !important;
+  border-radius: 15px !important;
+}
+
+.btn:focus {
+  box-shadow: inset $shadow !important;
+  transform: translateY(2px) !important;
+}
+
+.btn-primary {
+  background-color: $primary !important;
+  border: none !important;
 }
 
 .btn-primary:hover {
-  background-color: $info !important;
-  border-color: $info !important;
+  background-color: lighten($primary, 33%) !important;
+  border: none !important;
 }
 
-.form-label, .form-control, .btn {
+.btn-primary:focus {
+  background-color: lighten($primary, 33%) !important;
+}
+
+.form-control {
   font-size: inherit !important;
+  border-radius: 15px !important;
+
+  border: 3px solid $primary !important;
+  text-align: center !important;
+  color: $primary !important;
+}
+
+.alert {
+  font-size: inherit !important;
+  border-radius: 15px !important;
+  margin: 0 !important;
+  padding: 10px !important;
 }
