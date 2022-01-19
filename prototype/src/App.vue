@@ -52,10 +52,7 @@ export default {
 @import '~bootstrap-vue/dist/bootstrap-vue.css';
 
 @import "styles/bootstrap_overrule.scss";
-
-$navbar-height: 75px;
-$back-button-height: 48px;
-$max-main-width: 1000px;
+@import "styles/constants.scss";
 
 html, body, #app {
   width: 100%;
@@ -81,6 +78,7 @@ nav {
   max-width: $max-main-width;
   box-sizing: content-box;
   padding: 0 calc(50% - #{$max-main-width / 2});
+  z-index: 100;
 
   img {
     margin: 7.5px auto;

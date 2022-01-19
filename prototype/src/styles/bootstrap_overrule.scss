@@ -35,6 +35,20 @@
   background-color: lighten($primary, 33%) !important;
 }
 
+.btn-secondary {
+  background-color: $secondary !important;
+  border: none !important;
+}
+
+.btn-secondary:hover {
+  background-color: darken($secondary, 33%) !important;
+  border: none !important;
+}
+
+.btn-secondary:focus {
+  background-color: darken($secondary, 33%) !important;
+}
+
 .form-control {
   font-size: inherit !important;
   border-radius: 15px !important;
@@ -42,6 +56,12 @@
   border: 3px solid $primary !important;
   text-align: center !important;
   color: $primary !important;
+}
+
+@media screen and (max-width: 400px) {
+  .form-control, .btn {
+    padding: 3px 6px !important;
+  }
 }
 
 .alert {

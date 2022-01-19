@@ -92,6 +92,20 @@ form {
   }
 }
 
+@media screen and (max-width: 400px) {
+  #logo {
+    margin: 5px auto;
+  }
+
+  form {
+    padding: 10px;
+
+    label {
+      margin: 0 auto !important;
+    }
+  }
+}
+
 a {
   display: block;
   font-size: 20px;
