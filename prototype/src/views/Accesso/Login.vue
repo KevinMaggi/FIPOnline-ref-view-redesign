@@ -18,7 +18,7 @@
       <div v-if="warning" class="alert alert-warning" role="alert">Compilare entrambi i campi</div>
       <div v-if="error" class="alert alert-danger" role="alert">Tessera CIA o password errati</div>
       <button type="submit" name="login" id="login_btn" class="btn btn-primary" v-on:click="login">
-        <span class="material-icons md-36">login</span>
+        <span class="material-icons-round">login</span>
         <span>Entra</span>
       </button>
     </form>

@@ -18,7 +18,7 @@
       <div v-if="warning" class="alert alert-warning" role="alert">Compilare entrambi i campi</div>
       <div v-if="error" class="alert alert-danger" role="alert">Tessera CIA o mail errati</div>
       <button type="submit" name="recuperapw" id="recuperapw_btn" class="btn btn-primary" v-on:click="recuperapw">
-        <span class="material-icons md-36">vpn_key</span>
+        <span class="material-icons-round">vpn_key</span>
         <span>Recupera password</span>
       </button>
     </form>
