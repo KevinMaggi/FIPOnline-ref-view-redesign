@@ -14,6 +14,13 @@
   transform: translateY(2px) !important;
 }
 
+@media (hover: none) and (pointer: coarse) {
+  .btn:hover {
+    box-shadow: inset $shadow !important;
+    transform: translateY(2px) !important;
+  }
+}
+
 .btn-primary {
   background-color: $primary !important;
   border: none !important;
