@@ -127,4 +127,41 @@ div#back {
     }
   }
 }
+
+#home, #tesseramento {
+  min-height: 100%;
+  background-color: white;
+  max-width: $max-main-width;
+  margin: auto;
+  padding: 15px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 30px;
+  color: $primary;
+}
+
+.danger {
+  color: $danger;
+}
+
+.warning {
+  color: $warning;
+}
+
+.success {
+  color: $success;
+}
+
+.info {
+  color: $info;
+}
 </style>

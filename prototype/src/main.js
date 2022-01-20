@@ -3,13 +3,9 @@ import App from './App.vue'
 import './registerServiceWorker'
 import router from './router'
 import 'bootstrap'
+import "./data.js"
 
 Vue.config.productionTip = false
-
-Vue.prototype.$auth = false
-Vue.prototype.$tessera = 'A000000'
-Vue.prototype.$pw = 'password'
-Vue.prototype.$email = 'user@email.com'
 
 new Vue({
   router,

@@ -6,9 +6,9 @@
         <span class="material-icons-round">sports</span>
         <span>Partite</span>
         <div id="dettaglio_partite">
-          <span>da accettare: <span>{{ da_accettare }}</span></span><br/>
-          <span>da disputare: <span>{{ da_disputare }}</span></span><br/>
-          <span>da refertare: <span>{{ da_refertare }}</span></span>
+          <span>da accettare:&nbsp;<span v-bind:class="{ alert: da_accettare }">{{ da_accettare }}</span></span><br/>
+          <span>da disputare:&nbsp;<span v-bind:class="{ info: da_pianificare() }">{{ da_disputare }}</span></span><br/>
+          <span>da refertare:&nbsp;<span v-bind:class="{ warning: da_refertare }">{{ da_refertare }}</span></span>
         </div>
         <span v-if="da_accettare || da_refertare" class="material-icons-round bdg warning">error</span>
         <span v-else-if="da_pianificare()" class="material-icons-round bdg info">new_releases</span>
@@ -31,9 +31,9 @@
       <router-link to="/tesseramento" class="btn btn-secondary">
         <span class="material-icons-round">badge</span>
         <span>Tesseramento e certificato</span>
-        <span v-if="tesseramento_success()" class="material-icons-round bdg success">check_circle</span>
-        <span v-if="tesseramento_warning()" class="material-icons-round bdg warning">error</span>
         <span v-if="tesseramento_danger()" class="material-icons-round bdg danger">error</span>
+        <span v-else-if="tesseramento_warning()" class="material-icons-round bdg warning">error</span>
+        <span v-else class="material-icons-round bdg success">check_circle</span>
       </router-link>
       <router-link to="/anagrafica" class="btn btn-secondary">
         <span class="material-icons-round">contact_page</span>
@@ -83,11 +83,25 @@ export default {
     },
     new_rapporti() {
     },
-    tesseramento_success() {
-    },
     tesseramento_warning() {
+      let today = Date.now()
+      if (today > Vue.prototype.$apertura_tesseramento.getTime() && today < Vue.prototype.$chiusura_tesseramento.getTime()) {
+        return !Vue.prototype.$rinnovo_tesseramento;
+      } else {
+        let alert = new Date(Vue.prototype.$scadenza_certificato)
+        alert.setDate(alert.getDate() - 30)
+        if (today > alert.getTime() && today < Vue.prototype.$scadenza_certificato.getTime()) {
+          return true
+        } else return false
+      }
     },
     tesseramento_danger() {
+      let today = Date.now()
+      if (today > Vue.prototype.$scadenza_certificato.getTime()) {
+        return true
+      } else if (today > Vue.prototype.$chiusura_tesseramento.getTime() && !Vue.prototype.$rinnovo_tesseramento) {
+        return true
+      } else return false
     },
   }
 }
@@ -100,19 +114,7 @@ $button-width: 150px;
 $button-wider-min-width: 275px;
 $button-wider-max-width: 448px;
 
-#home {
-  min-height: 100%;
-  background-color: white;
-  max-width: $max-main-width;
-  margin: auto;
-  padding: 15px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-section {
+#home section {
   border: 4px dashed $primary;
   border-radius: 30px;
   margin: 25px 5px 0 5px;
@@ -129,12 +131,6 @@ section {
     position: absolute;
     top: -20px;
     left: 0;
-    width: 100%;
-    text-align: center;
-    font-size: 30px;
-    font-weight: bold;
-    line-height: 30px;
-    color: $primary;
 
     span {
       margin: auto;
@@ -197,6 +193,14 @@ section {
         font-size: 15px;
         line-height: 20px;
         height: 20px;
+
+        span {
+          font-style: italic;
+        }
+
+        .alert, .info {
+          font-weight: bold;
+        }
       }
     }
   }
@@ -213,29 +217,13 @@ section {
   #logout {
     color: $danger;
   }
-
-  .danger {
-    color: $danger;
-  }
-
-  .warning {
-    color: $warning;
-  }
-
-  .success {
-    color: $success;
-  }
-
-  .info {
-    color: $info;
-  }
 }
 
 @media screen and (max-width: 400px) {
   #home {
     padding: 0;
   }
-  section {
+  #home section {
     padding: 10px 5px;
     margin: 25px 5px 0 5px;
 
