@@ -39,7 +39,7 @@ export default {
   justify-content: center;
 }
 
-#logo {
+#accesso #logo {
   max-height: 40vh;
   margin: 30px auto;
 
@@ -54,7 +54,7 @@ export default {
   }
 }
 
-form {
+#accesso form {
   background-color: white;
   padding: 20px;
   border-radius: 50px;
@@ -93,11 +93,11 @@ form {
 }
 
 @media screen and (max-width: 400px) {
-  #logo {
+  #accesso #logo {
     margin: 5px auto;
   }
 
-  form {
+  #accesso form {
     padding: 10px;
 
     label {
@@ -106,7 +106,7 @@ form {
   }
 }
 
-a {
+#accesso a {
   display: block;
   font-size: 20px;
   margin: 10px auto;

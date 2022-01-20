@@ -149,6 +149,10 @@ h1 {
   color: $primary;
 }
 
+h2 {
+  color: $primary;
+}
+
 .danger {
   color: $danger;
 }

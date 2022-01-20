@@ -9,10 +9,13 @@ Vue.prototype.$pw = 'password'
 Vue.prototype.$email = 'user@email.com'
 
 // Tesseramento e certificato
-Vue.prototype.$apertura_tesseramento = new Date(2022, 6, 1)
+Vue.prototype.$apertura_tesseramento = new Date(2022, 0, 1)
 Vue.prototype.$chiusura_tesseramento = new Date(2022, 6, 15)
-Vue.prototype.$rinnovo_tesseramento = true;
+Vue.prototype.$rinnovo_tesseramento = false;
+Vue.prototype.$rinnovo_richiesto = false;
 Vue.prototype.$costo_tesseramento = 14;
+Vue.prototype.$costo_tesseramento_mora = 24;
+Vue.prototype.$stagione = '2021/2022';
 Vue.prototype.$scadenza_certificato = new Date(2022, 6, 15)
 
 // Match
