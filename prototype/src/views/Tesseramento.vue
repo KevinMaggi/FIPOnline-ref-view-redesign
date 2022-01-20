@@ -17,11 +17,12 @@
           }}</span>
       </span>
       <span v-if="rinnovo_richiesto && !rinnovo_tesseramento" class="state">Da pagare: {{ costo_attuale() }}€ </span>
-      <button class="btn btn-primary" v-if="stato_tesseramento !== 0 && !rinnovo_richiesto" @click="richiedi_rinnovo()">
+      <button id="renew" class="btn btn-primary" v-if="stato_tesseramento !== 0 && !rinnovo_richiesto"
+              @click="richiedi_rinnovo()">
         <span class="material-icons-round">autorenew</span>
         <span>Richiedi rinnovo</span>
       </button>
-      <button class="btn btn-primary" v-if="rinnovo_richiesto && !rinnovo_tesseramento" @click="paga()">
+      <button id="pay" class="btn btn-primary" v-if="rinnovo_richiesto && !rinnovo_tesseramento" @click="paga()">
         <span class="material-icons-round">payment</span>
         <span>Paga</span>
       </button>
@@ -41,20 +42,23 @@
       <span class="state">Scadenza: {{ scadenza }} </span>
     </section>
 
-    <div class="overlay" v-if="info_active">
-      <div id="info">
-        <button id="info_close" class="btn btn-primary" @click="info_active = false">
-          <span class="material-icons-round">clear</span>
-        </button>
-        <h2>Info tesseramento</h2>
-        <p>Il tesseramento per la tua categoria prevede il pagamento di una quota pari a {{ costo }}€ qualora effettuato
-          entro il {{ chiusura }}; dopo tale data è previsto il pagamento di una mora per un totale di
-          {{ costo_mora }}€.</p>
-        <p>Per altre informazioni sul tesseramento e sulle tessere libero ingresso fare riferimento alla circolare di
-          tesseramento relativa alla stagione {{ stagione }} reperibile sul <a href="http://www.fip.it/cia/">sito
-            CIA</a>.</p>
+    <transition name="fade">
+      <div class="overlay" v-if="info_active">
+        <div id="info">
+          <button id="info_close" class="btn btn-primary" @click="info_active = false">
+            <span class="material-icons-round">clear</span>
+          </button>
+          <h2>Info tesseramento</h2>
+          <p>Il tesseramento per la tua categoria prevede il pagamento di una quota pari a {{ costo }}€ qualora
+            effettuato
+            entro il {{ chiusura }}; dopo tale data è previsto il pagamento di una mora per un totale di
+            {{ costo_mora }}€.</p>
+          <p>Per altre informazioni sul tesseramento e sulle tessere libero ingresso fare riferimento alla circolare di
+            tesseramento relativa alla stagione {{ stagione }} reperibile sul <a href="http://www.fip.it/cia/">sito
+              CIA</a>.</p>
+        </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -144,10 +148,11 @@ export default {
       else return this.costo_mora
     },
     richiedi_rinnovo() {
+      document.activeElement.blur()
       this.rinnovo_richiesto = true
     },
     paga() {
-      if (confirm("Sarai indirizzato al connettore bancario per effettuare il pagamento.\nCliccando su 'conferma' simuli il pagamento"))
+      if (confirm("Sarai indirizzato al connettore bancario per effettuare il pagamento.\nCliccando su 'conferma' simulerai il pagamento"))
         this.rinnovo_tesseramento = true
     }
   }
@@ -225,6 +230,7 @@ hr {
   padding: 20px;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 #tesseramento .overlay {
@@ -246,5 +252,4 @@ hr {
     }
   }
 }
-
 </style>

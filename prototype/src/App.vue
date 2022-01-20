@@ -128,7 +128,7 @@ div#back {
   }
 }
 
-#home, #tesseramento {
+#home, #tesseramento, #cambiopw {
   min-height: 100%;
   background-color: white;
   max-width: $max-main-width;
@@ -167,5 +167,13 @@ h2 {
 
 .info {
   color: $info;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s ease-out;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 </style>
