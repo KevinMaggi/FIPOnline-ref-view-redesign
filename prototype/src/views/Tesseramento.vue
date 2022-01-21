@@ -251,6 +251,10 @@ hr {
     padding: 20px;
     color: $primary;
 
+    h2 {
+      font-weight: bold;
+    }
+
     #info_close {
       position: absolute;
       top: 10px;

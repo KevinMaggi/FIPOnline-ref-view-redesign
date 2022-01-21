@@ -128,7 +128,7 @@ div#back {
   }
 }
 
-#home, #tesseramento, #cambiopw {
+#home, #tesseramento, #cambiopw, #anagrafica {
   min-height: 100%;
   background-color: white;
   max-width: $max-main-width;
@@ -150,6 +150,8 @@ h1 {
 }
 
 h2 {
+  font-size: 24px;
+  line-height: 24px;
   color: $primary;
 }
 
