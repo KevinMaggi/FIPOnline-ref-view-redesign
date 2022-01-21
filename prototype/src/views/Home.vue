@@ -31,8 +31,8 @@
       <router-link to="/tesseramento" class="btn btn-secondary">
         <span class="material-icons-round">badge</span>
         <span>Tesseramento e certificato</span>
-        <span v-if="tesseramento_danger()" class="material-icons-round bdg danger">error</span>
-        <span v-else-if="tesseramento_warning()" class="material-icons-round bdg warning">error</span>
+        <span v-if="stato_tesseramento === 2" class="material-icons-round bdg danger">error</span>
+        <span v-else-if="stato_tesseramento === 1" class="material-icons-round bdg warning">error</span>
         <span v-else class="material-icons-round bdg success">check_circle</span>
       </router-link>
       <router-link to="/anagrafica" class="btn btn-secondary">
@@ -64,7 +64,15 @@ export default {
       da_accettare: 0,
       da_disputare: 0,
       da_refertare: 0,
+
+      stato_tesseramento: null, // 0 = ok, 1 = warning, 2 = danger
     }
+  },
+  mounted: function () {
+    this.stato_tesseramento = this.get_stato_tesseramento()
+    this.interval = setInterval(() => {
+      this.stato_tesseramento = this.get_stato_tesseramento()
+    }, 30000)
   },
   computed: {},
   methods: {
@@ -83,25 +91,19 @@ export default {
     },
     new_rapporti() {
     },
-    tesseramento_warning() {
+    get_stato_tesseramento() {
       let today = Date.now()
-      if (today > Vue.prototype.$apertura_tesseramento.getTime() && today < Vue.prototype.$chiusura_tesseramento.getTime()) {
-        return !Vue.prototype.$rinnovo_tesseramento;
-      } else {
+      if (today > Vue.prototype.$scadenza_certificato.getTime() ||
+        (!Vue.prototype.$rinnovo_tesseramento && today > Vue.prototype.$chiusura_tesseramento.getTime())
+      ) return 2
+      else {
         let alert = new Date(Vue.prototype.$scadenza_certificato)
         alert.setDate(alert.getDate() - 30)
-        if (today > alert.getTime() && today < Vue.prototype.$scadenza_certificato.getTime()) {
-          return true
-        } else return false
+        if (today > alert.getTime() ||
+          (!Vue.prototype.$rinnovo_tesseramento && today > Vue.prototype.$apertura_tesseramento.getTime())
+        ) return 1
+        else return 0
       }
-    },
-    tesseramento_danger() {
-      let today = Date.now()
-      if (today > Vue.prototype.$scadenza_certificato.getTime()) {
-        return true
-      } else if (today > Vue.prototype.$chiusura_tesseramento.getTime() && !Vue.prototype.$rinnovo_tesseramento) {
-        return true
-      } else return false
     },
   }
 }

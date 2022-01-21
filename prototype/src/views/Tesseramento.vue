@@ -7,14 +7,14 @@
           <span class="material-icons-round">info</span>
         </button>
       </h1>
-      <span v-if="tesseramento_danger()" class="material-icons-round danger">error</span>
-      <span v-else-if="tesseramento_warning()" class="material-icons-round warning">error</span>
+      <span v-if="stato_tesseramento === 2" class="material-icons-round danger">error</span>
+      <span v-else-if="stato_tesseramento === 1" class="material-icons-round warning">error</span>
       <span v-else class="material-icons-round success">check_circle</span>
       <span class="state">Stato:&nbsp;
         <span
-          v-bind:class="{ danger: tesseramento_danger(), warning: tesseramento_warning(), success: (!tesseramento_danger() && !tesseramento_warning()) }">{{
-            stato_tesseramento_text
-          }}</span>
+          v-bind:class="{ danger: (stato_tesseramento === 2), warning: (stato_tesseramento === 1), success: (stato_tesseramento === 0) }">
+          {{ stato_tesseramento_text }}
+        </span>
       </span>
       <span v-if="rinnovo_richiesto && !rinnovo_tesseramento" class="state">Da pagare: {{ costo_attuale() }}€ </span>
       <button id="renew" class="btn btn-primary" v-if="stato_tesseramento !== 0 && !rinnovo_richiesto"
@@ -30,16 +30,15 @@
     <hr>
     <section id="cert_sect">
       <h1>Certificato medico</h1>
-      <span v-if="certificato_danger()" class="material-icons-round danger">error</span>
-      <span v-else-if="certificato_warning()" class="material-icons-round warning">error</span>
+      <span v-if="stato_certificato === 2" class="material-icons-round danger">error</span>
+      <span v-else-if="stato_certificato === 1" class="material-icons-round warning">error</span>
       <span v-else class="material-icons-round success">check_circle</span>
       <span class="state">Stato:&nbsp;
         <span
-          v-bind:class="{ danger: certificato_danger(), warning: certificato_warning(), success: (!certificato_warning() && !certificato_danger()) }">{{
-            stato_certificato
-          }}</span>
+          v-bind:class="{ danger: (stato_certificato === 2), warning: (stato_certificato === 1), success: (stato_certificato === 0) }">
+          {{ stato_certificato_text }}</span>
       </span>
-      <span class="state">Scadenza: {{ scadenza }} </span>
+      <span class="state">Scadenza: {{ scadenza_certificato }} </span>
     </section>
 
     <transition name="fade">
@@ -54,7 +53,7 @@
             entro il {{ chiusura }}; dopo tale data è previsto il pagamento di una mora per un totale di
             {{ costo_mora }}€.</p>
           <p>Per altre informazioni sul tesseramento e sulle tessere libero ingresso fare riferimento alla circolare di
-            tesseramento relativa alla stagione {{ stagione }} reperibile sul <a href="http://www.fip.it/cia/">sito
+            tesseramento relativa alla stagione {{ stagione }} reperibile sul <a href="https://www.fip.it/cia/">sito
               CIA</a>.</p>
         </div>
       </div>
@@ -69,15 +68,10 @@ export default {
   name: "Tesseramento",
   data: function () {
     return {
+      // data from "database"
+      stagione: Vue.prototype.$stagione,
       rinnovo_richiesto: Vue.prototype.$rinnovo_richiesto,
       rinnovo_tesseramento: Vue.prototype.$rinnovo_tesseramento,
-      stato_tesseramento: null,
-      stato_tesseramento_text: null,
-      scadenza: Vue.prototype.$scadenza_certificato.toLocaleDateString('it-IT', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit'
-      }),
       chiusura: Vue.prototype.$chiusura_tesseramento.toLocaleDateString('it-IT', {
         year: 'numeric',
         month: '2-digit',
@@ -85,16 +79,35 @@ export default {
       }),
       costo: Vue.prototype.$costo_tesseramento.toFixed(2),
       costo_mora: Vue.prototype.$costo_tesseramento_mora.toFixed(2),
-      stagione: Vue.prototype.$stagione,
+      scadenza_certificato: Vue.prototype.$scadenza_certificato.toLocaleDateString('it-IT', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      }),
+
+      // data to compute
+      stato_tesseramento: null, // 0 = rinnovato, 1 = tesseramento aperto, 2 = tesseramento "chiuso"
+      stato_tesseramento_text: '',
+      stato_certificato: null, // 0 = valido, 1 = in scadenza, 2 = scaduto
+      stato_certificato_text: '',
+
+      // utils
       info_active: false,
+      interval: null,
     }
   },
+  beforeDestroy: function () {
+    clearInterval(this.interval)
+  },
   mounted: function () {
-    if (this.tesseramento_danger()) this.stato_tesseramento = 2
-    else if (this.tesseramento_warning()) this.stato_tesseramento = 1
-    else this.stato_tesseramento = 0
+    this.stato_certificato = this.get_stato_certificato()
+    this.stato_tesseramento = this.get_stato_tesseramento()
+    this.interval = setInterval(() => {
+      this.stato_tesseramento = this.get_stato_tesseramento()
+    }, 30000)
   },
   watch: {
+    // update "database"
     rinnovo_richiesto: function () {
       Vue.prototype.$rinnovo_richiesto = this.rinnovo_richiesto
     },
@@ -102,45 +115,38 @@ export default {
       Vue.prototype.$rinnovo_tesseramento = this.rinnovo_tesseramento
       this.stato_tesseramento = 0
     },
+    // coupling data
     stato_tesseramento: function () {
-      if (this.tesseramento_danger()) this.stato_tesseramento_text = 'da rinnovare (con mora)'
-      else if (this.tesseramento_warning()) this.stato_tesseramento_text = 'da rinnovare (entro il ' + this.chiusura + ')'
+      if (this.stato_tesseramento === 2) this.stato_tesseramento_text = 'da rinnovare (con mora)'
+      else if (this.stato_tesseramento === 1) this.stato_tesseramento_text = 'da rinnovare (entro il ' + this.chiusura + ')'
       else this.stato_tesseramento_text = 'rinnovato'
+    },
+    stato_certificato: function () {
+      if (this.stato_certificato === 2) this.stato_certificato_text = 'scaduto'
+      else if (this.stato_certificato === 1) this.stato_certificato_text = 'in scadenza'
+      else this.stato_certificato_text = 'in corso di validità'
     }
   },
-  computed: {
-    stato_certificato: function () {
-      if (this.certificato_danger()) return 'scaduto'
-      else if (this.certificato_warning()) return 'in scadenza'
-      else return 'in corso di validità'
-    },
-  },
   methods: {
-    tesseramento_danger() {
+    get_stato_tesseramento() {
       let today = Date.now()
-      if (today > Vue.prototype.$chiusura_tesseramento.getTime() && !this.$rinnovo_tesseramento) {
-        return true
-      } else return false
+      if (!this.rinnovo_tesseramento) {
+        if (today > Vue.prototype.$chiusura_tesseramento.getTime()) {
+          return 2
+        } else if (today > Vue.prototype.$apertura_tesseramento.getTime()) {
+          return 1
+        } else return 0
+      } else return 0
     },
-    tesseramento_warning() {
+    get_stato_certificato() {
       let today = Date.now()
-      if (today > Vue.prototype.$apertura_tesseramento.getTime() && today < Vue.prototype.$chiusura_tesseramento.getTime()) {
-        return !this.$rinnovo_tesseramento;
-      } else return false
-    },
-    certificato_danger() {
-      let today = Date.now()
-      if (today > Vue.prototype.$scadenza_certificato.getTime()) {
-        return true
-      } else return false
-    },
-    certificato_warning() {
-      let today = Date.now()
-      let alert = new Date(Vue.prototype.$scadenza_certificato)
-      alert.setDate(alert.getDate() - 30)
-      if (today > alert.getTime() && today < Vue.prototype.$scadenza_certificato.getTime()) {
-        return true
-      } else return false
+      if (today > Vue.prototype.$scadenza_certificato.getTime()) return 2
+      else {
+        let alert = new Date(Vue.prototype.$scadenza_certificato)
+        alert.setDate(alert.getDate() - 30)
+        if (today > alert.getTime()) return 1
+        else return 0
+      }
     },
     costo_attuale() {
       let today = Date.now()

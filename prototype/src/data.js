@@ -16,7 +16,7 @@ Vue.prototype.$rinnovo_richiesto = false;
 Vue.prototype.$costo_tesseramento = 14;
 Vue.prototype.$costo_tesseramento_mora = 24;
 Vue.prototype.$stagione = '2021/2022';
-Vue.prototype.$scadenza_certificato = new Date(2022, 6, 15)
+Vue.prototype.$scadenza_certificato = new Date(2022, 7, 15)
 
 // Match
 
