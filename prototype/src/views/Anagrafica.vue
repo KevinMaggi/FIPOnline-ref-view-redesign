@@ -54,7 +54,37 @@
     <hr>
     <section>
       <h2>Dati tesserato CIA</h2>
-
+      <div class="accordion accordion-flush" id="cia_data">
+        <div class="accordion-item" v-for="section in dati_CIA" :key="section.title">
+          <h2 class="accordion-header" v-bind:id="section.title.replaceAll(' ', '_')">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" aria-expanded="false"
+                    v-bind:data-bs-target="'#' + section.title.replaceAll(' ', '_') + '_box'"
+                    v-bind:aria-controls="section.title.replaceAll(' ', '_') + '_box'">
+              {{ section.title }}
+            </button>
+          </h2>
+          <div v-bind:id="section.title.replaceAll(' ', '_') + '_box'" class="accordion-collapse collapse"
+               v-bind:aria-labelledby="section.title.replaceAll(' ', '_')" data-bs-parent="#cia_data">
+            <div class="accordion-body">
+              <div class="table-responsive">
+                <table v-bind:id="section.title.replaceAll(' ', '_') + '_table'"
+                       class="table table-striped table-sm table-bordered">
+                  <thead>
+                  <tr>
+                    <th v-for="header in section.headers" :key="header">{{ header }}</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr v-for="record in section.records" :key="JSON.stringify(record)">
+                    <td v-for="entry in record" :key="entry">{{ entry }}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </div>
 </template>
@@ -66,6 +96,7 @@ export default {
   name: "Anagrafica",
   data: function () {
     return {
+      dati_CIA: Vue.prototype.$dati_CIA,
       // Deep copy of the "database" data because I want to memorize them persistently only on save
       dati_personali: JSON.parse(JSON.stringify(Vue.prototype.$dati_personali)),
 
@@ -119,6 +150,10 @@ export default {
 #anagrafica {
   color: $primary;
 
+  .alert {
+    margin-bottom: 10px !important;
+  }
+
   .accordion-body {
     display: flex;
     flex-direction: row;
@@ -126,7 +161,7 @@ export default {
     justify-content: space-evenly;
 
     .entry {
-      margin: 5px 10px;
+      margin: 5px 20px;
     }
   }
 
@@ -139,7 +174,7 @@ export default {
   }
 
   input, select {
-    display: inline;
+    display: inline-block;
     min-width: 250px;
     border-width: 1px !important;
   }
@@ -169,6 +204,13 @@ export default {
     opacity: 1;
     background-color: white;
     margin: 10px auto;
+  }
+
+  #cia_data {
+    .accordion-body {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 }
 </style>

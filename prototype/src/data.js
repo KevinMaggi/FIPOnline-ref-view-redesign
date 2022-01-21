@@ -72,6 +72,37 @@ Vue.prototype.$dati_personali = [
     ]
   }
 ]
+Vue.prototype.$dati_CIA = [
+  {
+    title: 'Ruolo',
+    headers: ['Categoria', 'Ruolo', 'Qualifica'],
+    records: [
+      ['Tesserato CIA', 'Arbitro', 'Arbitro regionale'],
+      ['Tesserato CIA', 'Istruttore', 'Istruttore provinciale']
+    ]
+  },
+  {
+    title: 'Storico tesseramento',
+    headers: ['Tipo', 'Inizio', 'Fine', 'Abilitazione'],
+    records: [
+      ['Arbitro regionale', '01/07/2021', '-', 'Serie C, B/F (4a categoria)'],
+      ['Arbitro regionale', '01/07/2020', '30/06/2021', 'Serie C, B/F (4a categoria)'],
+      ['Arbitro regionale', '01/07/2019', '30/06/2020', 'Serie D, C/F (5a categoria)'],
+      ['Arbitro regionale', '01/07/2018', '30/06/2019', 'Serie D, C/F (5a categoria)'],
+      ['Arbitro regionale', '01/07/2017', '30/06/2018', 'Serie D, C/F (5a categoria)'],
+      ['Arbitro regionale', '01/07/2016', '30/06/2017', 'Promozione (6a categoria)'],
+      ['Arbitro regionale', '01/07/2015', '30/06/2016', 'Promozione (6a categoria)'],
+      ['Arbitro regionale', '01/07/2014', '30/06/2015', 'Promozione (6a categoria)']
+    ]
+  },
+  {
+    title: 'Storico blocco',
+    headers: ['Tipo blocco', 'Data inizio', 'Data fine', 'Note'],
+    records: [
+      ['Infortunio', '01/01/2017', '01/03/2017', ''],
+    ]
+  }
+]
 
 // Match
 
