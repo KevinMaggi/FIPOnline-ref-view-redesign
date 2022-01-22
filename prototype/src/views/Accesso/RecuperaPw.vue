@@ -1,23 +1,24 @@
 <template>
   <div id="recuperapw">
     <form autocomplete="on">
-      <label class="row">
+      <label class="row label-big">
         <span class="col-md">Tessera CIA:</span>
-        <input class="col-md form-control" type="text" placeholder="A000000" id="tessera" name="tessera"
+        <input class="col-md form-control input-big" type="text" placeholder="A000000" id="tessera" name="tessera"
                spellcheck="false" autocomplete="username" autocapitalize="on" autocorrect="off" autofocus
                minlength="7" maxlength="7" pattern="[a,A][0-9]{6}" required
                v-model="tessera">
       </label>
-      <label class="row">
+      <label class="row label-big">
         <span class="col-md">Mail ufficiale:</span>
-        <input class="col-md form-control" type="email" id="email" name="email"
+        <input class="col-md form-control input-big" type="email" id="email" name="email"
                autocomplete="email"
                required
                v-model="email">
       </label>
       <div v-if="warning" class="alert alert-warning" role="alert">Compilare entrambi i campi</div>
       <div v-if="error" class="alert alert-danger" role="alert">Tessera CIA o mail errati</div>
-      <button type="submit" name="recuperapw" id="recuperapw_btn" class="btn btn-primary" v-on:click="recuperapw">
+      <button type="submit" name="recuperapw" id="recuperapw_btn" class="btn btn-primary btn-big"
+              v-on:click="recuperapw">
         <span class="material-icons-round">vpn_key</span>
         <span>Recupera password</span>
       </button>

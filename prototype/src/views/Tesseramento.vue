@@ -3,7 +3,7 @@
     <section id="tess_sect">
       <h1>
         <span>Tesseramento</span>
-        <button id="info_btn" class="btn btn-primary" @click="info_active = true">
+        <button id="info_btn" class="btn btn-primary btn-circle-small" @click="info_active = true">
           <span class="material-icons-round">info</span>
         </button>
       </h1>
@@ -17,12 +17,13 @@
         </span>
       </span>
       <span v-if="rinnovo_richiesto && !rinnovo_tesseramento" class="state">Da pagare: {{ costo_attuale() }}€ </span>
-      <button id="renew" class="btn btn-primary" v-if="stato_tesseramento !== 0 && !rinnovo_richiesto"
+      <button id="renew" class="btn btn-primary btn-medium" v-if="stato_tesseramento !== 0 && !rinnovo_richiesto"
               @click="richiedi_rinnovo()">
         <span class="material-icons-round">autorenew</span>
         <span>Richiedi rinnovo</span>
       </button>
-      <button id="pay" class="btn btn-primary" v-if="rinnovo_richiesto && !rinnovo_tesseramento" @click="paga()">
+      <button id="pay" class="btn btn-primary btn-medium" v-if="rinnovo_richiesto && !rinnovo_tesseramento"
+              @click="paga()">
         <span class="material-icons-round">payment</span>
         <span>Paga</span>
       </button>
@@ -44,7 +45,7 @@
     <transition name="fade">
       <div class="overlay" v-if="info_active">
         <div id="info">
-          <button id="info_close" class="btn btn-primary" @click="info_active = false">
+          <button id="info_close" class="btn btn-primary btn-circle-small" @click="info_active = false">
             <span class="material-icons-round">clear</span>
           </button>
           <h2>Info tesseramento</h2>
@@ -170,95 +171,68 @@ export default {
 
 #tesseramento {
   justify-content: space-evenly;
-  font-size: 20px;
-}
 
-#tesseramento #tess_sect {
-  h1 {
-    padding-left: 30px;
-  }
-
-  button {
-    width: fit-content;
-    margin: 5px auto !important;
-  }
-}
-
-#tesseramento #tess_sect #info_btn, #tesseramento .overlay #info_close {
-  width: 36px;
-  height: 36px;
-  padding: 0;
-  border-radius: 36px !important;
-  justify-content: center;
-  margin: 0 0 0 20px !important;
-  position: relative;
-  top: -5px;
-
-  * {
-    margin: 0;
-    font-size: 24px;
-  }
-}
-
-#tesseramento #tess_sect, #tesseramento #cert_sect {
-  display: flex;
-  flex-direction: column;
-
-  > .material-icons-round {
-    font-size: 48px;
-    margin: 10px;
-  }
-
-  .state {
-    font-size: 20px;
-    font-weight: bold;
-    color: $primary;
-    margin: 10px;
-  }
-}
-
-hr {
-  width: 75%;
-  border-top: 4px dashed $primary;
-  opacity: 1;
-  background-color: white;
-  margin: 10px auto;
-}
-
-.overlay {
-  position: fixed;
-  top: $navbar-height;
-  left: 0;
-  width: 100vw;
-  height: calc(100vh - #{$navbar-height});
-  background-color: rgba($secondary, 0.5);
-  display: flex;
-  padding: 20px;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-#tesseramento .overlay {
-  #info {
-    position: relative;
-    border: 3px solid $primary;
-    border-radius: 35px;
-    background-color: $secondary;
-    width: 50%;
-    min-width: 300px;
-    height: min-content;
-    padding: 20px;
-    color: $primary;
-
-    h2 {
-      font-weight: bold;
+  #tess_sect {
+    h1 {
+      padding-left: 30px;
     }
 
-    #info_close {
-      position: absolute;
-      top: 10px;
-      right: 10px;
+    #info_btn {
+      margin: 0 0 0 20px !important;
+      position: relative;
+      top: -5px;
+    }
+  }
+
+  #tess_sect, #cert_sect {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+
+    > .material-icons-round {
+      font-size: 48px;
+      margin: 10px;
+    }
+
+    .state {
+      font-size: $text-big;
+      font-weight: bold;
+      color: $primary;
+      margin: 10px;
+    }
+  }
+
+  hr {
+    width: 75%;
+    border-top: 4px dashed $primary;
+    opacity: 1;
+    background-color: white;
+    margin: 10px auto;
+  }
+
+  .overlay {
+    font-size: $text;
+
+    #info {
+      position: relative;
+      border: 3px solid $primary;
+      border-radius: 35px;
+      background-color: $secondary;
+      width: 50%;
+      min-width: 300px;
+      height: min-content;
+      padding: 50px 20px 20px 20px;
+      color: $primary;
+      box-shadow: $shadow;
+      margin: 20px;
+
+      #info_close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
     }
   }
 }

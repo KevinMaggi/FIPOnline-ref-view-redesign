@@ -1,23 +1,23 @@
 <template>
   <div id="login">
     <form autocomplete="on">
-      <label class="row">
+      <label class="row label-big">
         <span class="col-md">Tessera CIA:</span>
-        <input class="col-md form-control" type="text" placeholder="A000000" id="tessera" name="tessera"
+        <input class="col-md form-control input-big" type="text" placeholder="A000000" id="tessera" name="tessera"
                spellcheck="false" autocomplete="username" autocapitalize="on" autocorrect="off" autofocus
                minlength="7" maxlength="7" pattern="[a,A][0-9]{6}" required
                v-model="tessera">
       </label>
-      <label class="row">
+      <label class="row label-big">
         <span class="col-md">Password:</span>
-        <input class="col-md form-control" type="password" id="pw" name="password"
+        <input class="col-md form-control input-big" type="password" id="pw" name="password"
                autocomplete="current-password"
                required
                v-model="password">
       </label>
       <div v-if="warning" class="alert alert-warning" role="alert">Compilare entrambi i campi</div>
       <div v-if="error" class="alert alert-danger" role="alert">Tessera CIA o password errati</div>
-      <button type="submit" name="login" id="login_btn" class="btn btn-primary" v-on:click="login">
+      <button type="submit" name="login" id="login_btn" class="btn btn-primary btn-big" v-on:click="login">
         <span class="material-icons-round">login</span>
         <span>Entra</span>
       </button>

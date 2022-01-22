@@ -1,0 +1,161 @@
+@import "variables.scss";
+
+// buttons
+
+.btn-big, .btn-medium, .btn-small {
+  border-radius: 15px !important;
+
+  span {
+    line-height: 1;
+
+    &:first-of-type {
+      font-size: larger;
+    }
+  }
+}
+
+.btn-big {
+  font-size: $text-big !important;
+  font-weight: bold !important;
+
+  height: 48px !important;
+  margin: 10px !important;
+
+  span {
+    margin: 0 5px;
+  }
+}
+
+.btn-medium {
+  font-size: $text-medium !important;
+  font-weight: bold !important;
+
+  height: 36px !important;
+  margin: 7.5px !important;
+
+  span {
+    margin: 0 2.5px;
+  }
+}
+
+.btn-small {
+  font-size: $text !important;
+  font-weight: normal !important;
+
+  height: 30px !important;
+  margin: 5px !important;
+
+  span {
+    margin: 0;
+  }
+}
+
+.btn-circle {
+  // TODO
+}
+
+.btn-circle-small {
+  width: 36px !important;
+  height: 36px !important;
+  padding: 0 !important;
+  border-radius: 36px !important;
+  justify-content: center !important;
+
+  span {
+    margin: 0;
+    font-size: 24px;
+  }
+}
+
+// headings
+h1 {
+  width: 100%;
+  text-align: center;
+  font-size: $title;
+  font-weight: bold;
+  line-height: $title;
+  color: $primary;
+}
+
+h2 {
+  font-size: $subtitle;
+  line-height: $subtitle;
+  color: $primary;
+}
+
+// colors
+.danger {
+  color: $danger;
+}
+
+.warning {
+  color: $warning;
+}
+
+.success {
+  color: $success;
+}
+
+.info {
+  color: $info;
+}
+
+// forms
+.select-big, .input-big, .label-big > select, .label-big > input {
+  border: 3px solid $primary !important;
+  padding: 5px 10px;
+}
+
+.select-medium, .input-medium, .label-medium > select, .label-medium > input {
+  border: 2px solid $primary !important;
+  padding: 2.5px 7.5px;
+}
+
+.select-small, .input-small, .label-small > select, .label-small > input {
+  border: 1px solid $primary !important;
+  padding: 0 5px;
+}
+
+.label-big, .label-medium, .label-small {
+  font-weight: bold;
+  color: $primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label-big {
+  font-size: $text-big;
+}
+
+.label-medium {
+  font-size: $text-medium;
+}
+
+.label-small {
+  font-size: $text;
+}
+
+// overlay {
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-height: 100%;
+  background-color: rgba($secondary, 0.5);
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+// transitions
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s ease-out;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}

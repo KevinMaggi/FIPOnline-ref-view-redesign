@@ -53,6 +53,7 @@ export default {
 
 @import "styles/bootstrap_overrule.scss";
 @import "styles/constants.scss";
+@import "styles/style.scss";
 
 html, body, #app {
   width: 100%;
@@ -138,44 +139,6 @@ div#back {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-}
-
-h1 {
-  width: 100%;
-  text-align: center;
-  font-size: 30px;
-  font-weight: bold;
-  line-height: 30px;
-  color: $primary;
-}
-
-h2 {
-  font-size: 24px;
-  line-height: 24px;
-  color: $primary;
-}
-
-.danger {
-  color: $danger;
-}
-
-.warning {
-  color: $warning;
-}
-
-.success {
-  color: $success;
-}
-
-.info {
-  color: $info;
-}
-
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.5s ease-out;
-}
-
-.fade-enter, .fade-leave-to {
-  opacity: 0;
+  position: relative;
 }
 </style>

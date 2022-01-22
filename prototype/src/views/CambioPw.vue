@@ -12,24 +12,24 @@
     </div>
 
     <form autocomplete="on" v-if="!changed">
-      <label class="row" id="old_pw">
+      <label class="row label-medium" id="old_pw">
         <span class="col-md">Vecchia password:</span>
-        <input class="col-md form-control" type="password" name="password"
+        <input class="col-md form-control input-medium" type="password" name="password"
                autocomplete="current-password"
                required
                v-model="old_password">
       </label>
       <div v-if="error_pw" class="alert alert-danger" role="alert">Password errata</div>
-      <label class="row" id="new_pw">
+      <label class="row label-medium" id="new_pw">
         <span class="col-md">Nuova password:</span>
-        <input class="col-md form-control" type="password" name="password"
+        <input class="col-md form-control input-medium" type="password" name="password"
                autocomplete="off"
                required
                v-model="new_password">
       </label>
-      <label class="row" id="new_pw_r">
+      <label class="row label-medium" id="new_pw_r">
         <span class="col-md">Ripeti nuova password:</span>
-        <input class="col-md form-control" type="password" name="password"
+        <input class="col-md form-control input-medium" type="password" name="password"
                autocomplete="off"
                required
                v-model="new_password_r">
@@ -38,7 +38,7 @@
       <div v-if="warning_invalid" class="alert alert-warning" role="alert">La nuova password non soddisfa i requisiti
       </div>
       <div v-if="warning_different" class="alert alert-warning" role="alert">Le password non corrispondono</div>
-      <button type="submit" name="recuperapw" id="updatepw_btn" class="btn btn-primary" v-on:click="reset">
+      <button type="submit" name="recuperapw" id="updatepw_btn" class="btn btn-primary btn-medium" v-on:click="reset">
         <span class="material-icons-round">vpn_key</span>
         <span>Aggiorna password</span>
       </button>
@@ -110,35 +110,20 @@ export default {
   form {
     width: 90%;
     margin: 5px auto;
-    font-size: 20px;
 
     label {
       margin: 10px auto !important;
-      font-weight: bold;
       max-width: 80%;
-
-      span {
-        line-height: 48px;
-      }
     }
 
     label#old_pw {
       margin-bottom: 40px !important;
     }
-
-    button {
-      font-weight: bold;
-
-      span {
-        margin: 0 5px;
-        line-height: 30px;
-      }
-    }
   }
 
   @media screen and (max-width: 400px) {
-    form {
-      font-size: 16px;
+    label span {
+      padding: 0 !important;
     }
   }
 

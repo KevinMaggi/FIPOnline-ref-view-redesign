@@ -1,17 +1,15 @@
-@import "colors.scss";
+@import "variables.scss";
 
+// buttons
 .btn {
   display: inline-flex !important;
-  margin: 10px !important;
   box-shadow: $shadow !important;
   align-items: center !important;
-  font-size: inherit !important;
-  border-radius: 15px !important;
-}
 
-.btn:focus {
-  box-shadow: inset $shadow !important;
-  transform: translateY(2px) !important;
+  &:focus {
+    box-shadow: inset $shadow !important;
+    transform: translateY(2px) !important;
+  }
 }
 
 @media (hover: none) and (pointer: coarse) {
@@ -24,66 +22,73 @@
 .btn-primary {
   background-color: $primary !important;
   border: none !important;
-}
 
-.btn-primary:hover {
-  background-color: lighten($primary, 33%) !important;
-  border: none !important;
-}
+  &:hover {
+    background-color: lighten($primary, 33%) !important;
+    border: none !important;
+  }
 
-.btn-primary:focus {
-  background-color: lighten($primary, 33%) !important;
+  &:focus {
+    background-color: lighten($primary, 33%) !important;
+  }
 }
 
 .btn-secondary {
   background-color: $secondary !important;
   border: none !important;
+
+  &:hover {
+    background-color: darken($secondary, 33%) !important;
+    border: none !important;
+  }
+
+  &:focus {
+    background-color: darken($secondary, 33%) !important;
+  }
 }
 
-.btn-secondary:hover {
-  background-color: darken($secondary, 33%) !important;
-  border: none !important;
-}
-
-.btn-secondary:focus {
-  background-color: darken($secondary, 33%) !important;
-}
-
-.btn-success, .btn-danger {
+.btn-success {
   color: white !important;
+
+  &:hover {
+    background-color: darken($success, 20%) !important;
+    border-color: darken($success, 20%) !important
+  }
+
+  &:focus {
+    background-color: darken($success, 20%) !important;
+  }
 }
 
-.btn-success:hover {
-  background-color: darken($success, 20%) !important;
-  border-color: darken($success, 20%) !important
+.btn-danger {
+  color: white !important;
+
+  &:hover {
+    background-color: darken($danger, 20%) !important;
+    border-color: darken($danger, 20%) !important;
+  }
+
+  &:focus {
+    background-color: darken($danger, 20%) !important;
+  }
 }
 
-.btn-success:focus {
-  background-color: darken($success, 20%) !important;
-}
-
-.btn-danger:hover {
-  background-color: darken($danger, 20%) !important;
-  border-color: darken($danger, 20%) !important;
-}
-
-.btn-danger:focus {
-  background-color: darken($danger, 20%) !important;
-}
-
-.form-control, .form-select {
-  font-size: inherit !important;
-  border-radius: 15px !important;
-
-  border: 3px solid $primary !important;
-  text-align: center !important;
+// tables
+.table {
   color: $primary !important;
 }
 
-@media screen and (max-width: 400px) {
-  .form-control, .btn {
-    padding: 3px 6px !important;
-  }
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: rgba($secondary, 0.5) !important;
+  color: $primary !important;
+}
+
+// form
+.form-control, .form-select {
+  font-size: inherit !important;
+  border-radius: 15px !important;
+  text-align: center !important;
+  color: $primary !important;
 }
 
 .alert {
@@ -94,7 +99,6 @@
 }
 
 .accordion-flush .accordion-item .accordion-button {
-  font-size: 20px;
   color: $primary;
 }
 
@@ -108,13 +112,4 @@
 
 .accordion-item {
   border: 1px solid $secondary;
-}
-
-.table {
-  color: $primary !important;
-}
-
-.table-striped > tbody > tr:nth-of-type(odd) > * {
-  --bs-table-accent-bg: var(--bs-table-striped-bg);
-  color: var(--bs-table-striped-color);
 }

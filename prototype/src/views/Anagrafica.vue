@@ -5,15 +5,15 @@
       <h2>
         <span>Dati personali</span>
         <span>
-          <button v-if="!modifying" class="btn btn-primary" @click="modifica()">
+          <button v-if="!modifying" class="btn btn-primary btn-small" @click="modifica()">
             <span class="material-icons-round">edit</span>
             <span>Modifica</span>
           </button>
-          <button v-if="modifying" class="btn btn-danger" @click="annulla()">
+          <button v-if="modifying" class="btn btn-danger btn-small" @click="annulla()">
             <span class="material-icons-round">cancel</span>
             <span>Annulla</span>
           </button>
-          <button v-if="modifying" class="btn btn-success" @click="salva()">
+          <button v-if="modifying" class="btn btn-success btn-small" @click="salva()">
             <span class="material-icons-round">save</span>
             <span>Salva</span>
           </button>
@@ -22,13 +22,13 @@
       <div v-if="empty_fields" class="alert alert-danger" role="alert">Completa tutti i campi</div>
       <div class="accordion accordion-flush" id="personal_data">
         <div class="accordion-item" v-for="section in dati_personali" :key="section.title">
-          <h2 class="accordion-header" v-bind:id="section.title.replaceAll(' ', '_')">
+          <h3 class="accordion-header" v-bind:id="section.title.replaceAll(' ', '_')">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" aria-expanded="false"
                     v-bind:data-bs-target="'#' + section.title.replaceAll(' ', '_') + '_box'"
                     v-bind:aria-controls="section.title.replaceAll(' ', '_') + '_box'">
               {{ section.title }}
             </button>
-          </h2>
+          </h3>
           <div v-bind:id="section.title.replaceAll(' ', '_') + '_box'" class="accordion-collapse collapse"
                v-bind:aria-labelledby="section.title.replaceAll(' ', '_')" data-bs-parent="#personal_data">
             <div class="accordion-body">
@@ -37,10 +37,11 @@
                       class="label">{{ entry.name }}:&nbsp;</span>
                 <span v-if="!section.modifiable">{{ entry.value }}</span>
                 <input v-else-if="entry.type !== 'select'" v-bind:name="entry.name.replaceAll(' ', '_')"
-                       v-bind:type="entry.type" class="form-control"
+                       v-bind:type="entry.type" class="form-control input-small"
                        v-model="entry.value" v-bind:aria-labelledby="entry.name.replaceAll(' ', '_') + '_label'"
                        disabled spellcheck="false" autocomplete="off" autocorrect="off" required>
-                <select v-else v-model="entry.value" v-bind:name="entry.name.replaceAll(' ', '_')" class="form-select"
+                <select v-else v-model="entry.value" v-bind:name="entry.name.replaceAll(' ', '_')"
+                        class="form-select select-small"
                         v-bind:aria-labelledby="entry.name.replaceAll(' ', '_') + '_label'" disabled required>
                   <option v-for="option in entry.options" v-bind:key="option" v-bind:value="option">{{ option }}
                   </option>
@@ -56,13 +57,13 @@
       <h2>Dati tesserato CIA</h2>
       <div class="accordion accordion-flush" id="cia_data">
         <div class="accordion-item" v-for="section in dati_CIA" :key="section.title">
-          <h2 class="accordion-header" v-bind:id="section.title.replaceAll(' ', '_')">
+          <h3 class="accordion-header" v-bind:id="section.title.replaceAll(' ', '_')">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" aria-expanded="false"
                     v-bind:data-bs-target="'#' + section.title.replaceAll(' ', '_') + '_box'"
                     v-bind:aria-controls="section.title.replaceAll(' ', '_') + '_box'">
               {{ section.title }}
             </button>
-          </h2>
+          </h3>
           <div v-bind:id="section.title.replaceAll(' ', '_') + '_box'" class="accordion-collapse collapse"
                v-bind:aria-labelledby="section.title.replaceAll(' ', '_')" data-bs-parent="#cia_data">
             <div class="accordion-body">
@@ -150,6 +151,13 @@ export default {
 #anagrafica {
   color: $primary;
 
+  section {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   .alert {
     margin-bottom: 10px !important;
   }
@@ -184,12 +192,6 @@ export default {
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
-
-    .btn {
-      font-size: smaller !important;
-      padding: 5px 10px;
-      margin: 5px !important;
-    }
   }
 
   @media screen and (max-width: 400px) {

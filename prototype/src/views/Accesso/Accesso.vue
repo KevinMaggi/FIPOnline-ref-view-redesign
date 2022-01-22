@@ -37,83 +37,64 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
 
-#accesso #logo {
-  max-height: 40vh;
-  margin: 30px auto;
+  #logo {
+    max-height: 40vh;
+    margin: 30px auto;
 
-  @media screen and (max-width: 768px) {
-    margin: 15px auto;
-  }
-
-  picture, img {
-    max-width: 90%;
-    max-height: 20vh;
-    margin: 0 auto;
-  }
-}
-
-#accesso form {
-  background-color: white;
-  padding: 20px;
-  border-radius: 50px;
-  box-shadow: $shadow;
-  width: 90%;
-  max-width: 500px;
-  margin: 0 auto;
-  font-size: 20px;
-
-  label {
-    margin: 10px auto !important;
-    font-weight: bold;
-    color: $primary;
-    max-width: 80%;
-
-    span {
-      margin: 0 !important;
-      line-height: 48px;
+    @media screen and (max-width: 768px) {
+      margin: 15px auto;
     }
 
-    input {
-      max-width: 200px;
+    picture, img {
+      max-width: 90%;
+      max-height: 20vh;
       margin: 0 auto;
     }
   }
 
-  button {
-    font-weight: bold;
-    height: 48px;
-
-    span {
-      margin: 0 5px;
-      line-height: 30px;
-    }
-  }
-}
-
-@media screen and (max-width: 400px) {
-  #accesso #logo {
-    margin: 5px auto;
-  }
-
-  #accesso form {
-    padding: 10px;
+  form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 50px;
+    box-shadow: $shadow;
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto;
 
     label {
-      margin: 0 auto !important;
+      margin: 10px auto !important;
+      max-width: 80%;
+
+      input {
+        max-width: 200px;
+      }
     }
   }
-}
 
-#accesso a {
-  display: block;
-  font-size: 20px;
-  margin: 10px auto;
-  width: fit-content;
+  @media screen and (max-width: 400px) {
+    #logo {
+      margin: 5px auto;
+    }
 
-  :hover {
-    color: $primary;
+    form {
+      padding: 10px;
+
+      label {
+        margin: 0 auto !important;
+      }
+    }
+  }
+
+  a {
+    display: block;
+    font-size: 20px;
+    margin: 10px auto;
+    width: fit-content;
+
+    &:hover {
+      color: $info;
+    }
   }
 }
 </style>

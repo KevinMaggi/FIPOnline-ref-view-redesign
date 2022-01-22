@@ -2,7 +2,7 @@
   <div id="home">
     <section>
       <h1 class="section_name"><span>Gare</span></h1>
-      <router-link to="/partite" id="partite" class="btn btn-secondary">
+      <router-link to="/partite" id="partite" class="btn btn-secondary btn-home">
         <span class="material-icons-round">sports</span>
         <span>Partite</span>
         <div id="dettaglio_partite">
@@ -14,12 +14,12 @@
         <span v-else-if="da_pianificare()" class="material-icons-round bdg info">new_releases</span>
       </router-link>
       <div>
-        <router-link to="/rimborsi" class="btn btn-secondary">
+        <router-link to="/rimborsi" class="btn btn-secondary btn-home">
           <span class="material-icons-round">euro</span>
           <span>Rimborsi</span>
           <span v-if="new_rimborsi()" class="material-icons-round bdg info">new_releases</span>
         </router-link>
-        <router-link to="/rapporti" class="btn btn-secondary">
+        <router-link to="/rapporti" class="btn btn-secondary btn-home">
           <span class="material-icons-round">assignment</span>
           <span>Rapporti</span>
           <span v-if="new_rapporti()" class="material-icons-round bdg info">new_releases</span>
@@ -28,25 +28,25 @@
     </section>
     <section>
       <h1 class="section_name"><span>Amministrazione</span></h1>
-      <router-link to="/tesseramento" class="btn btn-secondary">
+      <router-link to="/tesseramento" class="btn btn-secondary btn-home">
         <span class="material-icons-round">badge</span>
         <span>Tesseramento e certificato</span>
         <span v-if="stato_tesseramento === 2" class="material-icons-round bdg danger">error</span>
         <span v-else-if="stato_tesseramento === 1" class="material-icons-round bdg warning">error</span>
         <span v-else class="material-icons-round bdg success">check_circle</span>
       </router-link>
-      <router-link to="/anagrafica" class="btn btn-secondary">
+      <router-link to="/anagrafica" class="btn btn-secondary btn-home">
         <span class="material-icons-round">contact_page</span>
         <span>Anagrafica</span>
       </router-link>
     </section>
     <section>
       <h1 class="section_name"><span>Utenza</span></h1>
-      <router-link to="/cambio-pw" class="btn btn-secondary">
+      <router-link to="/cambio-pw" class="btn btn-secondary btn-home">
         <span class="material-icons-round">vpn_key</span>
         <span>Cambio password</span>
       </router-link>
-      <button v-on:click="logout" id="logout" class="btn btn-secondary">
+      <button v-on:click="logout" id="logout" class="btn btn-secondary btn-home">
         <span class="material-icons-round">power_settings_new</span>
         <span>Esci</span>
       </button>
@@ -141,7 +141,7 @@ $button-wider-max-width: 448px;
     }
   }
 
-  .btn {
+  .btn-home {
     color: $primary;
     display: flex !important;
     flex-direction: column;
@@ -153,6 +153,7 @@ $button-wider-max-width: 448px;
     border-radius: 25px !important;
     flex-grow: 1;
     position: relative;
+    margin: 10px !important;
 
     span {
       height: 60px;
@@ -174,7 +175,7 @@ $button-wider-max-width: 448px;
     }
   }
 
-  .btn#partite {
+  .btn-home#partite {
     min-width: $button-wider-min-width;
     max-width: $button-wider-max-width;
     display: flex;
