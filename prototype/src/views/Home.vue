@@ -145,7 +145,7 @@ $button-wider-max-width: 448px;
     color: $primary;
     display: flex !important;
     flex-direction: column;
-    font-size: 20px !important;
+    font-size: $text-big !important;
     line-height: 1.25;
     height: 125px;
     width: $button-width;
@@ -173,36 +173,36 @@ $button-wider-max-width: 448px;
       top: 5px;
       right: 5px;
     }
-  }
 
-  .btn-home#partite {
-    min-width: $button-wider-min-width;
-    max-width: $button-wider-max-width;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-    font-size: 24px !important;
-    flex-grow: 10;
+    &#partite {
+      min-width: $button-wider-min-width;
+      max-width: $button-wider-max-width;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+      font-size: $subtitle !important;
+      flex-grow: 10;
 
-    #dettaglio_partite {
-      border-left: 2px solid $primary;
-      padding-left: 5px;
-      padding-right: 20px;
-      text-align: left;
-      font-weight: normal;
-
-      span {
-        font-size: 15px;
-        line-height: 20px;
-        height: 20px;
+      #dettaglio_partite {
+        border-left: 2px solid $primary;
+        padding-left: 5px;
+        padding-right: 20px;
+        text-align: left;
+        font-weight: normal;
 
         span {
-          font-style: italic;
-        }
+          font-size: $text-small;
+          line-height: 20px;
+          height: 20px;
 
-        .alert, .info {
-          font-weight: bold;
+          span {
+            font-style: italic;
+          }
+
+          .alert, .info {
+            font-weight: bold;
+          }
         }
       }
     }
@@ -228,16 +228,21 @@ $button-wider-max-width: 448px;
   }
   #home section {
     padding: 10px 5px;
-    margin: 25px 5px 0 5px;
+    margin: 20px 5px 5px 5px;
 
-    * {
-      font-size: smaller;
+    h1 {
+      font-size: $subtitle;
     }
 
-    .btn {
+    .btn-home {
+      font-size: $text-medium !important;
       margin: 10px 5px !important;
       height: 100px;
       width: 125px;
+
+      &#partite {
+        font-size: $subsubtitle !important;
+      }
 
       span {
         height: 40px;
