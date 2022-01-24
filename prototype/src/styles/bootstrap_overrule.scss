@@ -3,32 +3,21 @@
 // buttons
 .btn {
   display: inline-flex !important;
-  box-shadow: $shadow !important;
   align-items: center !important;
-
-  &:focus {
-    box-shadow: inset $shadow !important;
-    transform: translateY(2px) !important;
-  }
-}
-
-@media (hover: none) and (pointer: coarse) {
-  .btn:hover {
-    box-shadow: inset $shadow !important;
-    transform: translateY(2px) !important;
-  }
 }
 
 .btn-primary {
   background-color: $primary !important;
   border: none !important;
 
-  &:hover {
-    background-color: lighten($primary, 33%) !important;
-    border: none !important;
+  @media (hover: hover) {
+    &:hover {
+      background-color: lighten($primary, 33%) !important;
+      border: none !important;
+    }
   }
 
-  &:focus {
+  &:active {
     background-color: lighten($primary, 33%) !important;
   }
 }
@@ -37,12 +26,14 @@
   background-color: $secondary !important;
   border: none !important;
 
-  &:hover {
-    background-color: darken($secondary, 25%) !important;
-    border: none !important;
+  @media (hover: hover) {
+    &:hover {
+      background-color: darken($secondary, 25%) !important;
+      border: none !important;
+    }
   }
 
-  &:focus {
+  &:active {
     background-color: darken($secondary, 25%) !important;
   }
 }
@@ -50,12 +41,14 @@
 .btn-success {
   color: white !important;
 
-  &:hover {
-    background-color: darken($success, 20%) !important;
-    border-color: darken($success, 20%) !important
+  @media (hover: hover) {
+    &:hover {
+      background-color: darken($success, 20%) !important;
+      border-color: darken($success, 20%) !important
+    }
   }
 
-  &:focus {
+  &:active {
     background-color: darken($success, 20%) !important;
   }
 }
@@ -63,12 +56,14 @@
 .btn-danger {
   color: white !important;
 
-  &:hover {
-    background-color: darken($danger, 20%) !important;
-    border-color: darken($danger, 20%) !important;
+  @media (hover: hover) {
+    &:hover {
+      background-color: darken($danger, 20%) !important;
+      border-color: darken($danger, 20%) !important;
+    }
   }
 
-  &:focus {
+  &:active {
     background-color: darken($danger, 20%) !important;
   }
 }
