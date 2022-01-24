@@ -51,7 +51,21 @@
 }
 
 .btn-circle {
-  // TODO
+  width: 75px !important;
+  height: 75px !important;
+  padding: 0 !important;
+  border-radius: 75px !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+
+  span:first-of-type {
+    margin: 0;
+    font-size: 36px;
+  }
+
+  span:last-of-type {
+    font-size: 13px;
+  }
 }
 
 .btn-circle-small {
@@ -161,7 +175,7 @@ h2 {
   left: 0;
   width: 100vw;
   min-height: 100%;
-  background-color: rgba($secondary, 0.5);
+  background-color: rgba(white, 0.75);
   display: flex;
   padding: 20px;
   justify-content: center;

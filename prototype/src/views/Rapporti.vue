@@ -8,12 +8,14 @@
     </p>
     <div v-else id="list">
       <div v-for="rapporto in archivio_rapporti.filter(annata => annata.season === selected_season)[0].rapporti"
-           v-bind:key="rapporto.gara_numero" class="rapporto btn-secondary"
-           @click="open_rapporto(selected_season, rapporto.gara_numero)">
+           v-bind:key="rapporto.gara_numero" class="rapporto">
         <p class="numero_gara">Gara n. {{ rapporto.gara_numero }}</p>
         <span v-if="!rapporto.visualizzato" class="material-icons-round bdg info">new_releases</span>
         <div>
-          <span class="material-icons-round">description</span>
+          <button class="btn btn-circle btn-primary" @click="open_rapporto(selected_season, rapporto.gara_numero)">
+            <span class="material-icons-round">description</span>
+            <span>Apri</span>
+          </button>
           <div class="details">
             <p><span>Campionato:&nbsp;</span><span>{{ rapporto.campionato }}</span></p>
             <p><span>Data:&nbsp;</span><span>{{ rapporto.data }}</span></p>
@@ -60,13 +62,12 @@ export default {
   }
 
   .rapporto {
-    cursor: pointer;
     position: relative;
 
     border-radius: 25px;
     background-color: $secondary;
     box-shadow: $shadow;
-    margin: 10px auto;
+    margin: 20px auto;
     padding: 10px;
     max-width: 500px;
 
@@ -80,13 +81,8 @@ export default {
       flex-direction: row;
       align-items: center;
 
-      .material-icons-round {
-        font-size: 48px;
-        margin-right: 10px;
-      }
-
       .details p {
-        margin: 0 !important;
+        margin: 0 0 0 15px !important;
         text-align: left;
 
         span:first-of-type {
