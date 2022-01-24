@@ -129,7 +129,7 @@ div#back {
   }
 }
 
-#home, #tesseramento, #cambiopw, #anagrafica {
+#home, #tesseramento, #cambiopw, #anagrafica, #rapporti {
   min-height: 100%;
   background-color: white;
   max-width: $max-main-width;

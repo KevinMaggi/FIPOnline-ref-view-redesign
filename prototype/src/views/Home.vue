@@ -86,10 +86,13 @@ export default {
       }
     },
     da_pianificare() {
+      return false
     },
     new_rimborsi() {
+      return false
     },
     new_rapporti() {
+      return Vue.prototype.$archivio_rapporti[0].rapporti.filter(rapporto => !rapporto.visualizzato).length !== 0;
     },
     get_stato_tesseramento() {
       let today = Date.now()
@@ -164,14 +167,6 @@ $button-wider-max-width: 448px;
 
     .material-icons-round {
       font-size: 48px;
-    }
-
-    .material-icons-round.bdg {
-      font-size: 30px;
-      height: 30px;
-      position: absolute;
-      top: 5px;
-      right: 5px;
     }
 
     &#partite {

@@ -137,12 +137,21 @@ h2 {
 }
 
 .select-season {
-  margin: auto;
+  margin: 5px auto;
   width: auto;
   border: none;
   border-bottom: 2px solid #0055a2;
   border-radius: 15px 15px 0 0 !important;
   background-color: $secondary;
+}
+
+// badges
+.material-icons-round.bdg {
+  font-size: 30px !important;
+  height: 30px !important;
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 
 // overlay {

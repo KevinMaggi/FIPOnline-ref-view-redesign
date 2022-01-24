@@ -112,80 +112,73 @@ Vue.prototype.$stagioni = ['Stagione 2021/2022', 'Stagione 2020/2021', 'Stagione
 // Rimborsi
 
 // Rapporti
-Vue.prototype.$rapporti = [
+Vue.prototype.$archivio_rapporti = [
   {
-    season: 'Stagione 2014/2015',
-    rapporti: []
-  },
-  {
-    season: 'Stagione 2015/2016',
-    rapporti: [
+    season: 'Stagione 2021/2022', rapporti: [
+      {
+        gara_numero: '1111',
+        campionato: 'Serie C Gold',
+        data: '15/02/2022',
+        match: 'Agliana - Laurenziana',
+        visualizzato: false
+      },
       {
         gara_numero: '0000',
-        campionato: 'Promozione',
-        data: '15/01/2016',
-        match: 'Prato - Laurenziana',
+        campionato: 'Serie C Silver',
+        data: '15/12/2021',
+        match: 'Livorno - CUS Pisa',
         visualizzato: true
-      }
+      },
     ]
   },
   {
-    season: 'Stagione 2016/2017',
-    rapporti: [
+    season: 'Stagione 2020/2021', rapporti: [
       {
-        gara_numero: '0000',
-        campionato: 'Promozione',
-        data: '15/01/2017',
-        match: 'Biancoverde - Figline',
+        gara_numero: '4444',
+        campionato: 'Serie C Silver',
+        data: '15/05/2021',
+        match: 'Lucca - Montecatini',
         visualizzato: true
       },
       {
-        gara_numero: '1111',
-        campionato: 'Promozione',
-        data: '15/02/2017',
-        match: 'Montemurlo - Lucca',
-        visualizzato: true
-      }
-    ]
-  },
-  {
-    season: 'Stagione 2017/2018',
-    rapporti: [
-      {
-        gara_numero: '0000',
-        campionato: 'Serie D',
-        data: '15/01/2018',
-        match: 'Montemurlo - Viareggio',
-        visualizzato: true
-      },
-      {gara_numero: '1111', campionato: 'Serie D', data: '15/02/2018', match: 'Vaiano - Pescia', visualizzato: true},
-      {gara_numero: '2222', campionato: 'Serie D', data: '15/03/2018', match: 'Chiesina - Livorno', visualizzato: true},
-    ]
-  },
-  {
-    season: 'Stagione 2018/2019',
-    rapporti: [
-      {gara_numero: '0000', campionato: 'Serie D', data: '15/01/2019', match: 'Livorno - Pino', visualizzato: true},
-      {
-        gara_numero: '1111',
-        campionato: 'Serie D',
-        data: '15/02/2019',
-        match: 'CUS Firenze - Campi Bisenzio',
+        gara_numero: '3333',
+        campionato: 'Serie C Silver',
+        data: '15/04/2021',
+        match: 'Laurenziana - Mens Sana Siena',
         visualizzato: true
       },
       {
         gara_numero: '2222',
-        campionato: 'Serie D',
-        data: '15/03/2019',
-        match: 'Castelfranco - Lella',
+        campionato: 'Serie C Gold',
+        data: '15/03/2021',
+        match: 'Legnaia - Prato Dragons',
         visualizzato: true
       },
-      {gara_numero: '3333', campionato: 'Serie D', data: '15/04/2019', match: 'Lucca - Calenzano', visualizzato: true},
+      {
+        gara_numero: '1111',
+        campionato: 'Serie C Silver',
+        data: '15/02/2021',
+        match: 'Quarrata - Montale',
+        visualizzato: true
+      },
+      {
+        gara_numero: '0000',
+        campionato: 'Serie C Gold',
+        data: '15/01/2021',
+        match: 'Prato Dragons - Valdisieve',
+        visualizzato: true
+      },
     ]
   },
   {
-    season: 'Stagione 2019/2020',
-    rapporti: [
+    season: 'Stagione 2019/2020', rapporti: [
+      {
+        gara_numero: '1111',
+        campionato: 'Serie D',
+        data: '15/02/2020',
+        match: 'Bellaria - Galli Basket',
+        visualizzato: true
+      },
       {
         gara_numero: '0000',
         campionato: 'Serie D',
@@ -193,42 +186,77 @@ Vue.prototype.$rapporti = [
         match: 'Sesto Fiorentino - Jokers',
         visualizzato: true
       },
-      {gara_numero: '1111', campionato: 'Serie D', data: '15/02/2020', match: 'Bellaria - Galli', visualizzato: true}
     ]
   },
   {
-    season: 'Stagione 2020/2021',
-    rapporti: [
-      {gara_numero: '0000', campionato: 'Serie C', data: '15/01/2021', match: 'Prato - Valdisieve', visualizzato: true},
-      {gara_numero: '1111', campionato: 'Serie C', data: '15/02/2021', match: 'Quarrata - Montale', visualizzato: true},
-      {gara_numero: '2222', campionato: 'Serie C', data: '15/03/2021', match: 'Legnaia - Prato', visualizzato: true},
+    season: 'Stagione 2018/2019', rapporti: [
       {
         gara_numero: '3333',
-        campionato: 'Serie C',
-        data: '15/04/2021',
-        match: 'Laurenziana - Mens Sana',
+        campionato: 'Serie D',
+        data: '15/04/2019',
+        match: 'Lucca - Calenzano Bulldogs',
         visualizzato: true
       },
       {
-        gara_numero: '4444',
-        campionato: 'Serie C',
-        data: '15/05/2021',
-        match: 'Lucca - Montecatini',
+        gara_numero: '2222',
+        campionato: 'Serie D',
+        data: '15/03/2019',
+        match: 'Castelfranco Frogs - Lella Basket',
+        visualizzato: true
+      },
+      {
+        gara_numero: '1111',
+        campionato: 'Serie D',
+        data: '15/02/2019',
+        match: 'CUS Firenze - Campi Bisenzio',
+        visualizzato: true
+      },
+      {gara_numero: '0000', campionato: 'Serie D', data: '15/01/2019', match: 'Livorno - Pino', visualizzato: true}
+    ]
+  },
+  {
+    season: 'Stagione 2017/2018', rapporti: [
+      {gara_numero: '2222', campionato: 'Serie D', data: '15/03/2018', match: 'Chiesina - Livorno', visualizzato: true},
+      {gara_numero: '1111', campionato: 'Serie D', data: '15/02/2018', match: 'Vaiano - Pescia', visualizzato: true},
+      {
+        gara_numero: '0000',
+        campionato: 'Serie D',
+        data: '15/01/2018',
+        match: 'Montemurlo - Viareggio',
         visualizzato: true
       },
     ]
   },
   {
-    season: 'Stagione 2021/2022',
-    rapporti: [
-      {gara_numero: '0000', campionato: 'Serie C', data: '15/12/2021', match: 'Livorno - CUS Pisa', visualizzato: true},
+    season: 'Stagione 2016/2017', rapporti: [
       {
         gara_numero: '1111',
-        campionato: 'Serie C',
-        data: '15/02/2022',
-        match: 'Agliana - Laurenziana',
-        visualizzato: false
+        campionato: 'Promozione',
+        data: '15/02/2017',
+        match: 'Montemurlo - Minibasket Lucca',
+        visualizzato: true
+      },
+      {
+        gara_numero: '0000',
+        campionato: 'Promozione',
+        data: '15/01/2017',
+        match: 'Biancoverde - Figline V.no',
+        visualizzato: true
       },
     ]
-  }
+  },
+  {
+    season: 'Stagione 2015/2016', rapporti: [
+      {
+        gara_numero: '0000',
+        campionato: 'Promozione',
+        data: '15/01/2016',
+        match: 'Prato Dragons - Laurenziana',
+        visualizzato: true
+      }
+    ]
+  },
+  {
+    season: 'Stagione 2014/2015', rapporti: []
+  },
 ]

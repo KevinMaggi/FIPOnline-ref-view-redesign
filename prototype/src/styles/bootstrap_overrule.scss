@@ -38,12 +38,12 @@
   border: none !important;
 
   &:hover {
-    background-color: darken($secondary, 33%) !important;
+    background-color: darken($secondary, 25%) !important;
     border: none !important;
   }
 
   &:focus {
-    background-color: darken($secondary, 33%) !important;
+    background-color: darken($secondary, 25%) !important;
   }
 }
 
