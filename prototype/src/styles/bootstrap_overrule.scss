@@ -4,6 +4,7 @@
 .btn {
   display: inline-flex !important;
   align-items: center !important;
+  position: relative;
 }
 
 .btn-primary {
@@ -12,13 +13,13 @@
 
   @media (hover: hover) {
     &:hover {
-      background-color: lighten($primary, 33%) !important;
+      background-color: lighten($primary, 25%) !important;
       border: none !important;
     }
   }
 
   &:active {
-    background-color: lighten($primary, 33%) !important;
+    background-color: lighten($primary, 25%) !important;
   }
 }
 
@@ -84,6 +85,10 @@
   border-radius: 15px !important;
   text-align: center !important;
   color: $primary !important;
+}
+
+.form-control:disabled, .form-select:disabled {
+  -webkit-text-fill-color: $primary !important;
 }
 
 .alert {
