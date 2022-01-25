@@ -12,9 +12,12 @@
         <p class="numero_gara">Gara n. {{ rapporto.gara_numero }}</p>
         <span v-if="!rapporto.visualizzato" class="material-icons-round bdg info">new_releases</span>
         <div>
-          <button class="btn btn-circle btn-primary" @click="open_rapporto(selected_season, rapporto.gara_numero)">
+          <button class="btn btn-circle-big"
+                  v-bind:class="{ 'btn-light' : rapporto.visualizzato, 'btn-info' : !rapporto.visualizzato}"
+                  @click="open_rapporto(selected_season, rapporto.gara_numero)">
             <span class="material-icons-round">description</span>
-            <span>Apri</span>
+            <span v-if="!rapporto.visualizzato">Visualizza</span>
+            <span v-else>Apri</span>
           </button>
           <div class="details">
             <p><span>Campionato:&nbsp;</span><span>{{ rapporto.campionato }}</span></p>

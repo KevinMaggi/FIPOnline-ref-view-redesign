@@ -50,13 +50,14 @@
   }
 }
 
-.btn-circle {
+.btn-circle-big {
   width: 75px !important;
   height: 75px !important;
   padding: 0 !important;
   border-radius: 75px !important;
   justify-content: center !important;
   flex-direction: column !important;
+  letter-spacing: -0.5px;
 
   span:first-of-type {
     margin: 0;

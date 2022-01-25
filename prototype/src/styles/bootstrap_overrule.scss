@@ -76,6 +76,38 @@
   }
 }
 
+.btn-info {
+  color: white !important;
+  border: none !important;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: darken($info, 20%) !important;
+      border-color: darken($info, 20%) !important;
+    }
+  }
+
+  &:active {
+    background-color: darken($info, 20%) !important;
+  }
+}
+
+.btn-light {
+  color: white !important;
+  border: none !important;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: darken($light, 20%) !important;
+      border-color: darken($light, 20%) !important;
+    }
+  }
+
+  &:active {
+    background-color: darken($light, 20%) !important;
+  }
+}
+
 // tables
 .table {
   color: $primary !important;

@@ -60,6 +60,14 @@ html, body, #app {
   height: 100%;
   margin: 0;
   padding: 0;
+
+  * {
+    user-select: none; /* supported by Chrome and Opera */
+    -webkit-user-select: none; /* Safari */
+    -webkit-touch-callout: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+  }
 }
 
 #app {

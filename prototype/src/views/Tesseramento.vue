@@ -28,8 +28,8 @@
         <span>Paga</span>
       </button>
     </section>
-    <hr>
-    <section id="cert_sect">
+    <hr v-if="ruolo === 'ref'">
+    <section id="cert_sect" v-if="ruolo === 'ref'">
       <h1>Certificato medico</h1>
       <span v-if="stato_certificato === 2" class="material-icons-round danger">error</span>
       <span v-else-if="stato_certificato === 1" class="material-icons-round warning">error</span>
@@ -70,6 +70,7 @@ export default {
   data: function () {
     return {
       // data from "database"
+      ruolo: Vue.prototype.$ruolo,
       stagione: Vue.prototype.$stagione,
       rinnovo_richiesto: Vue.prototype.$rinnovo_richiesto,
       rinnovo_tesseramento: Vue.prototype.$rinnovo_tesseramento,
