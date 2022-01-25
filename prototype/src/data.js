@@ -7,7 +7,7 @@ Vue.prototype.$auth = false
 Vue.prototype.$tessera = 'A000000'
 Vue.prototype.$pw = 'password'
 Vue.prototype.$email = 'user@email.com'
-Vue.prototype.$ruolo = 'udc'
+Vue.prototype.$ruolo = 'ref'
 
 // Tesseramento e certificato
 Vue.prototype.$apertura_tesseramento = new Date(2022, 0, 1)

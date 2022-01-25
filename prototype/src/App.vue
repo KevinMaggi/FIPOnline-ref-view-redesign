@@ -61,7 +61,7 @@ html, body, #app {
   margin: 0;
   padding: 0;
 
-  * {
+  *:not(input) {
     user-select: none; /* supported by Chrome and Opera */
     -webkit-user-select: none; /* Safari */
     -webkit-touch-callout: none; /* Safari */
