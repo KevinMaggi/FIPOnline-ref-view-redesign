@@ -278,6 +278,27 @@ Vue.prototype.$archivio_gare = [
         punteggio_squadra_A: null, punteggio_squadra_B: null, referto: '.pdf'
       },
     ]
+  },
+  {
+    season: 'Stagione 2020/2021', gare: []
+  },
+  {
+    season: 'Stagione 2019/2020', gare: []
+  },
+  {
+    season: 'Stagione 2018/2019', gare: []
+  },
+  {
+    season: 'Stagione 2017/2018', gare: []
+  },
+  {
+    season: 'Stagione 2016/2017', gare: []
+  },
+  {
+    season: 'Stagione 2015/2016', gare: []
+  },
+  {
+    season: 'Stagione 2014/2015', gare: []
   }
 ]
 

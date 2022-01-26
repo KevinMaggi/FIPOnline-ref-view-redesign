@@ -6,11 +6,15 @@
         <span class="material-icons-round">sports</span>
         <span>Partite</span>
         <div id="dettaglio_partite">
-          <span>da accettare:&nbsp;<span v-bind:class="{ alert: da_accettare }">{{ da_accettare }}</span></span><br/>
-          <span>da disputare:&nbsp;<span v-bind:class="{ info: da_pianificare() }">{{ da_disputare }}</span></span><br/>
-          <span>da refertare:&nbsp;<span v-bind:class="{ warning: da_refertare }">{{ da_refertare }}</span></span>
+          <span>da accettare:&nbsp;<span v-bind:class="{ warning: da_accettare() }">{{
+              da_accettare()
+            }}</span></span><br/>
+          <span>da disputare:&nbsp;<span v-bind:class="{ info: da_pianificare() }">{{
+              da_pianificare() + pianificate()
+            }}</span></span><br/>
+          <span>da refertare:&nbsp;<span v-bind:class="{ warning: da_refertare() }">{{ da_refertare() }}</span></span>
         </div>
-        <span v-if="da_accettare || da_refertare" class="material-icons-round bdg warning">error</span>
+        <span v-if="da_accettare() || da_refertare()" class="material-icons-round bdg warning">error</span>
         <span v-else-if="da_pianificare()" class="material-icons-round bdg info">new_releases</span>
       </router-link>
       <div>
@@ -63,9 +67,6 @@ export default {
   data: function () {
     return {
       ruolo: Vue.prototype.$ruolo,
-      da_accettare: 0,
-      da_disputare: 0,
-      da_refertare: 0,
 
       stato_tesseramento: null, // 0 = ok, 1 = warning, 2 = danger
     }
@@ -87,8 +88,24 @@ export default {
         document.getElementById('logout').blur()
       }
     },
+    da_accettare() {
+      return Vue.prototype.$archivio_gare[0].gare.filter(gara => gara.stato === 0).length
+    },
     da_pianificare() {
-      return false
+      return Vue.prototype.$archivio_gare[0].gare.filter(gara => {
+        return gara.stato === 1
+      }).length
+    },
+    pianificate() {
+      return Vue.prototype.$archivio_gare[0].gare.filter(gara => {
+        return (gara.stato === 2 && Date.now() < gara.datetime.getTime())
+      }).length
+    },
+    da_refertare() {
+      return Vue.prototype.$archivio_gare[0].gare.filter(gara => {
+        let today = Date.now();
+        return gara.stato === 2 && today > gara.datetime.getTime()
+      }).length
     },
     new_rimborsi() {
       return false
@@ -203,7 +220,7 @@ $button-wider-max-width: 448px;
             font-style: italic;
           }
 
-          .alert, .info {
+          .warning, .info {
             font-weight: bold;
           }
         }
