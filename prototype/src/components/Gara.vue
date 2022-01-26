@@ -44,8 +44,8 @@
       <!-- Details -->
       <div class="details">
         <div>
-          <p><span>Campionato: &nbsp;</span><span>{{ elemento.campionato }}</span></p>
-          <p><span>Data e ora: &nbsp;</span><span>{{
+          <p><span>Campionato:</span><span>{{ elemento.campionato }}</span></p>
+          <p><span>Data e ora:</span><span>{{
               elemento.datetime.toLocaleDateString('it-IT', {
                 year: 'numeric',
                 month: '2-digit',
@@ -54,26 +54,31 @@
                 minute: '2-digit'
               })
             }}</span></p>
-          <p><span>Luogo: &nbsp;</span><span>{{ elemento.luogo }}</span></p>
+          <p><span>Luogo:</span><span>{{ elemento.luogo }}</span></p>
         </div>
         <div v-if="!collapsed">
-          <p><span>Match: &nbsp;</span><span>{{ elemento.squadra_A }} - {{ elemento.squadra_B }}</span></p>
-          <p><span>Fase: &nbsp;</span><span>{{ elemento.fase }}</span></p>
-          <p><span>Girone: &nbsp;</span><span>{{ elemento.girone }}</span></p>
-          <p><span>Giornata: &nbsp;</span><span>{{ elemento.giornata }}</span></p>
-          <p><span>Comitato: &nbsp;</span><span>{{ elemento.comitato }}</span></p>
-          <p><span>Squadra CIA: &nbsp;</span><span>{{  }}</span></p>
+          <p><span>Match:</span><span>{{ elemento.squadra_A }} - {{ elemento.squadra_B }}</span></p>
+          <p><span>Calendario:</span><span>{{ elemento.fase }} &blacktriangleright; girone {{ elemento.girone }} &blacktriangleright; giornata {{
+              elemento.giornata
+            }}</span></p>
+          <p><span>Comitato:</span><span>{{ elemento.comitato }}</span></p>
+          <p><span>Squadra CIA:</span>
+            <span class="squadra_cia">
+              <span v-for="membro in elemento.squadra_CIA" :key="membro.ruolo">{{ membro.nome }} <span
+                class="role">({{ membro.ruolo }})</span></span>
+            </span>
+          </p>
         </div>
 
         <hr v-if="stato !== 0">
 
         <!-- Additional items -->
         <div v-if="stato === 1 || stato === 2"> <!-- da disputare -->
-          <p><span>Rimborso richiesto: &nbsp;</span><span>{{ elemento.pianificazione.totale_richiesto }}€</span></p>
+          <p><span>Rimborso richiesto:</span><span>{{ elemento.pianificazione.totale_richiesto }}€</span></p>
         </div>
-        <div v-else-if="stato === 3 || stato === 4"> <!-- da refertare -->
+        <div v-else-if="stato === 3 || stato === 4" class="result"> <!-- da refertare -->
           <p>
-            <span>Risultato: &nbsp;</span>
+            <span>Risultato:</span>
             <span>
               <input type="number" placeholder="Sq.A" required :disabled="!modifying" aria-label="punteggio squadra A"
                      class="form-control input-gara" @click.stop v-model="puntia">
@@ -83,7 +88,7 @@
             </span>
           </p>
           <p>
-            <span>Referto: &nbsp;</span>
+            <span>Referto:</span>
             <span v-if="stato === 3 || modifying">
               <input type="file" required :disabled="!modifying" name="referto" v-bind:id="'referto_'+elemento.numero"
                      @click.stop class="form-control input-gara">
@@ -93,13 +98,13 @@
           <div v-if="error" class="alert alert-danger" role="alert">Controlla tutti i campi</div>
         </div>
         <div v-else-if="stato === 5"> <!-- omologata -->
-          <p><span>Rimborso richiesto: &nbsp;</span><span class="danger">{{
+          <p><span>Rimborso richiesto:</span><span class="danger">{{
               elemento.pianificazione.totale_richiesto
             }}€</span></p>
-          <p><span>Rimborso approvato: &nbsp;</span><span class="success">{{
+          <p><span>Rimborso approvato:</span><span class="success">{{
               elemento.pianificazione.totale_approvato
             }}€</span></p>
-          <p><span>Stato rimborso: &nbsp;</span><span class="info">{{ stato_rimborso }}</span></p>
+          <p><span>Stato rimborso:</span><span class="info">{{ stato_rimborso }}</span></p>
         </div>
 
       </div>

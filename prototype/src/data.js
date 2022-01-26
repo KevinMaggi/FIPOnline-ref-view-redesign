@@ -145,10 +145,10 @@ Vue.prototype.$archivio_gare = [
         squadra_A: 'Jokers Basket', squadra_B: 'Vela Basket',
         squadra_CIA: [
           {ruolo: 'Primo arbitro', nome: 'Mario Rossi'},
-          {ruolo: 'Secondo arbitro', nome: 'tizio'},
-          {ruolo: 'Cronometrista', nome: 'tizio'},
-          {ruolo: 'Segnapunti', nome: 'tizio'},
-          {ruolo: '24 secondi', nome: 'tizio'}
+          {ruolo: 'Secondo arbitro', nome: 'Mario Rossi'},
+          {ruolo: 'Cronometrista', nome: 'Mario Rossi'},
+          {ruolo: 'Segnapunti', nome: 'Mario Rossi'},
+          {ruolo: '24 secondi', nome: 'Mario Rossi'}
         ],
         stato: 1,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
         pianificazione: {

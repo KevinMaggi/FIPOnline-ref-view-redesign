@@ -27,14 +27,17 @@
       <!-- Da disputare -->
       <div class="accordion-item">
         <h2 class="accordion-header" id="da_disputare">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#da_disputare_body" aria-expanded="false" aria-controls="da_disputare_body">
+          <button class="accordion-button" v-bind:class="{collapsed : !from_pian}" type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#da_disputare_body" v-bind:aria-expanded="!from_pian"
+                  aria-controls="da_disputare_body">
             <span>Da disputare: &nbsp;</span>
             <span>{{ numero_da_pianificare() + numero_pianificate() }}</span>
             <span v-if="numero_da_pianificare()" class="material-icons-round bdg-inline info">new_releases</span>
           </button>
         </h2>
-        <div id="da_disputare_body" class="accordion-collapse collapse" aria-labelledby="da_disputare">
+        <div id="da_disputare_body" class="accordion-collapse collapse" v-bind:class="{show : from_pian}"
+             aria-labelledby="da_disputare">
           <div class="accordion-body">
             <gara
               v-for="gara in archivio_gare.filter(annata => annata.season === this.selected_season)[0].gare.filter(g => {let today = Date.now(); return g.stato === 1 || (g.stato === 2 && today < g.datetime.getTime())})"
@@ -96,7 +99,15 @@ export default {
     return {
       selected_season: Vue.prototype.$stagioni[0],
       archivio_gare: Vue.prototype.$archivio_gare,
+
+      // state
+      from_pian: false,
     }
+  },
+  beforeRouteEnter(to, from, next) {
+    next((vm) => {
+      if (from.path.startsWith('/pianificazione/')) vm.from_pian = true
+    });
   },
   methods: {
     season_changed(stagione) {
@@ -170,6 +181,10 @@ export default {
       > span:first-of-type {
         font-weight: bold;
         margin-left: 10px;
+      }
+
+      > span:nth-of-type(2) {
+        font-style: italic;
       }
 
       > span.bdg-inline {
