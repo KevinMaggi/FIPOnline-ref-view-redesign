@@ -109,8 +109,194 @@ Vue.prototype.$dati_CIA = [
 Vue.prototype.$stagioni = ['Stagione 2021/2022', 'Stagione 2020/2021', 'Stagione 2019/2020', 'Stagione 2018/2019', 'Stagione 2017/2018', 'Stagione 2016/2017', 'Stagione 2015/2016', 'Stagione 2014/2015']
 
 // Match
+Vue.prototype.$archivio_gare = [
+  {
+    season: 'Stagione 2021/2022', gare: [
+      {
+        numero: '1592',
+        comitato: 'Comitato Regionale Toscana',
+        campionato: 'U15S', fase: 'Prima fase', girone: 'B', giornata: 1,
+        datetime: new Date(2022, 1, 2, 15, 0), luogo: 'Pallone Via Barberinese 159 - Campi Bisenzio',
+        squadra_A: 'Campi Bisenzio', squadra_B: 'Laurenziana',
+        squadra_CIA: [
+          {ruolo: 'Primo arbitro', nome: 'Mario Rossi'},
+          {ruolo: 'Secondo arbitro', nome: 'Andrea Bianchi'}
+        ],
+        stato: 0,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
+        pianificazione: {
+          tappe_richieste: [
+            [
+              {voce: '', quant_richiesta: null, quant_approvata: null}
+            ],
+            [
+              {voce: '', quant_richiesta: null, quant_approvata: null}
+            ]
+          ],
+          totale_richiesto: 25.89, totale_approvato: 25.89,
+          stato_rimborso: 2, // 0: da liquidare, 1: in liquidazione, 2: liquidata
+        },
+        punteggio_squadra_A: 72, punteggio_squadra_B: 64, referto: '1592.pdf'
+      },
+      {
+        numero: '2386',
+        comitato: 'Comitato Regionale Toscana',
+        campionato: 'U19G', fase: 'Prima fase', girone: 'A', giornata: 3,
+        datetime: new Date(2022, 1, 1, 18, 30), luogo: 'Via di Legnaia 2 - Firenze',
+        squadra_A: 'Jokers Basket', squadra_B: 'Vela Basket',
+        squadra_CIA: [
+          {ruolo: 'Primo arbitro', nome: 'Mario Rossi'},
+          {ruolo: 'Secondo arbitro', nome: 'tizio'},
+          {ruolo: 'Cronometrista', nome: 'tizio'},
+          {ruolo: 'Segnapunti', nome: 'tizio'},
+          {ruolo: '24 secondi', nome: 'tizio'}
+        ],
+        stato: 1,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
+        pianificazione: {
+          tappe_richieste: [
+            [
+              {voce: '', quant_richiesta: null, quant_approvata: null}
+            ],
+            [
+              {voce: '', quant_richiesta: null, quant_approvata: null}
+            ]
+          ],
+          totale_richiesto: 25.89, totale_approvato: 25.89,
+          stato_rimborso: 0, // 0: da liquidare, 1: in liquidazione, 2: liquidata
+        },
+        punteggio_squadra_A: 63, punteggio_squadra_B: 60, referto: '2386.pdf'
+      },
+      {
+        numero: '4126',
+        comitato: 'Comitato Regionale Toscana',
+        campionato: 'PM', fase: 'Prima fase', girone: 'D', giornata: 4,
+        datetime: new Date(2021, 0, 31, 21, 15), luogo: 'Palestra Via Pantano - Montemurlo',
+        squadra_A: 'Montemurlo', squadra_B: 'Cestistica Pescia',
+        squadra_CIA: [
+          {ruolo: 'Primo arbitro', nome: 'tizio'},
+          {ruolo: 'Secondo arbitro', nome: 'Mario Rossi'},
+          {ruolo: 'Cronometrista', nome: 'tizio'},
+          {ruolo: 'Segnapunti', nome: 'tizio'},
+          {ruolo: '24 secondi', nome: 'tizio'}
+        ],
+        stato: 2,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
+        pianificazione: {
+          tappe_richieste: [
+            [
+              {voce: '', quant_richiesta: null, quant_approvata: null}
+            ],
+            [
+              {voce: '', quant_richiesta: null, quant_approvata: null}
+            ]
+          ],
+          totale_richiesto: null, totale_approvato: null,
+          stato_rimborso: 0, // 0: da liquidare, 1: in liquidazione, 2: liquidata
+        },
+        punteggio_squadra_A: null, punteggio_squadra_B: null, referto: '.pdf'
+      },
+      {
+        numero: '4023',
+        comitato: 'Comitato Regionale Toscana',
+        campionato: '', fase: '', girone: '', giornata: null,
+        datetime: new Date(2022, 1, 24, 20, 30), luogo: '',
+        squadra_A: '', squadra_B: '',
+        squadra_CIA: [
+          {ruolo: 'Primo arbitro', nome: 'Mario Rossi'},
+          {ruolo: 'Secondo arbitro', nome: 'tizio'},
+          {ruolo: 'Cronometrista', nome: 'tizio'},
+          {ruolo: 'Segnapunti', nome: 'tizio'},
+          {ruolo: '24 secondi', nome: 'tizio'}
+        ],
+        stato: 2,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
+        pianificazione: {
+          tappe_richieste: [
+            [
+              {voce: '', quant_richiesta: null, quant_approvata: null}
+            ],
+            [
+              {voce: '', quant_richiesta: null, quant_approvata: null}
+            ]
+          ],
+          totale_richiesto: null, totale_approvato: null,
+          stato_rimborso: 0, // 0: da liquidare, 1: in liquidazione, 2: liquidata
+        },
+        punteggio_squadra_A: null, punteggio_squadra_B: null, referto: '.pdf'
+      },
+      {
+        numero: '5642',
+        comitato: 'Comitato Regionale Toscana',
+        campionato: '', fase: '', girone: '', giornata: null,
+        datetime: new Date(2022, 0, 23, 18, 30), luogo: '',
+        squadra_A: '', squadra_B: '',
+        squadra_CIA: [
+          {ruolo: 'Primo arbitro', nome: 'tizio'},
+          {ruolo: 'Secondo arbitro', nome: 'Mario Rossi'},
+          {ruolo: 'Cronometrista', nome: 'tizio'},
+          {ruolo: 'Segnapunti', nome: 'tizio'},
+          {ruolo: '24 secondi', nome: 'tizio'}
+        ],
+        stato: 4,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
+        pianificazione: {
+          tappe_richieste: [
+            [
+              {voce: '', quant_richiesta: null, quant_approvata: null}
+            ],
+            [
+              {voce: '', quant_richiesta: null, quant_approvata: null}
+            ]
+          ],
+          totale_richiesto: null, totale_approvato: null,
+          stato_rimborso: 0, // 0: da liquidare, 1: in liquidazione, 2: liquidata
+        },
+        punteggio_squadra_A: null, punteggio_squadra_B: null, referto: '.pdf'
+      },
+      {
+        numero: '2687',
+        comitato: 'Comitato Regionale Toscana',
+        campionato: '', fase: '', girone: '', giornata: null,
+        datetime: new Date(2022, 0, 23, 19, 45), luogo: '',
+        squadra_A: '', squadra_B: '',
+        squadra_CIA: [
+          {ruolo: 'Primo arbitro', nome: 'Mario Rossi'},
+          {ruolo: 'Secondo arbitro', nome: 'tizio'},
+          {ruolo: 'Cronometrista', nome: 'tizio'},
+          {ruolo: 'Segnapunti', nome: 'tizio'},
+          {ruolo: '24 secondi', nome: 'tizio'}
+        ],
+        stato: 5,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
+        pianificazione: {
+          tappe_richieste: [
+            [
+              {voce: '', quant_richiesta: null, quant_approvata: null}
+            ],
+            [
+              {voce: '', quant_richiesta: null, quant_approvata: null}
+            ]
+          ],
+          totale_richiesto: null, totale_approvato: null,
+          stato_rimborso: 0, // 0: da liquidare, 1: in liquidazione, 2: liquidata
+        },
+        punteggio_squadra_A: null, punteggio_squadra_B: null, referto: '.pdf'
+      },
+    ]
+  }
+]
 
 // Rimborsi
+Vue.prototype.$archivio_rimborsi = [
+  {
+    season: 'Stagione 2021/2022', rimborsi: [
+      {
+        comitato: '',
+        data: '',
+        importo: '',
+        gare: [
+          {numero: '', importo: ''}
+        ]
+      }
+    ]
+  }
+]
+
 
 // Rapporti
 Vue.prototype.$archivio_rapporti = [

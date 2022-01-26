@@ -68,6 +68,15 @@
     font-size: 13px;
   }
 }
+@media screen and (max-width: 350px) {
+  .btn-circle-big {
+    width: 50px !important;
+
+    span:last-of-type {
+      font-size: 11px;
+    }
+  }
+}
 
 .btn-circle-small {
   width: 36px !important;
@@ -160,6 +169,18 @@ h2 {
   background-color: $secondary;
 }
 
+.input-gara {
+  border: 1px solid $body-color !important;
+  padding: 0 2.5px !important;
+  color: $body-color !important;
+  margin: 2.5px 0 !important;
+
+  &:disabled {
+    -webkit-text-fill-color: $body-color !important;
+    opacity: 0.5;
+  }
+}
+
 // badges
 .material-icons-round.bdg {
   font-size: 30px !important;
@@ -191,4 +212,92 @@ h2 {
 
 .fade-enter, .fade-leave-to {
   opacity: 0;
+}
+
+// gara
+.gara {
+  position: relative;
+
+  border-radius: 25px;
+  background-color: $secondary;
+  box-shadow: $shadow;
+  margin: 20px auto;
+  padding: 10px;
+  max-width: 500px;
+  font-size: $text;
+
+  .numero_gara {
+    font-size: $text-big;
+    color: $primary;
+    margin: 0;
+  }
+
+  > div:first-of-type {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .details {
+    flex-grow: 1;
+    margin-right: 20px;
+
+    p {
+      margin: 0 0 0 10px !important;
+      text-align: left;
+
+      span:nth-of-type(odd) {
+        font-weight: bold;
+      }
+
+      span:nth-of-type(even) {
+        font-style: italic;
+      }
+    }
+
+    hr {
+      border-top: 2px dashed #0055a2;
+      opacity: 1;
+      background-color: #e7e7e7;
+      margin: 5px auto;
+      max-width: 50%;
+    }
+
+    input[type='number'] {
+      max-width: 25%;
+      display: inline-block;
+    }
+
+    input[type='file'] {
+      max-width: 65%;
+      display: inline-block;
+    }
+  }
+
+  .toggle {
+    height: 30px;
+    width: 30px;
+    color: $primary;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    padding: 0;
+    transition: transform 0.25s;
+
+    .material-icons-round {
+      font-size: 30px;
+    }
+
+    &.rotate {
+      transform: rotate(-180deg);
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .gara {
+    font-size: $text-small;
+  }
 }

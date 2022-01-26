@@ -76,7 +76,7 @@ const routes = [
     meta: {requiresAuth: true}
   },
   {
-    path: '/pianificazione/:numero',
+    path: '/pianificazione/:stagione/:numero',
     name: 'Pianificazione',
     component: Pianificazione,
     props: true,

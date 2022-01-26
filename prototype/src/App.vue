@@ -55,6 +55,10 @@ export default {
 @import "styles/constants.scss";
 @import "styles/style.scss";
 
+html {
+  overflow: auto;
+}
+
 html, body, #app {
   width: 100%;
   height: 100%;
@@ -121,8 +125,17 @@ div#back {
   margin: ($navbar-height - $back-button-height) / 2;
   cursor: pointer;
 
-  :hover {
+  span {
+    transition-property: margin;
+    transition-duration: 0.15s;
+  }
+
+  &:hover {
     color: $secondary;
+
+    span:last-of-type {
+      margin-left: -10px;
+    }
   }
 
   #back_home, #back_partite {
@@ -137,7 +150,7 @@ div#back {
   }
 }
 
-#home, #tesseramento, #cambiopw, #anagrafica, #rapporti {
+#home, #tesseramento, #cambiopw, #anagrafica, #rapporti, #partite {
   min-height: 100%;
   background-color: white;
   max-width: $max-main-width;

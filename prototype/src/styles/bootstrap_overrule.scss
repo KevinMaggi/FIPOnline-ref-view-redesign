@@ -130,6 +130,7 @@
   -webkit-text-fill-color: $primary !important;
 }
 
+// alert
 .alert {
   font-size: inherit !important;
   border-radius: 15px !important;
@@ -137,6 +138,7 @@
   padding: 10px !important;
 }
 
+// accordion
 .accordion-flush .accordion-item .accordion-button {
   color: $primary;
 }
@@ -151,4 +153,8 @@
 
 .accordion-item {
   border: 1px solid $secondary;
+}
+
+.accordion-body {
+  padding: 0 !important;
 }

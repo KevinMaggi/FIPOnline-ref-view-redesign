@@ -1,13 +1,13 @@
 <template>
   <div id="pianificazione">
-    <h1>Gara {{ numero }}</h1>
+    <h1>Gara {{ numero }} del {{ stagione }}</h1>
   </div>
 </template>
 
 <script>
 export default {
   name: "Pianificazione",
-  props: ['numero'],
+  props: ['stagione', 'numero'],
 }
 </script>
 
