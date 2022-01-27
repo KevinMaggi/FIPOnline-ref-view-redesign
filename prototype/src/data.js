@@ -134,6 +134,7 @@ Vue.prototype.$archivio_gare = [
           ],
           totale_richiesto: 25.89, totale_approvato: 25.89,
           stato_rimborso: 2, // 0: da liquidare, 1: in liquidazione, 2: liquidata
+          data_liquidazione: '',
         },
         punteggio_squadra_A: 72, punteggio_squadra_B: 64, referto: '1592.pdf'
       },
@@ -162,6 +163,7 @@ Vue.prototype.$archivio_gare = [
           ],
           totale_richiesto: 25.89, totale_approvato: 25.89,
           stato_rimborso: 0, // 0: da liquidare, 1: in liquidazione, 2: liquidata
+          data_liquidazione: '01/01/2021',
         },
         punteggio_squadra_A: 63, punteggio_squadra_B: 60, referto: '2386.pdf'
       },
@@ -188,8 +190,9 @@ Vue.prototype.$archivio_gare = [
               {voce: '', quant_richiesta: null, quant_approvata: null}
             ]
           ],
-          totale_richiesto: null, totale_approvato: null,
+          totale_richiesto: null, totale_approvato: 53.4,
           stato_rimborso: 0, // 0: da liquidare, 1: in liquidazione, 2: liquidata
+          data_liquidazione: '02/01/2021',
         },
         punteggio_squadra_A: null, punteggio_squadra_B: null, referto: '.pdf'
       },
@@ -216,8 +219,9 @@ Vue.prototype.$archivio_gare = [
               {voce: '', quant_richiesta: null, quant_approvata: null}
             ]
           ],
-          totale_richiesto: null, totale_approvato: null,
+          totale_richiesto: null, totale_approvato: 29.5,
           stato_rimborso: 0, // 0: da liquidare, 1: in liquidazione, 2: liquidata
+          data_liquidazione: '02/01/2021',
         },
         punteggio_squadra_A: null, punteggio_squadra_B: null, referto: '.pdf'
       },
@@ -244,14 +248,15 @@ Vue.prototype.$archivio_gare = [
               {voce: '', quant_richiesta: null, quant_approvata: null}
             ]
           ],
-          totale_richiesto: null, totale_approvato: null,
+          totale_richiesto: null, totale_approvato: 25.3,
           stato_rimborso: 0, // 0: da liquidare, 1: in liquidazione, 2: liquidata
+          data_liquidazione: '03/01/2021',
         },
         punteggio_squadra_A: null, punteggio_squadra_B: null, referto: '.pdf'
       },
       {
         numero: '2687',
-        comitato: 'Comitato Regionale Toscana',
+        comitato: 'Settore Agonistico Roma',
         campionato: '', fase: '', girone: '', giornata: null,
         datetime: new Date(2022, 0, 23, 19, 45), luogo: '',
         squadra_A: '', squadra_B: '',
@@ -272,8 +277,9 @@ Vue.prototype.$archivio_gare = [
               {voce: '', quant_richiesta: null, quant_approvata: null}
             ]
           ],
-          totale_richiesto: null, totale_approvato: null,
+          totale_richiesto: null, totale_approvato: 22.0,
           stato_rimborso: 0, // 0: da liquidare, 1: in liquidazione, 2: liquidata
+          data_liquidazione: '03/01/2021',
         },
         punteggio_squadra_A: null, punteggio_squadra_B: null, referto: '.pdf'
       },

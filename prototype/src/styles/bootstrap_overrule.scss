@@ -139,7 +139,7 @@
 }
 
 // accordion
-.accordion-flush .accordion-item .accordion-button {
+.accordion .accordion-item .accordion-button, .accordion-flush .accordion-item .accordion-button {
   color: $primary;
 }
 
@@ -156,5 +156,5 @@
 }
 
 .accordion-body {
-  padding: 0 !important;
+  padding: 7.5px !important;
 }

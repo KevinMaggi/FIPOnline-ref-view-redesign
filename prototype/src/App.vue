@@ -150,7 +150,7 @@ div#back {
   }
 }
 
-#home, #tesseramento, #cambiopw, #anagrafica, #rapporti, #partite {
+#home, #tesseramento, #cambiopw, #anagrafica, #rapporti, #partite, #rimborsi {
   min-height: 100%;
   background-color: white;
   max-width: $max-main-width;
