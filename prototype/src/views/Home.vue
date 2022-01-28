@@ -108,7 +108,12 @@ export default {
       }).length
     },
     new_rimborsi() {
-      return false
+      let flag = false
+      Vue.prototype.$archivio_rimborsi[0].rimborsi.forEach(comitato => {
+        if (comitato.liquidazioni.filter(liquidazione => !liquidazione.visualizzato).length !== 0)
+          flag = true
+      })
+      return flag
     },
     new_rapporti() {
       return Vue.prototype.$archivio_rapporti[0].rapporti.filter(rapporto => !rapporto.visualizzato).length !== 0;

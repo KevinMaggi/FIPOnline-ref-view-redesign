@@ -3,36 +3,80 @@
     <h1>Rimborsi</h1>
     <stagione v-on:change_season="season_changed($event)"></stagione>
 
-    <p v-if="Object.keys(current_archivio()).length === 0"
+    <p v-if="current_archivio().rimborsi.length === 0"
        id="empty-list">
       <span>Nessun rimborso presente</span>
     </p>
-    <section v-else v-for="comitato in Object.keys(current_archivio())" :key="comitato">
-      <h2>{{ comitato }}</h2>
-      <div class="accordion" v-bind:id="comitato.replaceAll(' ','_')">
-        <div class="accordion-item" v-for="rimborso in Object.keys(current_archivio()[comitato])" :key="rimborso">
-          <h3 class="accordion-header" v-bind:id="'rimborso_'+rimborso.replaceAll('/','_')+'_header'">
+    <section v-else v-for="rimborso in current_archivio().rimborsi" :key="rimborso.comitato">
+      <h2>{{ rimborso.comitato }}</h2>
+      <div class="accordion" v-bind:id="rimborso.comitato.replaceAll(' ','_')">
+        <div class="accordion-item" v-for="liquidazione in rimborso.liquidazioni"
+             :key="liquidazione.data.toDateString()">
+          <h3 class="accordion-header" v-bind:id="'liquidazione_'+liquidazione.partite[0]+'_header'">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    v-bind:data-bs-target="'#rimborso_'+rimborso.replaceAll('/','_')" aria-expanded="false"
-                    v-bind:aria-controls="'rimborso_'+rimborso.replaceAll('/','_')">
-              <span v-if="rimborso !== ''">Data liquidazione: {{ rimborso }}</span>
-              <span v-else>Da liquidare</span>
-              <span>Importo: {{ current_archivio()[comitato][rimborso].totale.toFixed(2) }}€</span>
+                    v-bind:data-bs-target="'#liquidazione_'+liquidazione.partite[0]" aria-expanded="false"
+                    v-bind:aria-controls="'liquidazione_'+liquidazione.partite[0]" @click="visualizza(liquidazione)">
+              <span>Data liquidazione: {{
+                  liquidazione.data.toLocaleDateString('it-IT', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit'
+                  })
+                }}</span>
+              <span>Importo: <span class="cifra">{{ totale_liquidazione(liquidazione) }}€</span></span>
+              <span v-if="!liquidazione.visualizzato" class="material-icons-round bdg-inline info">new_releases</span>
             </button>
           </h3>
-          <div v-bind:id="'rimborso_'+rimborso.replaceAll('/','_')" class="accordion-collapse collapse"
-               v-bind:aria-labelledby="'rimborso_'+rimborso.replaceAll('/','_')+'_header'"
-               v-bind:data-bs-parent="'#'+comitato.replaceAll(' ','_')">
+          <div v-bind:id="'liquidazione_'+liquidazione.partite[0]" class="accordion-collapse collapse"
+               v-bind:aria-labelledby="'liquidazione_'+liquidazione.partite[0]+'_header'"
+               v-bind:data-bs-parent="'#'+rimborso.comitato.replaceAll(' ','_')">
             <div class="accordion-body">
-              <p v-for="partita in current_archivio()[comitato][rimborso].lista" :key="partita.numero">
-                <span>N. <router-link
-                  v-bind:to="'/pianificazione/' + selected_season.replaceAll(' ', '_').replaceAll('/', '_') + '/' + partita.numero">{{ partita.numero }}</router-link> del {{
+              <p v-for="partita in liquidazione.partite" :key="partita">
+                <span>N. {{ partita }}
+                  del {{
+                    get_partita(partita).datetime.toLocaleDateString('it-IT', {
+                      year: 'numeric',
+                      month: '2-digit',
+                      day: '2-digit'
+                    })
+                  }}:
+                  <span class="cifra">{{
+                      get_partita(partita).pianificazione.totale_approvato.toFixed(2)
+                    }}€</span></span>
+                <span>({{ get_partita(partita).campionato }}: {{
+                    get_partita(partita).squadra_A
+                  }} - {{ get_partita(partita).squadra_B }})</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <h2 class="totale"><span>Totale liquidato: </span> <span class="cifra">{{ totale() }}€</span></h2>
+
+    <hr v-if="partite_da_liquidare().length !== 0">
+    <section v-if="partite_da_liquidare().length !== 0">
+      <div class="accordion" id="da_liquidare">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="da_liquidare_header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#da_liquidare_body" aria-expanded="false" aria-controls="da_liquidare_body">
+              <span>Da liquidare: <span class="cifra">{{ totale_da_liquidare() }}€</span></span>
+            </button>
+          </h2>
+          <div id="da_liquidare_body" class="accordion-collapse collapse" aria-labelledby="da_liquidare_header"
+               data-bs-parent="da_liquidare">
+            <div class="accordion-body">
+              <p v-for="partita in partite_da_liquidare()" :key="partita.numero">
+                <span>N. {{ partita.numero }}
+                  del {{
                     partita.datetime.toLocaleDateString('it-IT', {
                       year: 'numeric',
                       month: '2-digit',
                       day: '2-digit'
                     })
-                  }}: {{ partita.pianificazione.totale_approvato.toFixed(2) }}€</span>
+                  }}:
+                  <span class="cifra">{{ partita.pianificazione.totale_approvato.toFixed(2) }}€</span></span>
                 <span>({{ partita.campionato }}: {{ partita.squadra_A }} - {{ partita.squadra_B }})</span>
               </p>
             </div>
@@ -40,7 +84,6 @@
         </div>
       </div>
     </section>
-    <h2 id="totale"><span>Totale: </span> <span>{{ totale[selected_season] }}€</span></h2>
   </div>
 </template>
 
@@ -54,43 +97,7 @@ export default {
   data: function () {
     return {
       selected_season: Vue.prototype.$stagioni[0],
-    }
-  },
-  computed: {
-    archivio_rimborsi() {
-      let archivio = Vue.prototype.$archivio_gare.map(k => ({...k}))    // trick for deep copy
-      archivio.forEach(annata => {
-        annata.gare = annata.gare.reduce(function (obj, value) {
-          let key = value.comitato;
-          if (obj[key] == null) obj[key] = [];
-
-          obj[key].push(value);
-          return obj;
-        }, {})
-        Object.keys(annata.gare).forEach(comitato => annata.gare[comitato] = annata.gare[comitato].reduce(function (obj, value) {
-          let key = value.pianificazione.data_liquidazione
-          if (obj[key] == null) obj[key] = {totale: 0, lista: []}
-
-          obj[key].totale += value.pianificazione.totale_approvato
-          obj[key].lista.push(value)
-          return obj
-        }, {}))
-      })
-
-      return archivio
-    },
-    totale() {
-      let totali = {}
-      this.archivio_rimborsi.forEach(annata => {
-        let totale = 0
-        Object.keys(annata.gare).forEach(comitato => {
-          Object.keys(annata.gare[comitato]).forEach(rimborso => {
-            totale += annata.gare[comitato][rimborso].totale
-          })
-        })
-        totali[annata.season] = totale.toFixed(2)
-      })
-      return totali
+      archivio_rimborsi: Vue.prototype.$archivio_rimborsi,
     }
   },
   methods: {
@@ -98,8 +105,39 @@ export default {
       this.selected_season = stagione
     },
     current_archivio() {
-      return this.archivio_rimborsi.filter(annata => annata.season === this.selected_season)[0].gare
+      return this.archivio_rimborsi.filter(annata => annata.season === this.selected_season)[0]
     },
+    get_partita(numero) {
+      return Vue.prototype.$archivio_gare.filter(annata => annata.season === this.selected_season)[0].gare.filter(gara => gara.numero === numero)[0]
+    },
+    totale_liquidazione(liquidazione) {
+      let totale = 0
+      liquidazione.partite.forEach(numero => {
+        totale += this.get_partita(numero).pianificazione.totale_approvato
+      })
+      return totale.toFixed(2)
+    },
+    totale() {
+      let totale = 0
+      this.current_archivio().rimborsi.forEach(rimborso => rimborso.liquidazioni.forEach(liquidazione => liquidazione.partite.forEach(partita => totale += this.get_partita(partita).pianificazione.totale_approvato)))
+      return totale.toFixed(2)
+    },
+    visualizza(liquidazione) {
+      liquidazione.visualizzato = true
+    },
+    partite_da_liquidare() {
+      return Vue.prototype.$archivio_gare.filter(annata => annata.season === this.selected_season)[0].gare.filter(gara => gara.pianificazione.stato_rimborso !== 2)
+    },
+    totale_da_liquidare() {
+      let totale = 0
+      this.partite_da_liquidare().forEach(gara => {
+        if (gara.pianificazione.totale_approvato !== '')
+          totale += gara.pianificazione.totale_approvato
+        else
+          totale += gara.pianificazione.totale_richiesto
+      })
+      return totale.toFixed(2)
+    }
   }
 }
 </script>
@@ -112,12 +150,12 @@ export default {
     margin: 20px auto;
   }
 
-  #totale {
+  .totale {
     font-weight: bold;
+  }
 
-    span:last-of-type {
-      font-style: italic;
-    }
+  .cifra {
+    font-style: italic;
   }
 
   section {
@@ -139,13 +177,21 @@ export default {
     justify-content: flex-start;
     align-items: center;
 
-    span {
+    > span {
       flex-grow: 1;
 
       &:last-of-type {
         font-size: smaller;
       }
     }
+  }
+
+  hr {
+    width: 100%;
+    border-top: 1px dashed #0055a2;
+    opacity: 1;
+    background-color: white;
+    margin: 10px auto;
   }
 }
 </style>
