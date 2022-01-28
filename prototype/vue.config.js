@@ -12,7 +12,7 @@ module.exports = {
     version: '0.1.0',
     themeColor: '#0055A2',
     background_color: '#E7E7E7',
-    start_url: 'http://fiponline.netsons.org',
+    start_url: 'https://fiponline.netsons.org',
     display: 'standalone',
     orientation: 'portrait'
   }

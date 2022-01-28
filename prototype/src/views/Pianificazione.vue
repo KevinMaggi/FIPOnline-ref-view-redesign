@@ -1,6 +1,7 @@
 <template>
   <div id="pianificazione">
     <h1>Gara {{ numero }} del {{ stagione }}</h1>
+    <p>Stay tuned</p>
   </div>
 </template>
 
