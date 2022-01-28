@@ -125,12 +125,19 @@ Vue.prototype.$archivio_gare = [
         stato: 0,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
         pianificazione: {
           tappe_richieste: [
-            [
-              {voce: '', quant_richiesta: null, quant_approvata: null}
-            ],
-            [
-              {voce: '', quant_richiesta: null, quant_approvata: null}
-            ]
+            {
+              da: '', a: '', spese: [
+                {voce: '', quant_richiesta: null, quant_approvata: null}
+              ]
+            },
+            {
+              da: '', a: '', spese: [
+                {voce: '', quant_richiesta: null, quant_approvata: null}
+              ]
+            }
+          ],
+          gettoni: [
+            {voce: '', importo: ''}
           ],
           totale_richiesto: 25.89, totale_approvato: 25.89,
           stato_rimborso: 2, // 0: da liquidare, 1: in liquidazione, 2: liquidata
@@ -153,12 +160,19 @@ Vue.prototype.$archivio_gare = [
         stato: 1,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
         pianificazione: {
           tappe_richieste: [
-            [
-              {voce: '', quant_richiesta: null, quant_approvata: null}
-            ],
-            [
-              {voce: '', quant_richiesta: null, quant_approvata: null}
-            ]
+            {
+              da: 'abitazione', a: 'campo di gioco', spese: [
+                {voce: 'auto privata', quant: 32, importo: 32}
+              ]
+            },
+            {
+              da: 'campo di gioco', a: 'abitazione', spese: [
+                {voce: 'auto privata', quant: 31, importo: 31}
+              ]
+            }
+          ],
+          gettoni: [
+            {voce: '', importo: ''}
           ],
           totale_richiesto: 25.89, totale_approvato: 25.89,
           stato_rimborso: 0, // 0: da liquidare, 1: in liquidazione, 2: liquidata
@@ -181,12 +195,19 @@ Vue.prototype.$archivio_gare = [
         stato: 2,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
         pianificazione: {
           tappe_richieste: [
-            [
-              {voce: '', quant_richiesta: null, quant_approvata: null}
-            ],
-            [
-              {voce: '', quant_richiesta: null, quant_approvata: null}
-            ]
+            {
+              da: '', a: '', spese: [
+                {voce: '', quant_richiesta: null, quant_approvata: null}
+              ]
+            },
+            {
+              da: '', a: '', spese: [
+                {voce: '', quant_richiesta: null, quant_approvata: null}
+              ]
+            }
+          ],
+          gettoni: [
+            {voce: '', importo: ''}
           ],
           totale_richiesto: null, totale_approvato: 53.4,
           stato_rimborso: 0, // 0: da liquidare, 1: in liquidazione, 2: liquidata
@@ -209,12 +230,19 @@ Vue.prototype.$archivio_gare = [
         stato: 2,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
         pianificazione: {
           tappe_richieste: [
-            [
-              {voce: '', quant_richiesta: null, quant_approvata: null}
-            ],
-            [
-              {voce: '', quant_richiesta: null, quant_approvata: null}
-            ]
+            {
+              da: '', a: '', spese: [
+                {voce: '', quant_richiesta: null, quant_approvata: null}
+              ]
+            },
+            {
+              da: '', a: '', spese: [
+                {voce: '', quant_richiesta: null, quant_approvata: null}
+              ]
+            }
+          ],
+          gettoni: [
+            {voce: '', importo: ''}
           ],
           totale_richiesto: null, totale_approvato: 29.5,
           stato_rimborso: 0, // 0: da liquidare, 1: in liquidazione, 2: liquidata
@@ -237,12 +265,19 @@ Vue.prototype.$archivio_gare = [
         stato: 4,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
         pianificazione: {
           tappe_richieste: [
-            [
-              {voce: '', quant_richiesta: null, quant_approvata: null}
-            ],
-            [
-              {voce: '', quant_richiesta: null, quant_approvata: null}
-            ]
+            {
+              da: '', a: '', spese: [
+                {voce: '', quant_richiesta: null, quant_approvata: null}
+              ]
+            },
+            {
+              da: '', a: '', spese: [
+                {voce: '', quant_richiesta: null, quant_approvata: null}
+              ]
+            }
+          ],
+          gettoni: [
+            {voce: '', importo: ''}
           ],
           totale_richiesto: null, totale_approvato: 25.3,
           stato_rimborso: 0, // 0: da liquidare, 1: in liquidazione, 2: liquidata
@@ -265,12 +300,19 @@ Vue.prototype.$archivio_gare = [
         stato: 5,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
         pianificazione: {
           tappe_richieste: [
-            [
-              {voce: '', quant_richiesta: null, quant_approvata: null}
-            ],
-            [
-              {voce: '', quant_richiesta: null, quant_approvata: null}
-            ]
+            {
+              da: '', a: '', spese: [
+                {voce: '', quant_richiesta: null, quant_approvata: null}
+              ]
+            },
+            {
+              da: '', a: '', spese: [
+                {voce: '', quant_richiesta: null, quant_approvata: null}
+              ]
+            }
+          ],
+          gettoni: [
+            {voce: '', importo: ''}
           ],
           totale_richiesto: null, totale_approvato: 22.0,
           stato_rimborso: 2, // 0: da liquidare, 1: in liquidazione, 2: liquidata

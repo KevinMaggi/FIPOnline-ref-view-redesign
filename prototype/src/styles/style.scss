@@ -78,6 +78,19 @@
   }
 }
 
+.btn-circle-medium {
+  width: 50px !important;
+  height: 50px !important;
+  padding: 0 !important;
+  border-radius: 50px !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+
+  span {
+    font-size: 36px;
+  }
+}
+
 .btn-circle-small {
   width: 36px !important;
   height: 36px !important;
