@@ -231,7 +231,7 @@ Vue.prototype.$archivio_gare = [
           gettoni: [
             {voce: '', importo: ''}
           ],
-          totale_richiesto: null, totale_approvato: 53.4,
+          totale_richiesto: 55.4, totale_approvato: 53.4,
           stato_rimborso: 0, // 0: da liquidare, 1: in liquidazione, 2: liquidata
         },
         punteggio_squadra_A: null, punteggio_squadra_B: null, referto: '.pdf'
@@ -266,7 +266,7 @@ Vue.prototype.$archivio_gare = [
           gettoni: [
             {voce: '', importo: ''}
           ],
-          totale_richiesto: null, totale_approvato: 29.5,
+          totale_richiesto: 29.1, totale_approvato: 29.5,
           stato_rimborso: 0, // 0: da liquidare, 1: in liquidazione, 2: liquidata
         },
         punteggio_squadra_A: null, punteggio_squadra_B: null, referto: '.pdf'
@@ -301,7 +301,7 @@ Vue.prototype.$archivio_gare = [
           gettoni: [
             {voce: '', importo: ''}
           ],
-          totale_richiesto: null, totale_approvato: 25.3,
+          totale_richiesto: 27.6, totale_approvato: 25.3,
           stato_rimborso: 0, // 0: da liquidare, 1: in liquidazione, 2: liquidata
         },
         punteggio_squadra_A: null, punteggio_squadra_B: null, referto: '.pdf'
@@ -336,7 +336,7 @@ Vue.prototype.$archivio_gare = [
           gettoni: [
             {voce: '', importo: ''}
           ],
-          totale_richiesto: null, totale_approvato: 22.0,
+          totale_richiesto: 22.0, totale_approvato: 22.0,
           stato_rimborso: 2, // 0: da liquidare, 1: in liquidazione, 2: liquidata
         },
         punteggio_squadra_A: null, punteggio_squadra_B: null, referto: '.pdf'

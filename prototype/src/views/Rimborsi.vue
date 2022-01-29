@@ -42,7 +42,12 @@
                   }}:
                   <span class="cifra">{{
                       get_partita(partita).pianificazione.totale_approvato.toFixed(2)
-                    }}€</span></span>
+                    }}€
+                    <del
+                      v-if="get_partita(partita).pianificazione.totale_approvato !== get_partita(partita).pianificazione.totale_richiesto"
+                      class="danger">{{ get_partita(partita).pianificazione.totale_richiesto.toFixed(2) }}€</del>
+                  </span>
+                </span>
                 <span>({{ get_partita(partita).campionato }}: {{
                     get_partita(partita).squadra_A
                   }} - {{ get_partita(partita).squadra_B }})</span>
@@ -156,6 +161,10 @@ export default {
 
   .cifra {
     font-style: italic;
+
+    .danger {
+      font-size: smaller;
+    }
   }
 
   section {
