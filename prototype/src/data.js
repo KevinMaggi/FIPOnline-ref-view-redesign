@@ -19,6 +19,28 @@ Vue.prototype.$costo_tesseramento_mora = 24;
 Vue.prototype.$stagione = '2021/2022';
 Vue.prototype.$scadenza_certificato = new Date(2022, 7, 15)
 
+// gettoni e rimborsi
+Vue.prototype.$rimborso_km = 0.23
+Vue.prototype.$gettoni_ref = [
+  {'Categorie': 'C Gold', 'Importo': 40, 'Importo >100km A/R': 55},
+  {'Categorie': 'C Silver', 'Importo': 30, 'Importo >100km A/R': 42},
+  {'Categorie': 'D, B/F, Open', 'Importo': 25, 'Importo >100km A/R': 30},
+  {'Categorie': 'Campionati d\'Eccellenza', 'Importo': 25, 'Importo >100km A/R': 37},
+  {'Categorie': 'C/F, PM, 1DM', 'Importo': 25, 'Importo >100km A/R': 25},
+  {'Categorie': 'da U16 a U20', 'Importo': 22, 'Importo >100km A/R': 22},
+  {'Categorie': 'da U13 a U15', 'Importo': 20, 'Importo >100km A/R': 20},
+]
+Vue.prototype.$gettoni_udc = [
+  {'Categorie': 'C Gold', 'Importo': 20},
+  {'Categorie': 'C Silver', 'Importo': 20},
+  {'Categorie': 'D, B/F, Open', 'Importo': 20},
+  {'Categorie': 'Campionati d\'Eccellenza', 'Importo': 18},
+  {'Categorie': 'C/F, PM, 1DM', 'Importo': 18},
+  {'Categorie': 'da U16 a U20', 'Importo': 15},
+  {'Categorie': 'da U13 a U15', 'Importo': 15},
+]
+Vue.prototype.$gettone_extra = 20
+
 // user registry
 Vue.prototype.$dati_personali = [
   {

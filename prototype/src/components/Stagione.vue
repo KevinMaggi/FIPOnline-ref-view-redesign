@@ -1,6 +1,6 @@
 <template>
   <select id="stagione" name="stagione" class="form-select select-season" required
-          v-model="selected" v-on:change="$emit('change_season', selected)">
+          v-model="selected" v-on:change="$emit('change_season', selected)" aria-label="Stagione">
     <option v-for="stagione in stagioni" v-bind:key="stagione" v-bind:value="stagione">{{ stagione }}</option>
   </select>
 </template>

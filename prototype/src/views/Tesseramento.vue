@@ -43,8 +43,8 @@
     </section>
 
     <transition name="fade">
-      <div class="overlay" v-if="info_active">
-        <div id="info">
+      <div class="overlay" v-if="info_active" @click="info_active = false">
+        <div id="info" @click.stop>
           <button id="info_close" class="btn btn-primary btn-circle-small" @click="info_active = false">
             <span class="material-icons-round">clear</span>
           </button>
@@ -211,30 +211,6 @@ export default {
     opacity: 1;
     background-color: white;
     margin: 10px auto;
-  }
-
-  .overlay {
-    font-size: $text;
-
-    #info {
-      position: relative;
-      border: 3px solid $primary;
-      border-radius: 35px;
-      background-color: $secondary;
-      width: 50%;
-      min-width: 300px;
-      height: min-content;
-      padding: 50px 20px 20px 20px;
-      color: $primary;
-      box-shadow: $shadow;
-      margin: 20px;
-
-      #info_close {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-      }
-    }
   }
 }
 </style>

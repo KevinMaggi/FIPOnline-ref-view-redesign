@@ -50,36 +50,69 @@
 
     <!-- gettoni -->
     <h2>Gettoni ed extra</h2>
-    <table id="gettoni" class="table table-striped table-sm table-bordered">
-      <thead>
-      <tr>
-        <th>Voce</th>
-        <th>Importo</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for="gettone in partita.pianificazione.gettoni" :key="JSON.stringify(gettone)">
-        <td>{{ gettone.voce }}</td>
-        <td>{{ gettone.importo }}€</td>
-      </tr>
-      </tbody>
-    </table>
+    <div>
+      <table id="gettoni" class="table table-striped table-sm table-bordered">
+        <thead>
+        <tr>
+          <th>Voce</th>
+          <th>Importo</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="gettone in partita.pianificazione.gettoni" :key="JSON.stringify(gettone)">
+          <td>{{ gettone.voce }}</td>
+          <td>{{ gettone.importo }}€</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
     <h2>Totale richiesto: <span class="cifra">{{ partita.pianificazione.totale_richiesto }}€</span></h2>
 
     <!-- pulsanti -->
     <div id="buttons">
-      <button id="add" class="btn btn-success btn-circle-medium" @click="add = true">
+      <button v-if="Date.now() < partita.datetime.getTime()" id="add_btn" class="btn btn-success btn-circle-medium"
+              @click="add = true">
         <span class="material-icons-round">add</span>
       </button>
-      <button v-if="Date.now() < partita.datetime.getTime()" id="remove" class="btn btn-danger btn-circle-medium"
+      <button v-if="Date.now() < partita.datetime.getTime()" id="remove_btn" class="btn btn-danger btn-circle-medium"
               @click="remove = true">
         <span class="material-icons-round">remove</span>
       </button>
-      <button v-if="Date.now() < partita.datetime.getTime()" id="info" class="btn btn-info btn-circle-small"
-              @click="info = true">
+      <button id="info_btn" class="btn btn-info btn-circle-small" @click="info = true">
         <span class="material-icons-round">info</span>
       </button>
     </div>
+
+    <!-- modals -->
+    <transition name="fade">
+      <div class="overlay" v-if="info" @click="info = false">
+        <div id="info" @click.stop>
+          <button id="info_close" class="btn btn-primary btn-circle-small" @click="info = false">
+            <span class="material-icons-round">clear</span>
+          </button>
+          <h2>Info rimborso</h2>
+          <p>Il rimborso kilometrico attuale è {{ rimborso_km }}€/km.</p>
+          <p>Sono previsti i seguenti gettoni:</p>
+          <table class="table table-striped table-sm table-bordered">
+            <thead>
+            <tr>
+              <th v-for="(col, name) in gettoni[0]" :key="name">{{ name }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="entry in gettoni" :key="entry + Math.random()">
+              <td v-for="row in entry" :key="row + Math.random()">{{
+                  row
+                }}{{ (typeof (row) === 'number') ? '€' : '' }}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <p v-if="ruolo === 'ref'">In caso di due gare a cavallo di un pasto o di arbitraggio singolo nelle categorie
+            U20, PM e campionati d'Eccellenza è previsto un gettone extra di {{ gettone_extra }}€.</p>
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -91,24 +124,31 @@ export default {
   props: ['stagione', 'numero'],
   data: function () {
     return {
+      ruolo: Vue.prototype.$ruolo,
       partita: Vue.prototype.$archivio_gare.filter(annata => annata.season === this.stagione.replace('_', ' ').replace('_', '/'))[0].gare.filter(gara => gara.numero === this.numero)[0],
       collapsed: true,
       add: false,
       remove: false,
       info: false,
+
+      rimborso_km: Vue.prototype.$rimborso_km,
+      gettoni: (Vue.prototype.$ruolo === "ref") ? Vue.prototype.$gettoni_ref : Vue.prototype.$gettoni_udc,
+      gettone_extra: Vue.prototype.$gettone_extra
     }
-  }
+  },
 }
 </script>
 
 <style lang="scss" scoped>
 #pianificazione {
   padding-bottom: 75px;
-  max-width: 750px;
 
   .details {
-    width: fit-content;
+    width: 400px;
+    max-width: 95%;
     margin: 0 auto;
+    margin-bottom: 10px;
+    border-bottom: 2px dotted #0055a2;
 
     p {
       margin: 0 0 0 10px !important;
@@ -156,29 +196,35 @@ export default {
     }
   }
 
-  .tappa {
-    font-weight: bold;
-  }
-
-  .luogo {
-    font-style: italic;
-  }
-
-  h2 {
-    text-align: left;
-  }
-
   p {
-    text-align: left;
-    margin-bottom: -5px;
+    padding-left: 5%;
+
+    .tappa {
+      font-weight: bold;
+    }
+
+    .luogo {
+      font-style: italic;
+    }
   }
 
-  .table {
-    width: fit-content !important;
-    margin: 10px auto !important;
+  > h2 {
+    text-align: left;
+  }
 
-    * {
-      color: black !important;
+  > div {
+    > p {
+      text-align: left;
+      margin-bottom: -5px;
+    }
+
+    > .table {
+      width: fit-content !important;
+      margin: 10px auto !important;
+
+      * {
+        color: black !important;
+      }
     }
   }
 
@@ -196,19 +242,19 @@ export default {
     width: 100vw;
     box-shadow: 0px -10px 5px white;
 
-    #add {
+    #add_btn {
       position: absolute;
       bottom: 20px;
       right: 20px;
     }
 
-    #remove {
+    #remove_btn {
       position: absolute;
       bottom: 20px;
       right: 90px;
     }
 
-    #info {
+    #info_btn {
       position: absolute;
       left: 20px;
       bottom: 27px;
