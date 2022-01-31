@@ -131,7 +131,7 @@ export default {
       liquidazione.visualizzato = true
     },
     partite_da_liquidare() {
-      return Vue.prototype.$archivio_gare.filter(annata => annata.season === this.selected_season)[0].gare.filter(gara => gara.pianificazione.stato_rimborso !== 2)
+      return Vue.prototype.$archivio_gare.filter(annata => annata.season === this.selected_season)[0].gare.filter(gara => gara.stato === 5 && gara.pianificazione.stato_rimborso === 0)
     },
     totale_da_liquidare() {
       let totale = 0
