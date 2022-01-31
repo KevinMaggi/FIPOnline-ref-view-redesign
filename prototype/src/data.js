@@ -135,211 +135,314 @@ Vue.prototype.$archivio_gare = [
   {
     season: 'Stagione 2021/2022', gare: [
       {
-        numero: '1592',
+        numero: '4997',
         comitato: 'Comitato Regionale Toscana',
-        campionato: 'U15S', fase: 'Prima fase', girone: 'B', giornata: 1,
-        datetime: new Date(2022, 1, 2, 15, 0), luogo: 'Pallone Via Barberinese 159 - Campi Bisenzio',
-        squadra_A: 'Campi Bisenzio', squadra_B: 'Laurenziana',
+        campionato: 'U13F', fase: 'Prima fase', girone: 'B', giornata: 2,
+        datetime: new Date(2022, 1, 16, 18, 30), luogo: 'Via 1° Maggio, 59100, Prato',
+        squadra_A: 'Cestistica rosa Prato', squadra_B: 'Pallacanestro femminile Porcari',
         squadra_CIA: [
-          {ruolo: 'Primo arbitro', nome: 'Mario Rossi'},
-          {ruolo: 'Secondo arbitro', nome: 'Andrea Bianchi'}
+          {ruolo: 'Primo arbitro', nome: 'Kevin Maggi'},
         ],
         stato: 0,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
         pianificazione: {
           tappe_richieste: [
             {
-              da: '', a: '', spese: [
-                {voce: '', quant_richiesta: null, quant_approvata: null}
-              ]
+              da: '', a: '', spese: []
             },
             {
-              da: '', a: '', spese: [
-                {voce: '', quant_richiesta: null, quant_approvata: null}
-              ]
+              da: '', a: '', spese: []
             }
           ],
           gettoni: [
-            {voce: '', importo: ''}
+            {voce: 'Gettone', importo: 20},
+            {voce: 'SMS + francobollo', importo: 1},
           ],
-          totale_richiesto: 25.89, totale_approvato: 25.89,
-          stato_rimborso: 2, // 0: da liquidare, 1: in liquidazione, 2: liquidata
+          totale_richiesto: 20, totale_approvato: null,
+          stato_rimborso: 0, // 0: da liquidare, 1: in liquidazione, 2: liquidata
         },
-        punteggio_squadra_A: 72, punteggio_squadra_B: 64, referto: '1592.pdf'
+        punteggio_squadra_A: null, punteggio_squadra_B: null, referto: ''
       },
       {
-        numero: '2386',
+        numero: '1470',
         comitato: 'Comitato Regionale Toscana',
-        campionato: 'U19G', fase: 'Prima fase', girone: 'A', giornata: 3,
-        datetime: new Date(2022, 1, 1, 18, 30), luogo: 'Via di Legnaia 2 - Firenze',
-        squadra_A: 'Jokers Basket', squadra_B: 'Vela Basket',
+        campionato: 'PM', fase: 'Prima fase', girone: 'A', giornata: 13,
+        datetime: new Date(2022, 1, 6, 18, 30), luogo: 'Via T. Alderotti 26, 50136, Firenze',
+        squadra_A: 'Laurenziana Basket', squadra_B: 'Unione sportiva Affrico',
         squadra_CIA: [
-          {ruolo: 'Primo arbitro', nome: 'Mario Rossi'},
-          {ruolo: 'Secondo arbitro', nome: 'Mario Rossi'},
-          {ruolo: 'Cronometrista', nome: 'Mario Rossi'},
-          {ruolo: 'Segnapunti', nome: 'Mario Rossi'},
-          {ruolo: '24 secondi', nome: 'Mario Rossi'}
+          {ruolo: 'Primo arbitro', nome: 'Alessandro Sizzi'},
+          {ruolo: 'Secondo arbitro', nome: 'Kevin Maggi'},
+          {ruolo: 'Segnapunti', nome: 'Marco Checcacci'},
         ],
         stato: 1,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
         pianificazione: {
           tappe_richieste: [
             {
+              da: '', a: '', spese: []
+            },
+            {
+              da: '', a: '', spese: []
+            }
+          ],
+          gettoni: [
+            {voce: 'Gettone', importo: 25},
+          ],
+          totale_richiesto: 25, totale_approvato: null,
+          stato_rimborso: 0, // 0: da liquidare, 1: in liquidazione, 2: liquidata
+        },
+        punteggio_squadra_A: null, punteggio_squadra_B: null, referto: ''
+      },
+      {
+        numero: '2935',
+        comitato: 'Comitato Regionale Toscana',
+        campionato: 'U19S', fase: 'Prima fase', girone: 'E', giornata: 12,
+        datetime: new Date(2022, 1, 5, 19, 0), luogo: 'Via Sassetti 1, 50018, Scandicci',
+        squadra_A: 'Scandicci Basket', squadra_B: 'Scuola Basket Prato',
+        squadra_CIA: [
+          {ruolo: 'Primo arbitro', nome: 'Kevin Maggi'},
+        ],
+        stato: 2,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
+        pianificazione: {
+          tappe_richieste: [
+            {
               da: 'abitazione', a: 'campo di gioco', spese: [
-                {voce: 'auto privata', quant: 32, importo: 32}
+                {voce: 'km da solo', quant: 21, importo: 5.04},
+                {voce: 'pedaggio', quant: 1, importo: 0.9}
               ]
             },
             {
               da: 'campo di gioco', a: 'abitazione', spese: [
-                {voce: 'auto privata', quant: 31, importo: 31}
+                {voce: 'km da solo', quant: 21, importo: 5.04},
+                {voce: 'pedaggio', quant: 1, importo: 0.9}
               ]
             }
           ],
           gettoni: [
-            {voce: '', importo: ''}
+            {voce: 'Gettone', importo: 22},
+            {voce: 'SMS + francobollo', importo: 1}
           ],
-          totale_richiesto: 25.89, totale_approvato: 25.89,
+          totale_richiesto: 34.88, totale_approvato: null,
           stato_rimborso: 0, // 0: da liquidare, 1: in liquidazione, 2: liquidata
         },
-        punteggio_squadra_A: 63, punteggio_squadra_B: 60, referto: '2386.pdf'
+        punteggio_squadra_A: null, punteggio_squadra_B: null, referto: ''
       },
       {
-        numero: '4126',
+        numero: '2641',
         comitato: 'Comitato Regionale Toscana',
-        campionato: 'PM', fase: 'Prima fase', girone: 'D', giornata: 4,
-        datetime: new Date(2021, 0, 31, 21, 15), luogo: 'Palestra Via Pantano - Montemurlo',
-        squadra_A: 'Montemurlo', squadra_B: 'Cestistica Pescia',
+        campionato: 'U19G', fase: 'Prima fase', girone: 'B', giornata: 12,
+        datetime: new Date(2022, 0, 31, 18, 20), luogo: 'Via Toscanini 2, 59100, Prato',
+        squadra_A: 'Prato Basket Giovane', squadra_B: 'Folgore Fucecchio',
         squadra_CIA: [
-          {ruolo: 'Primo arbitro', nome: 'tizio'},
-          {ruolo: 'Secondo arbitro', nome: 'Mario Rossi'},
-          {ruolo: 'Cronometrista', nome: 'tizio'},
-          {ruolo: 'Segnapunti', nome: 'tizio'},
-          {ruolo: '24 secondi', nome: 'tizio'}
+          {ruolo: 'Primo arbitro', nome: 'Kevin Maggi'},
+          {ruolo: 'Secondo arbitro', nome: 'Eduardo Christian Mori'},
+          {ruolo: 'Segnapunti', nome: 'Claudia Santi'},
+          {ruolo: 'Cronometrista', nome: 'Claudia Dini'},
+          {ruolo: '24 secondi', nome: 'Lorenzo Bezzi'},
         ],
         stato: 2,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
         pianificazione: {
           tappe_richieste: [
             {
-              da: '', a: '', spese: [
-                {voce: '', quant_richiesta: null, quant_approvata: null}
+              da: 'abitazione', a: 'campo di gioco', spese: [
+                {voce: 'km da solo', quant: 0, importo: 0}
               ]
             },
             {
-              da: '', a: '', spese: [
-                {voce: '', quant_richiesta: null, quant_approvata: null}
+              da: 'campo di gioco', a: 'abitazione', spese: [
+                {voce: 'km da solo', quant: 0, importo: 0}
               ]
             }
           ],
           gettoni: [
-            {voce: '', importo: ''}
+            {voce: 'Gettone', importo: 22},
+            {voce: 'SMS + francobollo', importo: 1}
           ],
-          totale_richiesto: 55.4, totale_approvato: 53.4,
+          totale_richiesto: 23, totale_approvato: null,
           stato_rimborso: 0, // 0: da liquidare, 1: in liquidazione, 2: liquidata
         },
-        punteggio_squadra_A: null, punteggio_squadra_B: null, referto: '.pdf'
+        punteggio_squadra_A: null, punteggio_squadra_B: null, referto: ''
       },
       {
-        numero: '4023',
+        numero: '3188',
         comitato: 'Comitato Regionale Toscana',
-        campionato: '', fase: '', girone: '', giornata: null,
-        datetime: new Date(2022, 1, 24, 20, 30), luogo: '',
-        squadra_A: '', squadra_B: '',
+        campionato: 'U17G', fase: 'Prima fase', girone: 'B', giornata: 11,
+        datetime: new Date(2022, 0, 30, 11, 0), luogo: 'Via Boccaccio 13, 50060, Pelago',
+        squadra_A: 'Valdisieve', squadra_B: 'CUS Firenze',
         squadra_CIA: [
-          {ruolo: 'Primo arbitro', nome: 'Mario Rossi'},
-          {ruolo: 'Secondo arbitro', nome: 'tizio'},
-          {ruolo: 'Cronometrista', nome: 'tizio'},
-          {ruolo: 'Segnapunti', nome: 'tizio'},
-          {ruolo: '24 secondi', nome: 'tizio'}
-        ],
-        stato: 2,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
-        pianificazione: {
-          tappe_richieste: [
-            {
-              da: '', a: '', spese: [
-                {voce: '', quant_richiesta: null, quant_approvata: null}
-              ]
-            },
-            {
-              da: '', a: '', spese: [
-                {voce: '', quant_richiesta: null, quant_approvata: null}
-              ]
-            }
-          ],
-          gettoni: [
-            {voce: '', importo: ''}
-          ],
-          totale_richiesto: 29.1, totale_approvato: 29.5,
-          stato_rimborso: 0, // 0: da liquidare, 1: in liquidazione, 2: liquidata
-        },
-        punteggio_squadra_A: null, punteggio_squadra_B: null, referto: '.pdf'
-      },
-      {
-        numero: '5642',
-        comitato: 'Comitato Regionale Toscana',
-        campionato: '', fase: '', girone: '', giornata: null,
-        datetime: new Date(2022, 0, 23, 18, 30), luogo: '',
-        squadra_A: '', squadra_B: '',
-        squadra_CIA: [
-          {ruolo: 'Primo arbitro', nome: 'tizio'},
-          {ruolo: 'Secondo arbitro', nome: 'Mario Rossi'},
-          {ruolo: 'Cronometrista', nome: 'tizio'},
-          {ruolo: 'Segnapunti', nome: 'tizio'},
-          {ruolo: '24 secondi', nome: 'tizio'}
+          {ruolo: 'Primo arbitro', nome: 'Kevin Maggi'},
+          {ruolo: 'Secondo arbitro', nome: 'Giovanni Belgodere'},
+          {ruolo: 'Segnapunti', nome: 'Paolo Burchi'},
         ],
         stato: 4,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
         pianificazione: {
           tappe_richieste: [
             {
-              da: '', a: '', spese: [
-                {voce: '', quant_richiesta: null, quant_approvata: null}
+              da: 'abitazione', a: 'Bagno a Ripoli', spese: [
+                {voce: 'km da solo', quant: 24, importo: 5.76},
+                {voce: 'pedaggio', quant: 1, importo: 2},
               ]
             },
             {
-              da: '', a: '', spese: [
-                {voce: '', quant_richiesta: null, quant_approvata: null}
+              da: 'Bagno a Ripoli', a: 'campo di gioco', spese: [
+                {voce: 'km con collega', quant: 23, importo: 0},
               ]
-            }
+            },
+            {
+              da: 'campo di gioco', a: 'Bagno a Ripoli', spese: [
+                {voce: 'km con collega', quant: 23, importo: 0},
+              ]
+            },
+            {
+              da: 'Bagno a Ripoli', a: 'abitazione', spese: [
+                {voce: 'km da solo', quant: 24, importo: 5.76},
+                {voce: 'pedaggio', quant: 1, importo: 2},
+              ]
+            },
           ],
           gettoni: [
-            {voce: '', importo: ''}
+            {voce: 'Gettone', importo: 22},
+            {voce: 'SMS + francobollo', importo: 1}
           ],
-          totale_richiesto: 27.6, totale_approvato: 25.3,
+          totale_richiesto: 34.52, totale_approvato: null,
           stato_rimborso: 0, // 0: da liquidare, 1: in liquidazione, 2: liquidata
         },
-        punteggio_squadra_A: null, punteggio_squadra_B: null, referto: '.pdf'
+        punteggio_squadra_A: 75, punteggio_squadra_B: 69, referto: '3188.pdf'
       },
       {
-        numero: '2687',
-        comitato: 'Settore Agonistico Roma',
-        campionato: '', fase: '', girone: '', giornata: null,
-        datetime: new Date(2022, 0, 23, 19, 45), luogo: '',
-        squadra_A: '', squadra_B: '',
+        numero: '1590',
+        comitato: 'Comitato Regionale Toscana',
+        campionato: 'PM', fase: 'Prima fase', girone: 'B', giornata: 1,
+        datetime: new Date(2022, 0, 23, 18, 30), luogo: 'Via della pieve 58, 50067, Rignano sull\'Arno',
+        squadra_A: 'Centro Minibasket Arno', squadra_B: 'Montespertoli',
         squadra_CIA: [
-          {ruolo: 'Primo arbitro', nome: 'Mario Rossi'},
-          {ruolo: 'Secondo arbitro', nome: 'tizio'},
-          {ruolo: 'Cronometrista', nome: 'tizio'},
-          {ruolo: 'Segnapunti', nome: 'tizio'},
-          {ruolo: '24 secondi', nome: 'tizio'}
+          {ruolo: 'Primo arbitro', nome: 'Kevin Maggi'},
+          {ruolo: 'Secondo arbitro', nome: 'Alessandro Sizzi'},
+          {ruolo: 'Segnapunti', nome: 'Paolo Burchi'},
         ],
         stato: 5,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
         pianificazione: {
           tappe_richieste: [
             {
-              da: '', a: '', spese: [
-                {voce: '', quant_richiesta: null, quant_approvata: null}
+              da: 'abitazione', a: 'campo di gioco', spese: [
+                {voce: 'km da solo', quant: 58, importo: 13.92},
+                {voce: 'pedaggio', quant: 1, importo: 3.3}
               ]
             },
             {
-              da: '', a: '', spese: [
-                {voce: '', quant_richiesta: null, quant_approvata: null}
+              da: 'campo di gioco', a: 'abitazione', spese: [
+                {voce: 'km da solo', quant: 58, importo: 13.92},
+                {voce: 'pedaggio', quant: 1, importo: 3.3}
               ]
-            }
+            },
           ],
           gettoni: [
-            {voce: '', importo: ''}
+            {voce: 'Gettone', importo: 25},
+            {voce: 'SMS + francobollo', importo: 1}
           ],
-          totale_richiesto: 22.0, totale_approvato: 22.0,
+          totale_richiesto: 60.44, totale_approvato: 60.44,
+          stato_rimborso: 0, // 0: da liquidare, 1: in liquidazione, 2: liquidata
+        },
+        punteggio_squadra_A: 52, punteggio_squadra_B: 65, referto: '1590.pdf'
+      },
+      {
+        numero: '1015',
+        comitato: 'Comitato Regionale Toscana',
+        campionato: 'U15E', fase: 'Prima fase', girone: 'A', giornata: 13,
+        datetime: new Date(2022, 0, 16, 11, 30), luogo: 'Via T. Alderotti 26, 50136, Firenze',
+        squadra_A: 'Laurenziana Basket', squadra_B: 'Biancorosso Empoli',
+        squadra_CIA: [
+          {ruolo: 'Primo arbitro', nome: 'Kevin Maggi'},
+          {ruolo: 'Secondo arbitro', nome: 'Lorenzo Cima'},
+          {ruolo: 'Segnapunti', nome: 'Marco Checcacci'},
+          {ruolo: 'Cronometrista', nome: 'Claudio Indaco'}
+        ],
+        stato: 5,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
+        pianificazione: {
+          tappe_richieste: [
+            {
+              da: 'abitazione', a: 'campo di gioco', spese: [
+                {voce: 'km da solo', quant: 18, importo: 4.32},
+                {voce: 'pedaggio', quant: 1, importo: 0.7}
+              ]
+            },
+            {
+              da: 'campo di gioco', a: 'abitazione', spese: [
+                {voce: 'km da solo', quant: 18, importo: 4.32},
+                {voce: 'pedaggio', quant: 1, importo: 0.7}
+              ]
+            },
+          ],
+          gettoni: [
+            {voce: 'Gettone', importo: 25},
+            {voce: 'SMS + francobollo', importo: 1}
+          ],
+          totale_richiesto: 36.04, totale_approvato: 35.84,
+          stato_rimborso: 1, // 0: da liquidare, 1: in liquidazione, 2: liquidata
+        },
+        punteggio_squadra_A: 53, punteggio_squadra_B: 76, referto: '1015.pdf'
+      },
+      {
+        numero: '3418',
+        comitato: 'Comitato Regionale Toscana',
+        campionato: 'U15S', fase: 'Prima fase', girone: 'F', giornata: 5,
+        datetime: new Date(2021, 11, 12, 9, 30), luogo: 'Via Toscanini 2, 59100, Prato',
+        squadra_A: 'Pallacanestro 2000 Prato', squadra_B: 'DLF Firenze Basket',
+        squadra_CIA: [
+          {ruolo: 'Primo arbitro', nome: 'Kevin Maggi'},
+        ],
+        stato: 5,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
+        pianificazione: {
+          tappe_richieste: [
+            {
+              da: 'abitazione', a: 'campo di gioco', spese: [
+                {voce: 'km da solo', quant: 0, importo: 0},
+              ]
+            },
+            {
+              da: 'campo di gioco', a: 'abitazione', spese: [
+                {voce: 'km da solo', quant: 0, importo: 0},
+              ]
+            },
+          ],
+          gettoni: [
+            {voce: 'Gettone', importo: 20},
+            {voce: 'SMS + francobollo', importo: 1}
+          ],
+          totale_richiesto: 21, totale_approvato: 21,
           stato_rimborso: 2, // 0: da liquidare, 1: in liquidazione, 2: liquidata
         },
-        punteggio_squadra_A: null, punteggio_squadra_B: null, referto: '.pdf'
+        punteggio_squadra_A: 42, punteggio_squadra_B: 68, referto: '3418.pdf'
+      },
+      {
+        numero: '3600',
+        comitato: 'Comitato Regionale Toscana',
+        campionato: 'U17S', fase: 'Prima fase', girone: 'C', giornata: 5,
+        datetime: new Date(2021, 11, 11, 16, 30), luogo: 'Via Pantano, 50045, Montemurlo',
+        squadra_A: 'Lions Montemurlo Basket', squadra_B: 'Dany Quarrata',
+        squadra_CIA: [
+          {ruolo: 'Primo arbitro', nome: 'Kevin Maggi'},
+        ],
+        stato: 5,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
+        pianificazione: {
+          tappe_richieste: [
+            {
+              da: 'abitazione', a: 'campo di gioco', spese: [
+                {voce: 'km da solo', quant: 8, importo: 1.92},
+              ]
+            },
+            {
+              da: 'campo di gioco', a: 'abitazione', spese: [
+                {voce: 'km da solo', quant: 9, importo: 2.16},
+              ]
+            },
+          ],
+          gettoni: [
+            {voce: 'Gettone', importo: 22},
+            {voce: 'SMS + francobollo', importo: 1}
+          ],
+          totale_richiesto: 27.08, totale_approvato: 27.32,
+          stato_rimborso: 2, // 0: da liquidare, 1: in liquidazione, 2: liquidata
+        },
+        punteggio_squadra_A: 56, punteggio_squadra_B: 58, referto: '3600.pdf'
       },
     ]
   },
@@ -375,24 +478,15 @@ Vue.prototype.$archivio_rimborsi = [
           {
             data: new Date(2022, 0, 20),
             visualizzato: false,
-            partite: ['4023', '2386']
+            partite: ['1015']
           },
           {
-            data: new Date(2022, 0, 15),
+            data: new Date(2022, 0, 5),
             visualizzato: true,
-            partite: ['5642', '4126']
+            partite: ['3600', '3418']
           }
         ]
       },
-      {
-        comitato: 'Settore Agonistico Roma', liquidazioni: [
-          {
-            data: new Date(2022, 0, 25),
-            visualizzato: true,
-            partite: ['2687']
-          }
-        ]
-      }
     ]
   },
   {season: 'Stagione 2020/2021', rimborsi: []}

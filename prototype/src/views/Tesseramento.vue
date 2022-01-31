@@ -43,19 +43,22 @@
     </section>
 
     <transition name="fade">
-      <div class="overlay" v-if="info_active" @click="info_active = false">
+      <div class="overlay overlay-info" v-if="info_active" @click="info_active = false">
         <div id="info" @click.stop>
           <button id="info_close" class="btn btn-primary btn-circle-small" @click="info_active = false">
             <span class="material-icons-round">clear</span>
           </button>
           <h2>Info tesseramento</h2>
-          <p>Il tesseramento per la tua categoria prevede il pagamento di una quota pari a {{ costo }}€ qualora
-            effettuato
-            entro il {{ chiusura }}; dopo tale data è previsto il pagamento di una mora per un totale di
-            {{ costo_mora }}€.</p>
-          <p>Per altre informazioni sul tesseramento e sulle tessere libero ingresso fare riferimento alla circolare di
-            tesseramento relativa alla stagione {{ stagione }} reperibile sul <a href="https://www.fip.it/cia/">sito
-              CIA</a>.</p>
+          <div class="content">
+            <p>Il tesseramento per la tua categoria prevede il pagamento di una quota pari a {{ costo }}€ qualora
+              effettuato
+              entro il {{ chiusura }}; dopo tale data è previsto il pagamento di una mora per un totale di
+              {{ costo_mora }}€.</p>
+            <p>Per altre informazioni sul tesseramento e sulle tessere libero ingresso fare riferimento alla circolare
+              di
+              tesseramento relativa alla stagione {{ stagione }} reperibile sul <a href="https://www.fip.it/cia/">sito
+                CIA</a>.</p>
+          </div>
         </div>
       </div>
     </transition>

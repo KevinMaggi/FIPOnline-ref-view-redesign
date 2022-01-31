@@ -28,8 +28,9 @@
     <!-- tappe -->
     <h2>Tappe</h2>
     <div v-for="(tappa, index) in partita.pianificazione.tappe_richieste" :key="index">
-      <p><span class="tappa">Tappa {{ index + 1 }}</span>: da <span class="luogo">{{ tappa.da }}</span> a <span
-        class="luogo">{{ tappa.a }}</span></p>
+      <p class="tappa"><span class="indice">Tappa {{ index + 1 }}</span>: da <span class="luogo">{{ tappa.da }}</span> a
+        <span
+          class="luogo">{{ tappa.a }}</span></p>
       <table v-bind:id="'tappa'+index" class="table table-striped table-sm table-bordered">
         <thead>
         <tr>
@@ -42,7 +43,7 @@
         <tr v-for="spesa in tappa.spese" :key="JSON.stringify(spesa)">
           <td>{{ spesa.voce }}</td>
           <td>{{ spesa.quant }}</td>
-          <td>{{ spesa.importo }}€</td>
+          <td>{{ spesa.importo.toFixed(2) }}€</td>
         </tr>
         </tbody>
       </table>
@@ -66,7 +67,7 @@
         </tbody>
       </table>
     </div>
-    <h2>Totale richiesto: <span class="cifra">{{ partita.pianificazione.totale_richiesto }}€</span></h2>
+    <h2>Totale richiesto: <span class="cifra">{{ partita.pianificazione.totale_richiesto.toFixed(2) }}€</span></h2>
 
     <!-- pulsanti -->
     <div id="buttons">
@@ -85,43 +86,56 @@
 
     <!-- modals -->
     <transition name="fade">
-      <div class="overlay" v-if="info" @click="info = false">
+      <div class="overlay overlay-info" v-if="info" @click="info = false">
         <div id="info" @click.stop>
           <button id="info_close" class="btn btn-primary btn-circle-small" @click="info = false">
             <span class="material-icons-round">clear</span>
           </button>
           <h2>Info rimborso</h2>
-          <p>Il rimborso kilometrico attuale è {{ rimborso_km }}€/km.</p>
-          <p>Sono previsti i seguenti gettoni:</p>
-          <table class="table table-striped table-sm table-bordered">
-            <thead>
-            <tr>
-              <th v-for="(col, name) in gettoni[0]" :key="name">{{ name }}</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="entry in gettoni" :key="entry + Math.random()">
-              <td v-for="row in entry" :key="row + Math.random()">{{
-                  row
-                }}{{ (typeof (row) === 'number') ? '€' : '' }}
-              </td>
-            </tr>
-            </tbody>
-          </table>
-          <p v-if="ruolo === 'ref'">In caso di due gare a cavallo di un pasto o di arbitraggio singolo nelle categorie
-            U20, PM e campionati d'Eccellenza è previsto un gettone extra di {{ gettone_extra }}€.</p>
+          <div class="content">
+            <p>Il rimborso kilometrico attuale è {{ rimborso_km }}€/km.</p>
+            <p>Sono previsti i seguenti gettoni:</p>
+            <table class="table table-striped table-sm table-bordered">
+              <thead>
+              <tr>
+                <th v-for="(col, name) in gettoni[0]" :key="name">{{ name }}</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr v-for="entry in gettoni" :key="entry + Math.random()">
+                <td v-for="row in entry" :key="row + Math.random()">{{
+                    row
+                  }}{{ (typeof (row) === 'number') ? '€' : '' }}
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            <p v-if="ruolo === 'ref'">In caso di due gare a cavallo di un pasto o di arbitraggio singolo nelle categorie
+              U20, PM e campionati d'Eccellenza è previsto un gettone extra di {{ gettone_extra }}€.</p>
+          </div>
         </div>
       </div>
+    </transition>
+
+    <transition name="slide-fade">
+      <cancella_tappa v-if="remove" v-on:remove_close="remove = false"
+                      :pianificazione="partita.pianificazione"></cancella_tappa>
+    </transition>
+    <transition name="slide-fade">
+      <aggiungi_tappa v-if="add" v-on:add_close="add = false" :pianificazione="partita.pianificazione"></aggiungi_tappa>
     </transition>
   </div>
 </template>
 
 <script>
 import Vue from "vue";
+import Cancella_tappa from "@/components/Cancella_tappa";
+import Aggiungi_tappa from "@/components/Aggiungi_tappa";
 
 export default {
   name: "Pianificazione",
   props: ['stagione', 'numero'],
+  components: {/* eslint-disable vue/no-unused-components */Cancella_tappa, Aggiungi_tappa},
   data: function () {
     return {
       ruolo: Vue.prototype.$ruolo,
@@ -193,18 +207,6 @@ export default {
 
     &.rotate {
       transform: rotate(-180deg);
-    }
-  }
-
-  p {
-    padding-left: 5%;
-
-    .tappa {
-      font-weight: bold;
-    }
-
-    .luogo {
-      font-style: italic;
     }
   }
 

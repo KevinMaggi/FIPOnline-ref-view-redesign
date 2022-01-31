@@ -1,4 +1,5 @@
 @import "variables.scss";
+@import "constants.scss";
 
 // buttons
 
@@ -210,18 +211,25 @@ h2 {
 
 // overlay {
 .overlay {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  bottom: 0;
   left: 0;
   width: 100%;
-  min-height: 100%;
+  height: calc(100vh - #{$navbar-height});
   background-color: rgba(white, 0.75);
   display: flex;
-  padding: 20px;
+  padding: 20px 10px;
   justify-content: center;
-  align-items: center;
   flex-wrap: wrap;
   font-size: $text;
+
+  &.overlay-info {
+    align-items: center;
+  }
+
+  &.overlay-action {
+    align-items: flex-end;
+  }
 
   #info {
     position: relative;
@@ -230,11 +238,12 @@ h2 {
     background-color: $secondary;
     width: 75%;
     min-width: 300px;
-    height: min-content;
+    max-height: 100%;
     padding: 50px 20px 20px 20px;
     color: $primary;
     box-shadow: $shadow;
-    margin: 20px;
+    display: flex;
+    flex-direction: column;
 
     #info_close {
       position: absolute;
@@ -242,8 +251,42 @@ h2 {
       right: 10px;
     }
 
-    .table * {
-      padding: 0 !important;
+    .content {
+      overflow: auto;
+      padding: 5px 0;
+
+      .table * {
+        padding: 0 !important;
+      }
+
+      .line {
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+
+        label {
+          margin-right: 20px;
+          font-weight: bold;
+        }
+
+        select {
+          width: 175px;
+        }
+      }
+
+      .links {
+        font-size: smaller;
+
+        span:first-of-type {
+          font-weight: bold;
+          margin-right: 20px;
+        }
+
+        span:not(:first-of-type):not(:last-of-type)::after {
+          margin: 0 5px;
+          content: "|";
+        }
+      }
     }
   }
 
@@ -262,6 +305,15 @@ h2 {
 }
 
 .fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.slide-fade-enter-active, .slide-fade-leave-active {
+  transition: all .5s linear;
+}
+
+.slide-fade-enter, .slide-fade-leave-to {
+  transform: translateY(100px);
   opacity: 0;
 }
 
@@ -369,5 +421,18 @@ h2 {
 @media screen and (max-width: 400px) {
   .gara {
     font-size: $text-small;
+  }
+}
+
+// pianificazione
+.tappa {
+  padding-left: 5%;
+
+  .indice {
+    font-weight: bold;
+  }
+
+  .luogo {
+    font-style: italic;
   }
 }
