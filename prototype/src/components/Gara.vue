@@ -74,7 +74,7 @@
 
         <!-- Additional items -->
         <div v-if="stato === 1 || stato === 2"> <!-- da disputare -->
-          <p><span>Rimborso richiesto:</span><span>{{ elemento.pianificazione.totale_richiesto }}€</span></p>
+          <p><span>Rimborso richiesto:</span><span>{{ elemento.pianificazione.totale_richiesto.toFixed(2) }}€</span></p>
         </div>
         <div v-else-if="stato === 3 || stato === 4" class="result"> <!-- da refertare -->
           <p>
@@ -177,7 +177,7 @@ export default {
       this.stato = 1
     },
     pianifica() {
-      this.elemento.stato = 2   // otherwise router change prevent watcher's call
+      //this.elemento.stato = 2   // otherwise router change prevent watcher's call
       this.$emit('pianificazione', this.elemento)
     },
     referta() {

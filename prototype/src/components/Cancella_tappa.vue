@@ -6,7 +6,7 @@
       </button>
       <h2>Rimuovi tappe</h2>
       <div class="content">
-        <div v-for="(tappa, index) in pianificazione.tappe_richieste" :key="index">
+        <div v-for="(tappa, index) in gara.pianificazione.tappe_richieste" :key="index">
           <label class="form-check-label">
             <input class="form-check-input" type="checkbox" value="" @click="select(index)">
             <span class="tappa"><span class="indice">Tappa {{ index + 1 }}</span>: da <span class="luogo">{{
@@ -32,23 +32,27 @@
 <script>
 export default {
   name: "Cancella_tappa",
-  props: ['pianificazione'],
+  props: ['gara'],
   data: function () {
     return {
       disabled: true,
-      selected: Array(this.pianificazione.tappe_richieste.length).fill(0)
+      selected: Array(this.gara.pianificazione.tappe_richieste.length).fill(0)
     }
   },
   methods: {
     remove() {
-      for (let i = this.pianificazione.tappe_richieste.length - 1; i >= 0; i--) { // backward to allow multiple deletion
+      for (let i = this.gara.pianificazione.tappe_richieste.length - 1; i >= 0; i--) { // backward to allow multiple deletion
         if (this.selected[i]) {
-          let cifra = this.pianificazione.tappe_richieste[i].spese.reduce(function (acc, obj) {
+          let cifra = this.gara.pianificazione.tappe_richieste[i].spese.reduce(function (acc, obj) {
             return acc + obj.importo
           }, 0)
-          this.pianificazione.tappe_richieste.splice(i, 1)
-          this.pianificazione.totale_richiesto -= cifra
+          this.gara.pianificazione.tappe_richieste.splice(i, 1)
+          this.gara.pianificazione.totale_richiesto -= cifra
         }
+      }
+
+      if (this.gara.pianificazione.tappe_richieste.length === 0) {
+        this.gara.stato = 1
       }
 
       this.$emit('remove_close')

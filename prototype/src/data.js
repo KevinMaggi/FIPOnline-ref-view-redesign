@@ -20,7 +20,7 @@ Vue.prototype.$stagione = '2021/2022';
 Vue.prototype.$scadenza_certificato = new Date(2022, 7, 15)
 
 // gettoni e rimborsi
-Vue.prototype.$rimborso_km = 0.23
+Vue.prototype.$rimborso_km = 0.24
 Vue.prototype.$gettoni_ref = [
   {'Categorie': 'C Gold', 'Importo': 40, 'Importo >100km A/R': 55},
   {'Categorie': 'C Silver', 'Importo': 30, 'Importo >100km A/R': 42},
@@ -146,12 +146,6 @@ Vue.prototype.$archivio_gare = [
         stato: 0,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
         pianificazione: {
           tappe_richieste: [
-            {
-              da: '', a: '', spese: []
-            },
-            {
-              da: '', a: '', spese: []
-            }
           ],
           gettoni: [
             {voce: 'Gettone', importo: 20},
@@ -176,12 +170,6 @@ Vue.prototype.$archivio_gare = [
         stato: 1,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
         pianificazione: {
           tappe_richieste: [
-            {
-              da: '', a: '', spese: []
-            },
-            {
-              da: '', a: '', spese: []
-            }
           ],
           gettoni: [
             {voce: 'Gettone', importo: 25},

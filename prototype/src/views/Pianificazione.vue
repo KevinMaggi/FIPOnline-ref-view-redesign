@@ -119,10 +119,10 @@
 
     <transition name="slide-fade">
       <cancella_tappa v-if="remove" v-on:remove_close="remove = false"
-                      :pianificazione="partita.pianificazione"></cancella_tappa>
+                      :gara="partita"></cancella_tappa>
     </transition>
     <transition name="slide-fade">
-      <aggiungi_tappa v-if="add" v-on:add_close="add = false" :pianificazione="partita.pianificazione"></aggiungi_tappa>
+      <aggiungi_tappa v-if="add" v-on:add_close="add = false" :gara="partita"></aggiungi_tappa>
     </transition>
   </div>
 </template>
