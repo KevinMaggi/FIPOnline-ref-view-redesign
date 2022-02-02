@@ -4,7 +4,9 @@
       <button id="info_close" class="btn btn-primary btn-circle-small" @click="$emit('add_close')">
         <span class="material-icons-round">clear</span>
       </button>
+
       <h2>Aggiungi tappa</h2>
+
       <div class="content">
         <div class="line">
           <span class="form-label label">Voce:</span>
@@ -42,8 +44,8 @@
                 <span>località generica:</span>
               </label>
               <input type="text" class="form-control input-small" id="part_gen" v-model="part_gen"
-                     :disabled="partenza !== 'località generica'" aria-label="località generica di partenza"
-                     placeholder="località">
+                     placeholder="località"
+                     :disabled="partenza !== 'località generica'" aria-label="località generica di partenza">
             </div>
           </div>
         </div>
@@ -72,8 +74,8 @@
                 <span>località generica:</span>
               </label>
               <input type="text" class="form-control input-small" id="dest_gen" v-model="dest_gen"
-                     :disabled="destinazione !== 'località generica'" aria-label="località generica di destinazione"
-                     placeholder="località">
+                     placeholder="località"
+                     :disabled="destinazione !== 'località generica'" aria-label="località generica di destinazione">
             </div>
           </div>
         </div>

@@ -9,14 +9,18 @@
         <div v-for="(tappa, index) in gara.pianificazione.tappe_richieste" :key="index">
           <label class="form-check-label">
             <input class="form-check-input" type="checkbox" value="" @click="select(index)">
-            <span class="tappa"><span class="indice">Tappa {{ index + 1 }}</span>: da <span class="luogo">{{
-                tappa.da
-              }}</span> a <span
-              class="luogo">{{ tappa.a }}</span> ({{
+            <span class="tappa">
+              <span class="indice">Tappa {{ index + 1 }}</span>
+              : da
+              <span class="luogo">{{ tappa.da }}</span>
+              a
+              <span class="luogo">{{ tappa.a }}</span>
+              ({{
                 tappa.spese.reduce(function (acc, obj) {
                   return acc + obj.importo
                 }, 0).toFixed(2)
-              }}€)</span>
+              }}€)
+            </span>
           </label>
         </div>
 

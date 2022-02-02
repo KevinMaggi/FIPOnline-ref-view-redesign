@@ -1,0 +1,107 @@
+<template>
+  <nav id="nav" v-if="!isLoginPage()">
+    <img id="logo_nav" src="@/assets/Logo_bianco_150.png" alt="Logo FIP"/>
+    <span id="tessera">Tessera CIA: <span id="numero_tessera">{{ tessera }}</span></span>
+    <div id="back" role="navigation">
+      <div v-if="!isHome() && !isPianificazione()" id="back_home" @click="$router.push({ path: '/' })"
+           class="back" role="link" tabindex="0" aria-label="Torna alla home">
+        <span class="material-icons-round">navigate_before</span>
+        <span class="material-icons-round">home</span>
+      </div>
+      <div v-else-if="isPianificazione()" id="back_partite" @click="$router.go(-1)"
+           class="back" role="link" tabindex="0" aria-label="Torna alle partite">
+        <span class="material-icons-round">navigate_before</span>
+        <span class="material-icons-round">sports</span>
+      </div>
+    </div>
+  </nav>
+</template>
+
+<script>
+import Vue from 'vue'
+
+export default {
+  name: "navbar",
+  data: function () {
+    return {
+      tessera: Vue.prototype.$tessera
+    }
+  },
+  methods: {
+    isLoginPage: function () {
+      return (this.$route.path.startsWith('/accesso'))
+    },
+    isHome: function () {
+      return (this.$route.path === '/')
+    },
+    isPianificazione: function () {
+      return (this.$route.path.startsWith('/pianificazione'))
+    },
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+@import "../styles/constants.scss";
+
+nav {
+  height: $navbar-height;
+  background-color: $primary;
+  position: fixed;
+  top: 0;
+
+  width: 100%;
+  max-width: $max-main-width;
+  box-sizing: content-box;
+  padding: 0 calc(50% - #{$max-main-width / 2});
+  z-index: 100;
+
+  img {
+    margin: 7.5px auto;
+    display: block;
+    max-height: 35px;
+  }
+
+  span#tessera {
+    font-size: 14px;
+    color: white;
+    display: block;
+
+    span#numero_tessera {
+      font-style: italic;
+    }
+  }
+
+  div#back {
+    position: fixed;
+    top: 0;
+    color: white;
+    margin: ($navbar-height - $back-button-height) / 2;
+    cursor: pointer;
+
+    span {
+      transition-property: margin;
+      transition-duration: 0.15s;
+    }
+
+    &:hover {
+      color: $secondary;
+
+      span:last-of-type {
+        margin-left: -10px;
+      }
+    }
+
+    #back_home, #back_partite {
+      height: $back-button-height;
+      display: flex;
+      align-items: center;
+
+      span {
+        font-size: 36px;
+        line-height: 36px;
+      }
+    }
+  }
+}
+</style>

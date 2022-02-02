@@ -2,6 +2,7 @@
   <div id="pianificazione">
     <!-- heading e informazioni -->
     <h1>Gara {{ partita.numero }}</h1>
+
     <div class="details">
       <p><span>Campionato: </span><span>{{ partita.campionato }}</span></p>
       <p><span>Data e ora: </span><span>{{
@@ -29,8 +30,7 @@
     <h2>Tappe</h2>
     <div v-for="(tappa, index) in partita.pianificazione.tappe_richieste" :key="index">
       <p class="tappa"><span class="indice">Tappa {{ index + 1 }}</span>: da <span class="luogo">{{ tappa.da }}</span> a
-        <span
-          class="luogo">{{ tappa.a }}</span></p>
+        <span class="luogo">{{ tappa.a }}</span></p>
       <table v-bind:id="'tappa'+index" class="table table-striped table-sm table-bordered">
         <thead>
         <tr>
@@ -86,40 +86,31 @@
 
     <!-- modals -->
     <transition name="fade">
-      <div class="overlay overlay-info" v-if="info" @click="info = false">
-        <div id="info" @click.stop>
-          <button id="info_close" class="btn btn-primary btn-circle-small" @click="info = false">
-            <span class="material-icons-round">clear</span>
-          </button>
-          <h2>Info rimborso</h2>
-          <div class="content">
-            <p>Il rimborso kilometrico attuale è {{ rimborso_km }}€/km.</p>
-            <p>Sono previsti i seguenti gettoni:</p>
-            <table class="table table-striped table-sm table-bordered">
-              <thead>
-              <tr>
-                <th v-for="(col, name) in gettoni[0]" :key="name">{{ name }}</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr v-for="entry in gettoni" :key="entry + Math.random()">
-                <td v-for="row in entry" :key="row + Math.random()">{{
-                    row
-                  }}{{ (typeof (row) === 'number') ? '€' : '' }}
-                </td>
-              </tr>
-              </tbody>
-            </table>
-            <p v-if="ruolo === 'ref'">In caso di due gare a cavallo di un pasto o di arbitraggio singolo nelle categorie
-              U20, PM e campionati d'Eccellenza è previsto un gettone extra di {{ gettone_extra }}€.</p>
-          </div>
-        </div>
-      </div>
+      <info_modal v-if="info" title="Info rimborso" v-on:close="info = false">
+        <p>Il rimborso kilometrico attuale è {{ rimborso_km }}€/km.</p>
+        <p>Sono previsti i seguenti gettoni:</p>
+        <table class="table table-striped table-sm table-bordered">
+          <thead>
+          <tr>
+            <th v-for="(col, name) in gettoni[0]" :key="name">{{ name }}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for="entry in gettoni" :key="entry + Math.random()">
+            <td v-for="row in entry" :key="row + Math.random()">{{ row }}{{
+                (typeof (row) === 'number') ? '€' : ''
+              }}
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <p v-if="ruolo === 'ref'">In caso di due gare a cavallo di un pasto o di arbitraggio singolo nelle categorie
+          U20, PM e campionati d'Eccellenza è previsto un gettone extra di {{ gettone_extra }}€.</p>
+      </info_modal>
     </transition>
 
     <transition name="slide-fade">
-      <cancella_tappa v-if="remove" v-on:remove_close="remove = false"
-                      :gara="partita"></cancella_tappa>
+      <cancella_tappa v-if="remove" v-on:remove_close="remove = false" :gara="partita"></cancella_tappa>
     </transition>
     <transition name="slide-fade">
       <aggiungi_tappa v-if="add" v-on:add_close="add = false" :gara="partita"></aggiungi_tappa>
@@ -131,11 +122,12 @@
 import Vue from "vue";
 import Cancella_tappa from "@/components/Cancella_tappa";
 import Aggiungi_tappa from "@/components/Aggiungi_tappa";
+import info_modal from "@/components/info_modal";
 
 export default {
   name: "Pianificazione",
   props: ['stagione', 'numero'],
-  components: {/* eslint-disable vue/no-unused-components */Cancella_tappa, Aggiungi_tappa},
+  components: {/* eslint-disable vue/no-unused-components */Cancella_tappa, Aggiungi_tappa, info_modal},
   data: function () {
     return {
       ruolo: Vue.prototype.$ruolo,

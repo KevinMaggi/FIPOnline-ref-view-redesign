@@ -3,13 +3,16 @@
     <h1>Rimborsi</h1>
     <stagione v-on:change_season="season_changed($event)"></stagione>
 
-    <p v-if="current_archivio().rimborsi.length === 0"
+    <p v-if="current_archivio().length === 0"
        id="empty-list">
       <span>Nessun rimborso presente</span>
     </p>
-    <section v-else v-for="rimborso in current_archivio().rimborsi" :key="rimborso.comitato">
+
+    <section v-else v-for="rimborso in current_archivio()" :key="rimborso.comitato">
       <h2>{{ rimborso.comitato }}</h2>
+
       <div class="accordion" v-bind:id="rimborso.comitato.replaceAll(' ','_')">
+
         <div class="accordion-item" v-for="liquidazione in rimborso.liquidazioni"
              :key="liquidazione.data.toDateString()">
           <h3 class="accordion-header" v-bind:id="'liquidazione_'+liquidazione.partite[0]+'_header'">
@@ -40,9 +43,7 @@
                       day: '2-digit'
                     })
                   }}:
-                  <span class="cifra">{{
-                      get_partita(partita).pianificazione.totale_approvato.toFixed(2)
-                    }}€
+                  <span class="cifra">{{ get_partita(partita).pianificazione.totale_approvato.toFixed(2) }}€
                     <del
                       v-if="get_partita(partita).pianificazione.totale_approvato !== get_partita(partita).pianificazione.totale_richiesto"
                       class="danger">{{ get_partita(partita).pianificazione.totale_richiesto.toFixed(2) }}€</del>
@@ -110,7 +111,7 @@ export default {
       this.selected_season = stagione
     },
     current_archivio() {
-      return this.archivio_rimborsi.filter(annata => annata.season === this.selected_season)[0]
+      return this.archivio_rimborsi.filter(annata => annata.season === this.selected_season)[0].rimborsi
     },
     get_partita(numero) {
       return Vue.prototype.$archivio_gare.filter(annata => annata.season === this.selected_season)[0].gare.filter(gara => gara.numero === numero)[0]
@@ -124,7 +125,7 @@ export default {
     },
     totale() {
       let totale = 0
-      this.current_archivio().rimborsi.forEach(rimborso => rimborso.liquidazioni.forEach(liquidazione => liquidazione.partite.forEach(partita => totale += this.get_partita(partita).pianificazione.totale_approvato)))
+      this.current_archivio().forEach(rimborso => rimborso.liquidazioni.forEach(liquidazione => liquidazione.partite.forEach(partita => totale += this.get_partita(partita).pianificazione.totale_approvato)))
       return totale.toFixed(2)
     },
     visualizza(liquidazione) {

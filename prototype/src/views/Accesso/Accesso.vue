@@ -4,12 +4,10 @@
       <div id="logo">
         <picture>
           <source media="(min-width: 1400)" srcset="../../assets/Logo_blu_1000.png">
-          <source media="(max-width: 400px)" srcset="../../assets/Logo_blu_250.png">
           <img src="../../assets/Logo_blu_500.png" alt="Logo FIP" class="img-fluid">
         </picture>
         <picture>
           <source media="(min-width: 1400)" srcset="../../assets/Logo_fiponline_big.png">
-          <source media="(max-width: 400px)" srcset="../../assets/Logo_fiponline_small.png">
           <img src="../../assets/Logo_fiponline_medium.png" alt="Logo FIPOnline" class="img-fluid">
         </picture>
       </div>

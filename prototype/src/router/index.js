@@ -4,7 +4,7 @@ import Home from '../views/Home.vue'
 import Partite from '../views/Partite.vue'
 import Rimborsi from '../views/Rimborsi.vue'
 import Rapporti from '../views/Rapporti.vue'
-import Tesseramento from '../views/Tesseramento'
+import Tess_cert from '../views/Tess_cert'
 import Anagrafica from '../views/Anagrafica'
 import CambioPw from '../views/CambioPw'
 import Pianificazione from '../views/Pianificazione.vue'
@@ -60,7 +60,7 @@ const routes = [
   {
     path: '/tesseramento',
     name: 'Tesseramento',
-    component: Tesseramento,
+    component: Tess_cert,
     meta: {requiresAuth: true}
   },
   {

@@ -10,77 +10,67 @@
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                   data-bs-target="#da_accettare_body" aria-expanded="false" aria-controls="da_accettare_body">
             <span>Da accettare: &nbsp;</span>
-            <span>{{ numero_da_accettare() }}</span>
-            <span v-if="numero_da_accettare()" class="material-icons-round bdg-inline warning">error</span>
+            <span>{{ da_accettare().length }}</span>
+            <span v-if="da_accettare().length" class="material-icons-round bdg-inline warning">error</span>
           </button>
-
         </h2>
         <div id="da_accettare_body" class="accordion-collapse collapse" aria-labelledby="da_accettare">
           <div class="accordion-body">
-            <gara
-              v-for="gara in archivio_gare.filter(annata => annata.season === this.selected_season)[0].gare.filter(g => g.stato === 0)"
-              :key="gara.numero" v-bind:elemento="gara">
-            </gara>
+            <gara v-for="gara in da_accettare()" :key="gara.numero" v-bind:elemento="gara"></gara>
           </div>
         </div>
       </div>
+
       <!-- Da disputare -->
       <div class="accordion-item">
         <h2 class="accordion-header" id="da_disputare">
           <button class="accordion-button" v-bind:class="{collapsed : !from_pian}" type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#da_disputare_body" v-bind:aria-expanded="!from_pian"
+                  data-bs-toggle="collapse" data-bs-target="#da_disputare_body" v-bind:aria-expanded="!from_pian"
                   aria-controls="da_disputare_body">
             <span>Da disputare: &nbsp;</span>
-            <span>{{ numero_da_pianificare() + numero_pianificate() }}</span>
-            <span v-if="numero_da_pianificare()"
+            <span>{{ da_pianificare().length + pianificate().length }}</span>
+            <span v-if="da_pianificare().length"
                   class="material-icons-round bdg-inline info">notification_important</span>
           </button>
         </h2>
         <div id="da_disputare_body" class="accordion-collapse collapse" v-bind:class="{show : from_pian}"
              aria-labelledby="da_disputare">
           <div class="accordion-body">
-            <gara
-              v-for="gara in archivio_gare.filter(annata => annata.season === this.selected_season)[0].gare.filter(g => {let today = Date.now(); return g.stato === 1 || (g.stato === 2 && today < g.datetime.getTime())})"
-              :key="gara.numero" v-bind:elemento="gara" v-on:pianificazione="pianifica($event)">
-            </gara>
+            <gara v-for="gara in [...da_pianificare(), ...pianificate()]" :key="gara.numero" v-bind:elemento="gara"
+                  v-on:pianificazione="pianifica($event)"></gara>
           </div>
         </div>
       </div>
+
       <!-- Da refertare -->
       <div class="accordion-item" v-if="ruolo === 'ref'">
         <h2 class="accordion-header" id="da_refertare">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                   data-bs-target="#da_refertare_body" aria-expanded="false" aria-controls="da_refertare_body">
             <span>Da refertare: &nbsp;</span>
-            <span>{{ numero_da_refertare() }}</span>
-            <span v-if="numero_da_refertare()" class="material-icons-round bdg-inline warning">error</span>
+            <span>{{ da_refertare().length }}</span>
+            <span v-if="da_refertare().length" class="material-icons-round bdg-inline warning">error</span>
           </button>
         </h2>
         <div id="da_refertare_body" class="accordion-collapse collapse" aria-labelledby="da_refertare">
           <div class="accordion-body">
-            <gara
-              v-for="gara in archivio_gare.filter(annata => annata.season === this.selected_season)[0].gare.filter(g => {let today = Date.now(); return g.stato === 2 && today > g.datetime.getTime()})"
-              :key="gara.numero" v-bind:elemento="gara">
-            </gara>
+            <gara v-for="gara in da_refertare()" :key="gara.numero" v-bind:elemento="gara"></gara>
           </div>
         </div>
       </div>
+
       <!-- Passate -->
       <div class="accordion-item">
         <h2 class="accordion-header" id="passate">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                   data-bs-target="#passate_body" aria-expanded="false" aria-controls="passate_body">
             <span>Passate: &nbsp;</span>
-            <span>{{ numero_passate() }}</span>
+            <span>{{ passate().length }}</span>
           </button>
         </h2>
         <div id="passate_body" class="accordion-collapse collapse" aria-labelledby="passate">
           <div class="accordion-body">
-            <gara
-              v-for="gara in archivio_gare.filter(annata => annata.season === this.selected_season)[0].gare.filter(g => {let today = Date.now(); return (g.stato === 4 || g.stato === 5 || (ruolo === 'udc' && g.stato === 2 && today > g.datetime.getTime()))})"
-              :key="gara.numero" v-bind:elemento="gara">
-            </gara>
+            <gara v-for="gara in passate()" :key="gara.numero" v-bind:elemento="gara"></gara>
           </div>
         </div>
       </div>
@@ -98,16 +88,12 @@ export default {
   components: {Stagione, Gara},
   data: function () {
     return {
+      ruolo: Vue.prototype.$ruolo,
       selected_season: Vue.prototype.$stagioni[0],
       archivio_gare: Vue.prototype.$archivio_gare,
 
       // state
       from_pian: false,
-    }
-  },
-  computed: {
-    ruolo() {
-      return Vue.prototype.$ruolo
     }
   },
   beforeRouteEnter(to, from, next) {
@@ -119,30 +105,30 @@ export default {
     season_changed(stagione) {
       this.selected_season = stagione
     },
-    numero_da_accettare() {
-      return this.archivio_gare.filter(annata => annata.season === this.selected_season)[0].gare.filter(gara => gara.stato === 0).length
+    da_accettare() {
+      return this.archivio_gare.filter(annata => annata.season === this.selected_season)[0].gare.filter(gara => gara.stato === 0)
     },
-    numero_da_pianificare() {
+    da_pianificare() {
       return this.archivio_gare.filter(annata => annata.season === this.selected_season)[0].gare.filter(gara => {
         return gara.stato === 1
-      }).length
+      })
     },
-    numero_pianificate() {
+    pianificate() {
       return this.archivio_gare.filter(annata => annata.season === this.selected_season)[0].gare.filter(gara => {
         return (gara.stato === 2 && Date.now() < gara.datetime.getTime())
-      }).length
+      })
     },
-    numero_da_refertare() {
+    da_refertare() {
       return this.archivio_gare.filter(annata => annata.season === this.selected_season)[0].gare.filter(gara => {
         let today = Date.now();
         return gara.stato === 2 && today > gara.datetime.getTime()
-      }).length
+      })
     },
-    numero_passate() {
+    passate() {
       return this.archivio_gare.filter(annata => annata.season === this.selected_season)[0].gare.filter(gara => {
         let today = Date.now();
         return (gara.stato === 4 || gara.stato === 5 || (this.ruolo === 'udc' && gara.stato === 2 && today > gara.datetime.getTime()))
-      }).length
+      })
     },
     pianifica(gara) {
       this.$router.push('/pianificazione/' + this.selected_season.replaceAll(' ', '_').replaceAll('/', '_') + '/' + gara.numero)

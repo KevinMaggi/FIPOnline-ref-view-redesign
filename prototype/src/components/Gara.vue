@@ -26,14 +26,12 @@
         <span>Modifica</span>
       </button>
       <button v-else-if="stato === 3 && !modifying && ruolo === 'ref'" class="btn btn-warning btn-circle-big"
-              @click.stop="referta">
-        <!-- Da refertare -->
+              @click.stop="referta"> <!-- Da refertare -->
         <span class="material-icons-round">scoreboard</span>
         <span>Referta</span>
       </button>
       <button v-else-if="stato === 4 && !modifying && ruolo === 'ref'" class="btn btn-light btn-circle-big"
-              @click.stop="referta">
-        <!-- Refertata -->
+              @click.stop="referta"> <!-- Refertata -->
         <span class="material-icons-round">scoreboard</span>
         <span>Modifica</span>
       </button>
@@ -100,9 +98,8 @@
           <div v-if="error" class="alert alert-danger" role="alert">Controlla tutti i campi</div>
         </div>
         <div v-else-if="stato === 5 || (ruolo === 'udc' && (stato === 3 || stato === 4))"> <!-- omologata -->
-          <p><span>Rimborso richiesto:</span><span class="danger">{{
-              elemento.pianificazione.totale_richiesto
-            }}€</span></p>
+          <p><span>Rimborso richiesto:</span><span class="danger">{{ elemento.pianificazione.totale_richiesto }}€</span>
+          </p>
           <p><span>Rimborso approvato:</span><span class="success">{{
               elemento.pianificazione.totale_approvato
             }}€</span></p>
@@ -206,5 +203,18 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.gara {
+  .input-gara {
+    border: 1px solid black !important;
+    padding: 0 2.5px !important;
+    color: black !important;
+    margin: 2.5px 0 !important;
+
+    &:disabled {
+      -webkit-text-fill-color: black !important;
+      opacity: 0.33;
+    }
+  }
+}
 </style>

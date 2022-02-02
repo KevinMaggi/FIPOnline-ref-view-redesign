@@ -19,6 +19,13 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.select-season {
+  margin: 5px auto;
+  width: auto;
+  border: none;
+  border-bottom: 2px solid #0055a2;
+  border-radius: 15px 15px 0 0 !important;
+  background-color: $secondary;
+}
 </style>

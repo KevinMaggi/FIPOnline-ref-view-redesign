@@ -2,12 +2,12 @@
   <div id="rapporti">
     <h1>Rapporti</h1>
     <stagione v-on:change_season="season_changed($event)"></stagione>
-    <p v-if="archivio_rapporti.filter(annata => annata.season === selected_season)[0].rapporti.length === 0"
+    <p v-if="selected_season_rapporti().length === 0"
        id="empty-list">
       <span>Nessun rapporto presente</span>
     </p>
     <div v-else id="list">
-      <rapporto v-for="rapporto in archivio_rapporti.filter(annata => annata.season === selected_season)[0].rapporti"
+      <rapporto v-for="rapporto in selected_season_rapporti()"
                 v-bind:key="rapporto.gara_numero" v-bind:elemento="rapporto">
       </rapporto>
     </div>
@@ -32,6 +32,9 @@ export default {
     season_changed(stagione) {
       this.selected_season = stagione
     },
+    selected_season_rapporti() {
+      return this.archivio_rapporti.filter(annata => annata.season === this.selected_season)[0].rapporti
+    }
   }
 }
 </script>

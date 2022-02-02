@@ -43,6 +43,7 @@
         <span>Aggiorna password</span>
       </button>
     </form>
+
     <transition name="fade">
       <div v-if="changed" class="success">
         Password cambiata con successo

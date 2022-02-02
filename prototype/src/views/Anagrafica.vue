@@ -19,7 +19,9 @@
           </button>
         </span>
       </h2>
+
       <div v-if="empty_fields" class="alert alert-danger" role="alert">Completa tutti i campi</div>
+
       <div class="accordion accordion-flush" id="personal_data">
         <div class="accordion-item" v-for="section in dati_personali" :key="section.title">
           <h3 class="accordion-header" v-bind:id="section.title.replaceAll(' ', '_')">
@@ -52,9 +54,12 @@
         </div>
       </div>
     </section>
+
     <hr>
+
     <section>
       <h2>Dati tesserato CIA</h2>
+
       <div class="accordion accordion-flush" id="cia_data">
         <div class="accordion-item" v-for="section in dati_CIA" :key="section.title">
           <h3 class="accordion-header" v-bind:id="section.title.replaceAll(' ', '_')">

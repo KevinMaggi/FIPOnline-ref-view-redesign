@@ -11,13 +11,13 @@ Vue.prototype.$ruolo = 'ref'
 
 // Tesseramento e certificato
 Vue.prototype.$apertura_tesseramento = new Date(2022, 0, 1)
-Vue.prototype.$chiusura_tesseramento = new Date(2022, 6, 15)
+Vue.prototype.$chiusura_tesseramento = new Date(2022, 2, 15)
 Vue.prototype.$rinnovo_tesseramento = false;
 Vue.prototype.$rinnovo_richiesto = false;
 Vue.prototype.$costo_tesseramento = 14;
 Vue.prototype.$costo_tesseramento_mora = 24;
 Vue.prototype.$stagione = '2021/2022';
-Vue.prototype.$scadenza_certificato = new Date(2022, 7, 15)
+Vue.prototype.$scadenza_certificato = new Date(2022, 3, 15)
 
 // gettoni e rimborsi
 Vue.prototype.$rimborso_km = 0.24
