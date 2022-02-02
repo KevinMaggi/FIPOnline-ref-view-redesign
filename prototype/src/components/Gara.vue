@@ -6,8 +6,8 @@
 
     <!-- Badge -->
     <span v-if="stato === 0" class="material-icons-round bdg warning">error</span>
-    <span v-else-if="stato === 1" class="material-icons-round bdg info">new_releases</span>
-    <span v-else-if="stato === 3" class="material-icons-round bdg warning">error</span>
+    <span v-else-if="stato === 1" class="material-icons-round bdg info">notification_important</span>
+    <span v-else-if="stato === 3 && ruolo === 'ref'" class="material-icons-round bdg warning">error</span>
 
     <!-- Content -->
     <div>
@@ -25,12 +25,14 @@
         <span class="material-icons-round">drive_eta</span>
         <span>Modifica</span>
       </button>
-      <button v-else-if="stato === 3 && !modifying" class="btn btn-warning btn-circle-big" @click.stop="referta">
+      <button v-else-if="stato === 3 && !modifying && ruolo === 'ref'" class="btn btn-warning btn-circle-big"
+              @click.stop="referta">
         <!-- Da refertare -->
         <span class="material-icons-round">scoreboard</span>
         <span>Referta</span>
       </button>
-      <button v-else-if="stato === 4 && !modifying" class="btn btn-light btn-circle-big" @click.stop="referta">
+      <button v-else-if="stato === 4 && !modifying && ruolo === 'ref'" class="btn btn-light btn-circle-big"
+              @click.stop="referta">
         <!-- Refertata -->
         <span class="material-icons-round">scoreboard</span>
         <span>Modifica</span>
@@ -76,7 +78,7 @@
         <div v-if="stato === 1 || stato === 2"> <!-- da disputare -->
           <p><span>Rimborso richiesto:</span><span>{{ elemento.pianificazione.totale_richiesto.toFixed(2) }}€</span></p>
         </div>
-        <div v-else-if="stato === 3 || stato === 4" class="result"> <!-- da refertare -->
+        <div v-else-if="(stato === 3 || stato === 4) && ruolo === 'ref'" class="result"> <!-- da refertare -->
           <p>
             <span>Risultato:</span>
             <span>
@@ -97,7 +99,7 @@
           </p>
           <div v-if="error" class="alert alert-danger" role="alert">Controlla tutti i campi</div>
         </div>
-        <div v-else-if="stato === 5"> <!-- omologata -->
+        <div v-else-if="stato === 5 || (ruolo === 'udc' && (stato === 3 || stato === 4))"> <!-- omologata -->
           <p><span>Rimborso richiesto:</span><span class="danger">{{
               elemento.pianificazione.totale_richiesto
             }}€</span></p>
@@ -117,6 +119,8 @@
 </template>
 
 <script>
+import Vue from 'vue'
+
 export default {
   name: "Gara",
   props: {
@@ -124,6 +128,8 @@ export default {
   },
   data: function () {
     return {
+      ruolo: Vue.prototype.$ruolo,
+
       // state flag
       collapsed: true,
       modifying: false,

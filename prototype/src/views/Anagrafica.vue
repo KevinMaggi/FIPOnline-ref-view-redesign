@@ -97,7 +97,7 @@ export default {
   name: "Anagrafica",
   data: function () {
     return {
-      dati_CIA: Vue.prototype.$dati_CIA,
+      dati_CIA: (Vue.prototype.$ruolo === 'ref') ? Vue.prototype.$dati_CIA_ref : Vue.prototype.$dati_CIA_udc,
       // Deep copy of the "database" data because I want to memorize them persistently only on save
       dati_personali: JSON.parse(JSON.stringify(Vue.prototype.$dati_personali)),
 

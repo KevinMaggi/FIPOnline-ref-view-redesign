@@ -12,10 +12,11 @@
           <span>da disputare:&nbsp;<span v-bind:class="{ info: da_pianificare() }">{{
               da_pianificare() + pianificate()
             }}</span></span><br/>
-          <span>da refertare:&nbsp;<span v-bind:class="{ warning: da_refertare() }">{{ da_refertare() }}</span></span>
+          <span v-if="ruolo === 'ref'">da refertare:&nbsp;<span
+            v-bind:class="{ warning: da_refertare() }">{{ da_refertare() }}</span></span>
         </div>
-        <span v-if="da_accettare() || da_refertare()" class="material-icons-round bdg warning">error</span>
-        <span v-else-if="da_pianificare()" class="material-icons-round bdg info">new_releases</span>
+        <span v-if="da_accettare() || (ruolo === 'ref' && da_refertare())" class="material-icons-round bdg warning">error</span>
+        <span v-else-if="da_pianificare()" class="material-icons-round bdg info">notification_important</span>
       </router-link>
       <div>
         <router-link to="/rimborsi" class="btn btn-secondary btn-home">

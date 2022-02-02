@@ -33,7 +33,8 @@
                   aria-controls="da_disputare_body">
             <span>Da disputare: &nbsp;</span>
             <span>{{ numero_da_pianificare() + numero_pianificate() }}</span>
-            <span v-if="numero_da_pianificare()" class="material-icons-round bdg-inline info">new_releases</span>
+            <span v-if="numero_da_pianificare()"
+                  class="material-icons-round bdg-inline info">notification_important</span>
           </button>
         </h2>
         <div id="da_disputare_body" class="accordion-collapse collapse" v-bind:class="{show : from_pian}"
@@ -47,7 +48,7 @@
         </div>
       </div>
       <!-- Da refertare -->
-      <div class="accordion-item">
+      <div class="accordion-item" v-if="ruolo === 'ref'">
         <h2 class="accordion-header" id="da_refertare">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                   data-bs-target="#da_refertare_body" aria-expanded="false" aria-controls="da_refertare_body">
@@ -77,7 +78,7 @@
         <div id="passate_body" class="accordion-collapse collapse" aria-labelledby="passate">
           <div class="accordion-body">
             <gara
-              v-for="gara in archivio_gare.filter(annata => annata.season === this.selected_season)[0].gare.filter(g => g.stato === 4 || g.stato === 5)"
+              v-for="gara in archivio_gare.filter(annata => annata.season === this.selected_season)[0].gare.filter(g => {let today = Date.now(); return (g.stato === 4 || g.stato === 5 || (ruolo === 'udc' && g.stato === 2 && today > g.datetime.getTime()))})"
               :key="gara.numero" v-bind:elemento="gara">
             </gara>
           </div>
@@ -102,6 +103,11 @@ export default {
 
       // state
       from_pian: false,
+    }
+  },
+  computed: {
+    ruolo() {
+      return Vue.prototype.$ruolo
     }
   },
   beforeRouteEnter(to, from, next) {
@@ -133,7 +139,10 @@ export default {
       }).length
     },
     numero_passate() {
-      return this.archivio_gare.filter(annata => annata.season === this.selected_season)[0].gare.filter(gara => gara.stato === 4 || gara.stato === 5).length
+      return this.archivio_gare.filter(annata => annata.season === this.selected_season)[0].gare.filter(gara => {
+        let today = Date.now();
+        return (gara.stato === 4 || gara.stato === 5 || (this.ruolo === 'udc' && gara.stato === 2 && today > gara.datetime.getTime()))
+      }).length
     },
     pianifica(gara) {
       this.$router.push('/pianificazione/' + this.selected_season.replaceAll(' ', '_').replaceAll('/', '_') + '/' + gara.numero)

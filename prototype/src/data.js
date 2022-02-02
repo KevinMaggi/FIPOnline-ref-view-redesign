@@ -95,7 +95,7 @@ Vue.prototype.$dati_personali = [
     ]
   }
 ]
-Vue.prototype.$dati_CIA = [
+Vue.prototype.$dati_CIA_ref = [
   {
     title: 'Ruolo',
     headers: ['Categoria', 'Ruolo', 'Qualifica'],
@@ -123,6 +123,37 @@ Vue.prototype.$dati_CIA = [
     headers: ['Tipo blocco', 'Data inizio', 'Data fine', 'Note'],
     records: [
       ['Infortunio', '01/01/2017', '01/03/2017', ''],
+    ]
+  }
+]
+Vue.prototype.$dati_CIA_udc = [
+  {
+    title: 'Ruolo',
+    headers: ['Categoria', 'Ruolo', 'Qualifica'],
+    records: [
+      ['Tesserato CIA', 'Ufficiale di Campo', 'UdC regionale'],
+      ['Tesserato CIA', 'Istruttore', 'Istruttore provinciale']
+    ]
+  },
+  {
+    title: 'Storico tesseramento',
+    headers: ['Tipo', 'Inizio', 'Fine', 'Abilitazione'],
+    records: [
+      ['UdC regionale', '01/07/2021', '-', 'Campionati regionali'],
+      ['UdC regionale', '01/07/2020', '30/06/2021', 'Campionati regionali'],
+      ['UdC regionale', '01/07/2019', '30/06/2020', 'Campionati regionali'],
+      ['UdC regionale', '01/07/2018', '30/06/2019', 'Campionati regionali'],
+      ['UdC regionale', '01/07/2017', '30/06/2018', 'Campionati regionali'],
+      ['UdC regionale', '01/07/2016', '30/06/2017', 'Campionati regionali'],
+      ['UdC regionale', '01/07/2015', '30/06/2016', 'Campionati regionali'],
+      ['UdC regionale', '01/07/2014', '30/06/2015', 'Campionati regionali']
+    ]
+  },
+  {
+    title: 'Storico blocco',
+    headers: ['Tipo blocco', 'Data inizio', 'Data fine', 'Note'],
+    records: [
+      ['Indisponibilità', '01/01/2017', '01/03/2017', ''],
     ]
   }
 ]
