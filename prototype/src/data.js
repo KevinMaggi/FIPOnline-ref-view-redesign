@@ -172,7 +172,7 @@ Vue.prototype.$archivio_gare = [
         datetime: new Date(2022, 1, 16, 18, 30), luogo: 'Via 1° Maggio, 59100, Prato',
         squadra_A: 'Cestistica rosa Prato', squadra_B: 'Pallacanestro femminile Porcari',
         squadra_CIA: [
-          {ruolo: 'Primo arbitro', nome: 'Kevin Maggi'},
+          {ruolo: 'Primo arbitro', nome: 'Mario Rossi'},
         ],
         stato: 0,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
         pianificazione: {
@@ -194,9 +194,9 @@ Vue.prototype.$archivio_gare = [
         datetime: new Date(2022, 1, 6, 18, 30), luogo: 'Via T. Alderotti 26, 50136, Firenze',
         squadra_A: 'Laurenziana Basket', squadra_B: 'Unione sportiva Affrico',
         squadra_CIA: [
-          {ruolo: 'Primo arbitro', nome: 'Alessandro Sizzi'},
-          {ruolo: 'Secondo arbitro', nome: 'Kevin Maggi'},
-          {ruolo: 'Segnapunti', nome: 'Marco Checcacci'},
+          {ruolo: 'Primo arbitro', nome: 'Luca Bianchi'},
+          {ruolo: 'Secondo arbitro', nome: 'Mario Rossi'},
+          {ruolo: 'Segnapunti', nome: 'Giuseppe Verdi'},
         ],
         stato: 1,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
         pianificazione: {
@@ -217,7 +217,7 @@ Vue.prototype.$archivio_gare = [
         datetime: new Date(2022, 1, 5, 19, 0), luogo: 'Via Sassetti 1, 50018, Scandicci',
         squadra_A: 'Scandicci Basket', squadra_B: 'Scuola Basket Prato',
         squadra_CIA: [
-          {ruolo: 'Primo arbitro', nome: 'Kevin Maggi'},
+          {ruolo: 'Primo arbitro', nome: 'Mario Rossi'},
         ],
         stato: 2,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
         pianificazione: {
@@ -251,11 +251,11 @@ Vue.prototype.$archivio_gare = [
         datetime: new Date(2022, 0, 31, 18, 20), luogo: 'Via Toscanini 2, 59100, Prato',
         squadra_A: 'Prato Basket Giovane', squadra_B: 'Folgore Fucecchio',
         squadra_CIA: [
-          {ruolo: 'Primo arbitro', nome: 'Kevin Maggi'},
-          {ruolo: 'Secondo arbitro', nome: 'Eduardo Christian Mori'},
-          {ruolo: 'Segnapunti', nome: 'Claudia Santi'},
-          {ruolo: 'Cronometrista', nome: 'Claudia Dini'},
-          {ruolo: '24 secondi', nome: 'Lorenzo Bezzi'},
+          {ruolo: 'Primo arbitro', nome: 'Mario Rossi'},
+          {ruolo: 'Secondo arbitro', nome: 'Luca Bianchi'},
+          {ruolo: 'Segnapunti', nome: 'Giuseppe Verdi'},
+          {ruolo: 'Cronometrista', nome: 'Luigi Esposito'},
+          {ruolo: '24 secondi', nome: 'Federico Russo'},
         ],
         stato: 2,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
         pianificazione: {
@@ -287,9 +287,9 @@ Vue.prototype.$archivio_gare = [
         datetime: new Date(2022, 0, 30, 11, 0), luogo: 'Via Boccaccio 13, 50060, Pelago',
         squadra_A: 'Valdisieve', squadra_B: 'CUS Firenze',
         squadra_CIA: [
-          {ruolo: 'Primo arbitro', nome: 'Kevin Maggi'},
-          {ruolo: 'Secondo arbitro', nome: 'Giovanni Belgodere'},
-          {ruolo: 'Segnapunti', nome: 'Paolo Burchi'},
+          {ruolo: 'Primo arbitro', nome: 'Mario Rossi'},
+          {ruolo: 'Secondo arbitro', nome: 'Luca Bianchi'},
+          {ruolo: 'Segnapunti', nome: 'Luigi Esposito'},
         ],
         stato: 4,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
         pianificazione: {
@@ -333,9 +333,9 @@ Vue.prototype.$archivio_gare = [
         datetime: new Date(2022, 0, 23, 18, 30), luogo: 'Via della pieve 58, 50067, Rignano sull\'Arno',
         squadra_A: 'Centro Minibasket Arno', squadra_B: 'Montespertoli',
         squadra_CIA: [
-          {ruolo: 'Primo arbitro', nome: 'Kevin Maggi'},
-          {ruolo: 'Secondo arbitro', nome: 'Alessandro Sizzi'},
-          {ruolo: 'Segnapunti', nome: 'Paolo Burchi'},
+          {ruolo: 'Primo arbitro', nome: 'Mario Rossi'},
+          {ruolo: 'Secondo arbitro', nome: 'Luca Bianchi'},
+          {ruolo: 'Segnapunti', nome: 'Federico Russo'},
         ],
         stato: 5,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
         pianificazione: {
@@ -369,10 +369,10 @@ Vue.prototype.$archivio_gare = [
         datetime: new Date(2022, 0, 16, 11, 30), luogo: 'Via T. Alderotti 26, 50136, Firenze',
         squadra_A: 'Laurenziana Basket', squadra_B: 'Biancorosso Empoli',
         squadra_CIA: [
-          {ruolo: 'Primo arbitro', nome: 'Kevin Maggi'},
-          {ruolo: 'Secondo arbitro', nome: 'Lorenzo Cima'},
-          {ruolo: 'Segnapunti', nome: 'Marco Checcacci'},
-          {ruolo: 'Cronometrista', nome: 'Claudio Indaco'}
+          {ruolo: 'Primo arbitro', nome: 'Mario Rossi'},
+          {ruolo: 'Secondo arbitro', nome: 'Luca Bianchi'},
+          {ruolo: 'Segnapunti', nome: 'Federico Russo'},
+          {ruolo: 'Cronometrista', nome: 'Giuseppe Verdi'}
         ],
         stato: 5,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
         pianificazione: {
@@ -406,7 +406,7 @@ Vue.prototype.$archivio_gare = [
         datetime: new Date(2021, 11, 12, 9, 30), luogo: 'Via Toscanini 2, 59100, Prato',
         squadra_A: 'Pallacanestro 2000 Prato', squadra_B: 'DLF Firenze Basket',
         squadra_CIA: [
-          {ruolo: 'Primo arbitro', nome: 'Kevin Maggi'},
+          {ruolo: 'Primo arbitro', nome: 'Mario Rossi'},
         ],
         stato: 5,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
         pianificazione: {
@@ -438,7 +438,7 @@ Vue.prototype.$archivio_gare = [
         datetime: new Date(2021, 11, 11, 16, 30), luogo: 'Via Pantano, 50045, Montemurlo',
         squadra_A: 'Lions Montemurlo Basket', squadra_B: 'Dany Quarrata',
         squadra_CIA: [
-          {ruolo: 'Primo arbitro', nome: 'Kevin Maggi'},
+          {ruolo: 'Primo arbitro', nome: 'Mario Rossi'},
         ],
         stato: 5,  // 0: non accettata, 1: accettata da pianificare, 2: pianificata / da refertare, 4: refertata da omologare, 5: omologata
         pianificazione: {
@@ -465,27 +465,13 @@ Vue.prototype.$archivio_gare = [
       },
     ]
   },
-  {
-    season: 'Stagione 2020/2021', gare: []
-  },
-  {
-    season: 'Stagione 2019/2020', gare: []
-  },
-  {
-    season: 'Stagione 2018/2019', gare: []
-  },
-  {
-    season: 'Stagione 2017/2018', gare: []
-  },
-  {
-    season: 'Stagione 2016/2017', gare: []
-  },
-  {
-    season: 'Stagione 2015/2016', gare: []
-  },
-  {
-    season: 'Stagione 2014/2015', gare: []
-  }
+  {season: 'Stagione 2020/2021', gare: []},
+  {season: 'Stagione 2019/2020', gare: []},
+  {season: 'Stagione 2018/2019', gare: []},
+  {season: 'Stagione 2017/2018', gare: []},
+  {season: 'Stagione 2016/2017', gare: []},
+  {season: 'Stagione 2015/2016', gare: []},
+  {season: 'Stagione 2014/2015', gare: []}
 ]
 
 // Rimborsi
@@ -508,7 +494,13 @@ Vue.prototype.$archivio_rimborsi = [
       },
     ]
   },
-  {season: 'Stagione 2020/2021', rimborsi: []}
+  {season: 'Stagione 2020/2021', rimborsi: []},
+  {season: 'Stagione 2019/2020', rimborsi: []},
+  {season: 'Stagione 2018/2019', rimborsi: []},
+  {season: 'Stagione 2017/2018', rimborsi: []},
+  {season: 'Stagione 2016/2017', rimborsi: []},
+  {season: 'Stagione 2015/2016', rimborsi: []},
+  {season: 'Stagione 2014/2015', rimborsi: []}
 ]
 
 
@@ -519,145 +511,24 @@ Vue.prototype.$archivio_rapporti = [
       {
         gara_numero: '1111',
         campionato: 'Serie C Gold',
-        data: '15/02/2022',
-        match: 'Agliana - Laurenziana',
+        data: '15/01/2022',
+        match: 'Pallacanestro 2000 Prato - Laurenziana Basket',
         visualizzato: false
       },
       {
         gara_numero: '0000',
         campionato: 'Serie C Silver',
         data: '15/12/2021',
-        match: 'Livorno - CUS Pisa',
+        match: 'Mens Sana Siena - CUS Pisa',
         visualizzato: true
       },
     ]
   },
-  {
-    season: 'Stagione 2020/2021', rapporti: [
-      {
-        gara_numero: '4444',
-        campionato: 'Serie C Silver',
-        data: '15/05/2021',
-        match: 'Lucca - Montecatini',
-        visualizzato: true
-      },
-      {
-        gara_numero: '3333',
-        campionato: 'Serie C Silver',
-        data: '15/04/2021',
-        match: 'Laurenziana - Mens Sana Siena',
-        visualizzato: true
-      },
-      {
-        gara_numero: '2222',
-        campionato: 'Serie C Gold',
-        data: '15/03/2021',
-        match: 'Legnaia - Prato Dragons',
-        visualizzato: true
-      },
-      {
-        gara_numero: '1111',
-        campionato: 'Serie C Silver',
-        data: '15/02/2021',
-        match: 'Quarrata - Montale',
-        visualizzato: true
-      },
-      {
-        gara_numero: '0000',
-        campionato: 'Serie C Gold',
-        data: '15/01/2021',
-        match: 'Prato Dragons - Valdisieve',
-        visualizzato: true
-      },
-    ]
-  },
-  {
-    season: 'Stagione 2019/2020', rapporti: [
-      {
-        gara_numero: '1111',
-        campionato: 'Serie D',
-        data: '15/02/2020',
-        match: 'Bellaria - Galli Basket',
-        visualizzato: true
-      },
-      {
-        gara_numero: '0000',
-        campionato: 'Serie D',
-        data: '15/01/2020',
-        match: 'Sesto Fiorentino - Jokers',
-        visualizzato: true
-      },
-    ]
-  },
-  {
-    season: 'Stagione 2018/2019', rapporti: [
-      {
-        gara_numero: '3333',
-        campionato: 'Serie D',
-        data: '15/04/2019',
-        match: 'Lucca - Calenzano Bulldogs',
-        visualizzato: true
-      },
-      {
-        gara_numero: '2222',
-        campionato: 'Serie D',
-        data: '15/03/2019',
-        match: 'Castelfranco Frogs - Lella Basket',
-        visualizzato: true
-      },
-      {
-        gara_numero: '1111',
-        campionato: 'Serie D',
-        data: '15/02/2019',
-        match: 'CUS Firenze - Campi Bisenzio',
-        visualizzato: true
-      },
-      {gara_numero: '0000', campionato: 'Serie D', data: '15/01/2019', match: 'Livorno - Pino', visualizzato: true}
-    ]
-  },
-  {
-    season: 'Stagione 2017/2018', rapporti: [
-      {gara_numero: '2222', campionato: 'Serie D', data: '15/03/2018', match: 'Chiesina - Livorno', visualizzato: true},
-      {gara_numero: '1111', campionato: 'Serie D', data: '15/02/2018', match: 'Vaiano - Pescia', visualizzato: true},
-      {
-        gara_numero: '0000',
-        campionato: 'Serie D',
-        data: '15/01/2018',
-        match: 'Montemurlo - Viareggio',
-        visualizzato: true
-      },
-    ]
-  },
-  {
-    season: 'Stagione 2016/2017', rapporti: [
-      {
-        gara_numero: '1111',
-        campionato: 'Promozione',
-        data: '15/02/2017',
-        match: 'Montemurlo - Minibasket Lucca',
-        visualizzato: true
-      },
-      {
-        gara_numero: '0000',
-        campionato: 'Promozione',
-        data: '15/01/2017',
-        match: 'Biancoverde - Figline V.no',
-        visualizzato: true
-      },
-    ]
-  },
-  {
-    season: 'Stagione 2015/2016', rapporti: [
-      {
-        gara_numero: '0000',
-        campionato: 'Promozione',
-        data: '15/01/2016',
-        match: 'Prato Dragons - Laurenziana',
-        visualizzato: true
-      }
-    ]
-  },
-  {
-    season: 'Stagione 2014/2015', rapporti: []
-  },
+  {season: 'Stagione 2020/2021', rapporti: []},
+  {season: 'Stagione 2019/2020', rapporti: []},
+  {season: 'Stagione 2018/2019', rapporti: []},
+  {season: 'Stagione 2017/2018', rapporti: []},
+  {season: 'Stagione 2016/2017', rapporti: []},
+  {season: 'Stagione 2015/2016', rapporti: []},
+  {season: 'Stagione 2014/2015', rapporti: []},
 ]

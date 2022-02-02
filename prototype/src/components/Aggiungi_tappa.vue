@@ -217,11 +217,19 @@ export default {
       let da = (this.partenza === 'località generica') ? this.part_gen : this.partenza
       let a = (this.destinazione === 'località generica') ? this.dest_gen : this.destinazione
 
-      this.gara.pianificazione.tappe_richieste.push({da: da, a: a, spese: sp})
+      this.gara.pianificazione.tappe_richieste.push({
+        da: (da !== null) ? da : '-',
+        a: (a !== null) ? a : '-',
+        spese: sp
+      })
       this.gara.pianificazione.totale_richiesto += totale
 
       if (this.tappa_simm) {
-        this.gara.pianificazione.tappe_richieste.push({da: a, a: da, spese: sp})
+        this.gara.pianificazione.tappe_richieste.push({
+          da: (a !== null) ? a : '-',
+          a: (da !== null) ? da : '-',
+          spese: sp
+        })
         this.gara.pianificazione.totale_richiesto += totale
       }
 
