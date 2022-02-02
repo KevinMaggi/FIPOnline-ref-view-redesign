@@ -33,6 +33,7 @@ export default {
 @import "styles/bootstrap_overrule.scss";
 @import "styles/constants.scss";
 @import "styles/style.scss";
+@import "styles/material-icon.css";
 
 html {
   overflow: auto;

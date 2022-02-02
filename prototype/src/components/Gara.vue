@@ -134,8 +134,8 @@ export default {
 
       // local data
       stato: null, // 0: non accettata, 1: accettata, 2: pianificata, 3: disputata 4: refertata, 5: omologata
-      puntia: null,
-      puntib: null,
+      puntia: '',
+      puntib: '',
     }
   },
   mounted: function () { // initialization of local data
@@ -188,7 +188,7 @@ export default {
     },
     salva() {
       let referto = document.querySelector('#n' + this.elemento.numero + ' input[type="file"]').value
-      if (this.puntia >= 0 && this.puntib >= 0 && referto !== '') {
+      if (this.puntia !== '' && this.puntia !== null && this.puntia >= 0 && this.puntib !== '' && this.puntib !== null && this.puntib >= 0 && referto !== '') {
         this.error = false
         this.modifying = false
         this.stato = 4
