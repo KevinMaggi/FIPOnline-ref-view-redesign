@@ -18,7 +18,10 @@ The main tools and techniques I will employ are:
 I expected to obtain, through a process of needfinding, prototyping and usability testing, a (prototype of) real Progressive Web App fully usable in mobility, like the referee's daylife usually requests. In particular with the final usability test phase will be interesting to highlight the possible strenghts and weak points of the resulting web app, along with ideas for future developments.
 
 # Documents
-*coming soon*
+- [report](https://github.com/KevinMaggi/FIPOnline-ref-view-redesign/blob/main/FipOnline%20ref%20view%20redesign%20report.pdf)
+
+# Prototype (only referee version)
+https://fiponline.netsons.org (tessera: A000000, pw: password)
 
 # References
 - https://vuejs.org/
