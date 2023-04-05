@@ -5,6 +5,8 @@ This work is part of the exam of *Human Computer Interaction* by Prof. *Andrew D
 - Student: Kevin Maggi
 - CFUs: 9
 
+> :warning: **Please attention**: as you can see this work is publicly available and anyone is obviously free of taking ideas from that. Anyway if it will be found that someone is copying the code (in the mean CTRL-C / CTRL-V) for its own project of the *same* exam, they will be reported to the Professor.
+
 In this project I will redesign the referee personal areas of FIPOnline system, the web system of FIP (Italian Federation of Basketball) for managing match designation, reimbursement request, annual sign-up, matches history and personal registry. I will convert the actual (2021) only-desktop, counterintuitive and hardly usable "web app" into a real user-friendly, responsive and accessible Progressive Web App.
 
 # Tool & Techniques
